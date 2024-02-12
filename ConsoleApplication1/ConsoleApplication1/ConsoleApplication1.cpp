@@ -10,15 +10,17 @@ struct studentas
     string pavarde;
     int namudarburez[N];
     int egzaminorez;
+    int namudarburezsuma;
+    double vidurkis;
 };
 
 int main()
 {
     setlocale(LC_ALL, "Lithuanian");
     int studentukiekis; 
-    cout << "Kiek bus studentu?";
+    cout << "Kiek bus studentø?: " << endl;
     cin >> studentukiekis;
-    cout << "kiek bus namu darbu?: ";
+    cout << "kiek bus namu darbø?: " << endl;
     int namudarbai;
     cin >> namudarbai;
     studentas stud[N];
@@ -28,15 +30,25 @@ int main()
         cout << "Iveskite studento vardà ir pavaradæ: " << endl;
         cin >> stud[i].vardas;
         cin >> stud[i].pavarde;
-        cout << "Iveskite namø darbø rezultatus: ";
-        for (int i = 0; i < namudarbai; i++) {
-            cin >> stud[i].namudarburez;
+        if (namudarbai > 0)
+        {
+        for (int j = 0; j < namudarbai; j++) {
+            cout << "Iveskite " << j+1 << "-ojo namø darbo rezultatà : " << endl;
+            cin >> stud[j].namudarburez[j];
+            stud[i].namudarburezsuma += stud[i].namudarburez[j];
         }
-        cout << "Iveskite egzamino rezultatus";
+        }
+        cout << "Iveskite egzamino rezultatà: " << endl;
         cin >> stud[i].egzaminorez;
+        stud[i].vidurkis = stud[i].namudarburezsuma / namudarbai;
+
 
     }
     cout << "Pavardë          Vardas           Galutinis (vid.)" << endl;
     cout << "-----------------------------------------------------------" << endl;
+    for (int i = 0; i < studentukiekis; i++)
+    {
+        cout << stud[i].pavarde << "         " << stud[i].vardas << "         " << stud[i].vidurkis << endl;
+    }
 }
 
