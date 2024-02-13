@@ -1,5 +1,6 @@
 #include <iostream>
 #include <locale>
+#include <iomanip>
 
 const int N = 50;
 using namespace std;
@@ -10,8 +11,9 @@ struct studentas
     string pavarde;
     int namudarburez[N];
     int egzaminorez;
-    int namudarburezsuma;
+    double namudarburezsuma;
     double vidurkis;
+    double galutinisbalas;
 };
 
 int main()
@@ -21,7 +23,7 @@ int main()
     cout << "Kiek bus studentø?: " << endl;
     cin >> studentukiekis;
     cout << "kiek bus namu darbø?: " << endl;
-    int namudarbai;
+    double namudarbai;
     cin >> namudarbai;
     studentas stud[N];
     int galutinisvertinimas[N];
@@ -34,21 +36,21 @@ int main()
         {
         for (int j = 0; j < namudarbai; j++) {
             cout << "Iveskite " << j+1 << "-ojo namø darbo rezultatà : " << endl;
-            cin >> stud[j].namudarburez[j];
+            cin >> stud[i].namudarburez[j];
+            stud[i].namudarburezsuma = 0;
             stud[i].namudarburezsuma += stud[i].namudarburez[j];
         }
         }
         cout << "Iveskite egzamino rezultatà: " << endl;
         cin >> stud[i].egzaminorez;
         stud[i].vidurkis = stud[i].namudarburezsuma / namudarbai;
-
-
+        stud[i].galutinisbalas = stud[i].vidurkis * 0.4 + stud[i].egzaminorez * 0.6;
     }
-    cout << "Pavardë          Vardas           Galutinis (vid.)" << endl;
+    cout << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (vid.)" << setw(30) << endl;
     cout << "-----------------------------------------------------------" << endl;
     for (int i = 0; i < studentukiekis; i++)
     {
-        cout << stud[i].pavarde << "         " << stud[i].vardas << "         " << stud[i].vidurkis << endl;
+        cout << stud[i].pavarde << "         " << stud[i].vardas << "                " << stud[i].galutinisbalas << endl;
     }
 }
 
