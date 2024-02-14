@@ -1,0 +1,1 @@
+v.pradinė - pirmasis, prototipinis alpha subrelizas, kuriame pagrindinė idėja - parodyti mokinių pasiekimų skaičiavimo programos principą. Bandant vesti raides ar nelegalius skaičius (pvz. 11 kaip pažymį) programa į tą reaguoją ir atsako, iš naujo paprašo parašyti. Implementuota medianos ir vidurkio namų darbų skaičiavimo funkcija.
