@@ -40,8 +40,8 @@ void Rikiavimas(double mas[], int n)
 int main()
 {
     setlocale(LC_ALL, "Lithuanian");
-    int studentukiekis = 1;
-    if (studentukiekis > 0 && studentukiekis < INT_MAX)
+    int studentukiekis = 0;
+    if (studentukiekis > -1 && studentukiekis < INT_MAX)
     {
         cout << "kiek bus namø darbø?: " << endl;
         int namudarbai;
@@ -51,14 +51,14 @@ int main()
         {
             for (int i = 0; i < INT_MAX; i++)
             {
-                cout << "Iveskite studento vardus ir pavardes. Norëdami baigti ávedimà, nieko neávesdami paspauskite ENTER.: " << endl;
-                if (cin >> stud[i].vardas == "" || cin >> stud[i].pavarde == "")
+                cout << "Iveskite studento vardus ir pavardes. Norëdami baigti ávedimà, áveskite skaitmená -1: " << endl;
+                if (cin >> stud[i].vardas && stud[i].vardas == "-1" || cin >> stud[i].pavarde && stud[i].pavarde == "-1")
                 {
 					break;
 				}
                 else
                 {
-                    studentukiekis = +1;
+                    studentukiekis++;
                     stud[i].namudarburezsuma = 0;
                     for (int j = 0; j < namudarbai; j++)
                     {
@@ -110,7 +110,7 @@ int main()
             }
             cout << "Kurá galutinio balo skaièiavimo bûdà renkatës? (1 - vidurkis; 2 - mediana)" << endl;
             int skaicbudas;
-            if (cin >> skaicbudas && skaicbudas == 1 && stud)
+            if (cin >> skaicbudas && skaicbudas == 1 && studentukiekis > 1)
             {
                 cout << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (vid.)" << endl;
                 cout << "---------------------------------------------------------------------------------------------------" << endl;
@@ -119,7 +119,7 @@ int main()
                     cout << setw(15) << stud[i].pavarde << setw(15) << stud[i].vardas << setw(30) << fixed << setprecision(2) << stud[i].galutinisbalasvidurkis;
                 }
             }
-            else if (skaicbudas == 2)
+            else if (skaicbudas == 2 && studentukiekis >= 1)
             {
                 cout << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (med.)" << endl;
                 cout << "---------------------------------------------------------------------------------------------------" << endl;
