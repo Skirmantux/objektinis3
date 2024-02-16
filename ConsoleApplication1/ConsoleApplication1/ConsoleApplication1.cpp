@@ -36,6 +36,23 @@ void Rikiavimas(double mas[], int n)
         }
     }
 }
+double mediana(studentas stud[], int namudarbai, int i)
+{
+    double mediana = 0.0;
+    for (int i = 0; i < namudarbai; i++)
+    {
+        if (namudarbai % 2 == 0)
+        {
+            mediana = (stud[i].namudarburez[namudarbai / 2] + stud[i].namudarburez[namudarbai / 2 - 1]) / 2.0;
+        }
+        else
+        {
+            mediana = stud[i].namudarburez[namudarbai / 2];
+        }
+        return mediana;
+    }
+
+}
 
 int main()
 {
@@ -46,7 +63,7 @@ int main()
         cout << "kiek bus namø darbø?: " << endl;
         int namudarbai;
         cin >> namudarbai;
-        studentas stud[N];
+        studentas* stud = new studentas();
         if (namudarbai > 0 && namudarbai < INT_MAX)
         {
             for (int i = 0; i < INT_MAX; i++)
@@ -80,14 +97,7 @@ int main()
                     }
 
                     Rikiavimas(stud[i].namudarburez, namudarbai);
-                    if (namudarbai % 2 == 0)
-                    {
-                        stud[i].mediana = (stud[i].namudarburez[namudarbai / 2] + stud[i].namudarburez[namudarbai / 2 - 1]) / 2.0;
-                    }
-                    else
-                    {
-                        stud[i].mediana = stud[i].namudarburez[namudarbai / 2];
-                    }
+                    stud[i].mediana = mediana(stud, namudarbai, i);
                     while (true)
                     {
                         cout << "Iveskite egzamino rezultatà (turi bûti tarp 0 ir 10): " << endl;
@@ -110,7 +120,7 @@ int main()
             }
             cout << "Kurá galutinio balo skaièiavimo bûdà renkatës? (1 - vidurkis; 2 - mediana)" << endl;
             int skaicbudas;
-            if (cin >> skaicbudas && skaicbudas == 1 && studentukiekis > 1)
+            if (cin >> skaicbudas && skaicbudas == 1 && studentukiekis >= 1)
             {
                 cout << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (vid.)" << endl;
                 cout << "---------------------------------------------------------------------------------------------------" << endl;
