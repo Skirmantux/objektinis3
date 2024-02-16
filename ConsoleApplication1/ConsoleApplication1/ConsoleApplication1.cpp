@@ -9,7 +9,7 @@ struct studentas
 {
     string vardas;
     string pavarde;
-    double namudarburez[N];
+    double* namudarburez = new double();
     double egzaminorez;
     double namudarburezsuma;
     double vidurkis;
@@ -40,9 +40,7 @@ void Rikiavimas(double mas[], int n)
 int main()
 {
     setlocale(LC_ALL, "Lithuanian");
-    int studentukiekis;
-    cout << "Kiek bus studentø?: " << endl;
-    cin >> studentukiekis;
+    int studentukiekis = 1;
     if (studentukiekis > 0 && studentukiekis < INT_MAX)
     {
         cout << "kiek bus namø darbø?: " << endl;
@@ -51,17 +49,50 @@ int main()
         studentas stud[N];
         if (namudarbai > 0 && namudarbai < INT_MAX)
         {
-            for (int i = 0; i < studentukiekis; i++)
+            for (int i = 0; i < INT_MAX; i++)
             {
-                cout << "Iveskite studento vardà ir pavardæ: " << endl;
-                cin >> stud[i].vardas >> stud[i].pavarde;
-                stud[i].namudarburezsuma = 0;
-                for (int j = 0; j < namudarbai; j++)
+                cout << "Iveskite studento vardus ir pavardes. Norëdami baigti ávedimà, nieko neávesdami paspauskite ENTER.: " << endl;
+                if (cin >> stud[i].vardas == "" || cin >> stud[i].pavarde == "")
                 {
+					break;
+				}
+                else
+                {
+                    studentukiekis = +1;
+                    stud[i].namudarburezsuma = 0;
+                    for (int j = 0; j < namudarbai; j++)
+                    {
+                        while (true)
+                        {
+                            cout << "Iveskite " << j + 1 << "-ojo namø darbo rezultatà (turi bûti tarp 0 ir 10): " << endl;
+                            if (cin >> stud[i].namudarburez[j] && stud[i].namudarburez[j] >= 0 && stud[i].namudarburez[j] <= 10)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
+                                cin.clear();
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            }
+                        }
+                        stud[i].namudarburezsuma += stud[i].namudarburez[j];
+                    }
+
+                    Rikiavimas(stud[i].namudarburez, namudarbai);
+                    if (namudarbai % 2 == 0)
+                    {
+                        stud[i].mediana = (stud[i].namudarburez[namudarbai / 2] + stud[i].namudarburez[namudarbai / 2 - 1]) / 2.0;
+                    }
+                    else
+                    {
+                        stud[i].mediana = stud[i].namudarburez[namudarbai / 2];
+                    }
                     while (true)
                     {
-                        cout << "Iveskite " << j + 1 << "-ojo namø darbo rezultatà (turi bûti tarp 0 ir 10): " << endl;
-                        if (cin >> stud[i].namudarburez[j] && stud[i].namudarburez[j] >= 0 && stud[i].namudarburez[j] <= 10)
+                        cout << "Iveskite egzamino rezultatà (turi bûti tarp 0 ir 10): " << endl;
+
+                        if (cin >> stud[i].egzaminorez && stud[i].egzaminorez >= 0 && stud[i].egzaminorez <= 10)
                         {
                             break;
                         }
@@ -72,40 +103,14 @@ int main()
                             cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         }
                     }
-                    stud[i].namudarburezsuma += stud[i].namudarburez[j];
+                    stud[i].vidurkis = stud[i].namudarburezsuma / namudarbai;
+                    stud[i].galutinisbalasvidurkis = stud[i].vidurkis * 0.4 + stud[i].egzaminorez * 0.6;
+                    stud[i].galutinisbalasmediana = stud[i].mediana * 0.4 + stud[i].egzaminorez * 0.6;
                 }
-
-                Rikiavimas(stud[i].namudarburez, namudarbai);
-                if (namudarbai % 2 == 0)
-                {
-                    stud[i].mediana = (stud[i].namudarburez[namudarbai / 2] + stud[i].namudarburez[namudarbai / 2 - 1]) / 2.0;
-                }
-                else
-                {
-                    stud[i].mediana = stud[i].namudarburez[namudarbai / 2];
-                }
-                while (true)
-                {
-                    cout << "Iveskite egzamino rezultatà (turi bûti tarp 0 ir 10): " << endl;
-
-                    if (cin >> stud[i].egzaminorez && stud[i].egzaminorez >= 0 && stud[i].egzaminorez <= 10)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
-                        cin.clear();
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    }
-                }
-                stud[i].vidurkis = stud[i].namudarburezsuma / namudarbai;
-                stud[i].galutinisbalasvidurkis = stud[i].vidurkis * 0.4 + stud[i].egzaminorez * 0.6;
-                stud[i].galutinisbalasmediana = stud[i].mediana * 0.4 + stud[i].egzaminorez * 0.6;
             }
             cout << "Kurá galutinio balo skaièiavimo bûdà renkatës? (1 - vidurkis; 2 - mediana)" << endl;
             int skaicbudas;
-            if (cin >> skaicbudas && skaicbudas == 1)
+            if (cin >> skaicbudas && skaicbudas == 1 && stud)
             {
                 cout << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (vid.)" << endl;
                 cout << "---------------------------------------------------------------------------------------------------" << endl;
