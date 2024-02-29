@@ -14,12 +14,12 @@ struct Studentas
     string vardas;
     string pavarde;
     vector<double> namudarburez; // vektorius dinaminiam namu darbu rezultatu saugojimui
-    double egzaminorez;
-    double namudarburezsuma;
-    double vidurkis;
-    double galutinisbalasvidurkis;
-    double mediana;
-    double galutinisbalasmediana;
+    double egzaminorez = 0.0;
+    double namudarburezsuma = 0.0;
+    double vidurkis = 0.0;
+    double galutinisbalasvidurkis = 0.0;
+    double mediana = 0.0;
+    double galutinisbalasmediana = 0.0;
 };
 
 void NetinkamaIvestis()
@@ -49,27 +49,49 @@ double Mediana(const vector<double>& namudarburez) // perduodame vektoriu kaip k
 
 double GenerateRandomGrade()
 {
-    return rand() % 11; 
+    return rand() % 11;
+}
+
+string GeneruotiVardus()
+{
+    vector<string> vardai = { "Jonas", "Petras", "Antanas", "Marius", "Tomas" };
+    return vardai[rand() % vardai.size()];
+}
+
+string GeneruotiPavardes()
+{
+    vector<string> pavardes = { "Kazlauskas", "Petrauskas", "Stankevièius", "Gudelis", "Lukğys" };
+    return pavardes[rand() % pavardes.size()];
 }
 
 int main()
 {
     setlocale(LC_ALL, "Lithuanian");
     srand(time(NULL));
-
     vector<Studentas> studentai; // studentø vektorius
-
+    int pasirinkimas;
+    cout << "Pasirinkite bûdà ávesti balus:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\nPasirinkimas: ";
+    while (true) {
+        if (cin >> pasirinkimas && (pasirinkimas == 1 || pasirinkimas == 2 || pasirinkimas == 3)) {
+            break;
+        }
+        else {
+            cout << "Netinkama ávestis. Pasirinkite bûdà ávesti balus:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\nPasirinkimas: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }
     while (true)
     {
         Studentas stud;
-        cout << "Áveskite studento vardà ir pavardæ. Norëdami baigti ávedimà, áveskite -1: ";
-        cin >> stud.vardas;
-        if (stud.vardas == "-1")
-            break;
-        cin >> stud.pavarde;
-        cout << "Pasirinkite bûdà ávesti balus:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\nPasirinkimas: ";
-        int pasirinkimas;
-        cin >> pasirinkimas;
+        if (pasirinkimas == 1 || pasirinkimas == 2)
+        {
+            cout << "Áveskite studento vardà ir pavardæ. Norëdami baigti ávedimà, áveskite -1: ";
+            cin >> stud.vardas;
+            if (stud.vardas == "-1")
+                break;
+            cin >> stud.pavarde;
+        }
         if (pasirinkimas == 1) {
             cout << "Áveskite namø darbø rezultatus. Norëdami baigti ávedimà, áveskite -1: ";
             double namudarburez;
@@ -99,6 +121,26 @@ int main()
             {
                 stud.namudarburez.push_back(GenerateRandomGrade());
             }
+        }
+        else if (pasirinkimas == 3) {
+            cout << "Generuojami balai, vardai ir pavardës spausdinimui" << endl;
+            int studentukiekis = rand() % 10;
+            for (int i = 0; i < studentukiekis; i++) {
+                for (int j = 0; j < 5; j++) {
+                    stud.namudarburez.push_back(GenerateRandomGrade());
+                }
+                stud.egzaminorez = GenerateRandomGrade();
+                stud.vardas = GeneruotiVardus();
+                stud.pavarde = GeneruotiPavardes();
+                stud.namudarburezsuma = accumulate(stud.namudarburez.begin(), stud.namudarburez.end(), 0.0);
+                stud.vidurkis = stud.namudarburezsuma / stud.namudarburez.size();
+                stud.galutinisbalasvidurkis = stud.vidurkis * 0.4 + stud.egzaminorez * 0.6;
+                stud.mediana = Mediana(stud.namudarburez); // mediana skaiciuojama is rikiuoto vektoriaus
+                stud.galutinisbalasmediana = stud.mediana * 0.4 + stud.egzaminorez * 0.6;
+                studentai.push_back(stud); // Add the student to the vector
+                stud.namudarburez.clear(); // Clear the grades for the next student
+            }
+            break;
         }
         Rikiavimas(stud.namudarburez); // rikiuojame vektoriu su std::sort
         if (pasirinkimas == 1) {
@@ -150,4 +192,3 @@ int main()
     }
     return 0;
 }
-//nesamone baigta
