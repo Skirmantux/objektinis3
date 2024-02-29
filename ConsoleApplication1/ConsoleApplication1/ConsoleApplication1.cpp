@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -70,13 +72,13 @@ int main()
     srand(time(NULL));
     vector<Studentas> studentai; // studentø vektorius
     int pasirinkimas;
-    cout << "Pasirinkite bûdà ávesti balus:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\nPasirinkimas: ";
+    cout << "Pasirinkite bûdà ávesti balus:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\n4. Skaitymas ið failo.\nPasirinkimas:";
     while (true) {
-        if (cin >> pasirinkimas && (pasirinkimas == 1 || pasirinkimas == 2 || pasirinkimas == 3)) {
+        if (cin >> pasirinkimas && (pasirinkimas == 1 || pasirinkimas == 2 || pasirinkimas == 3 || pasirinkimas == 4)) {
             break;
         }
         else {
-            cout << "Netinkama ávestis. Pasirinkite bûdà ávesti balus:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\nPasirinkimas: ";
+            cout << "Netinkama ávestis. Pasirinkite bûdà ávesti balus:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\n4. Skaitymas ið failo.\nPasirinkimas: ";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
@@ -142,22 +144,39 @@ int main()
             }
             break;
         }
-        Rikiavimas(stud.namudarburez); // rikiuojame vektoriu su std::sort
-        if (pasirinkimas == 1) {
-            cout << "Áveskite egzamino rezultatà (turi bûti tarp 0 ir 10): ";
-            cin >> stud.egzaminorez;
+        else if (pasirinkimas == 4)
+        {
+            ifstream failas("studentai10000.txt");
+            if (!failas.is_open())
+            {
+                cout << "Failas nerastas. Programa iðjungiama...";
+                return 404;
+            }
+
+            string header;
+            getline(failas, header); // Read and discard the header line
+            while (true)
+            {
+                Studentas stud;
+                if (!(failas >> stud.vardas >> stud.pavarde)) // Read student's name and surname
+                    break; // If unable to read, break out of the loop
+                double grade;
+                while (failas >> grade) // Read homework grades
+                {
+                    if (grade == -1)
+                        break;
+                    stud.namudarburez.push_back(grade);
+                }
+                failas >> stud.egzaminorez; // Read exam grade
+                stud.namudarburezsuma = accumulate(stud.namudarburez.begin(), stud.namudarburez.end(), 0.0);
+                stud.vidurkis = stud.namudarburezsuma / stud.namudarburez.size();
+                stud.galutinisbalasvidurkis = stud.vidurkis * 0.4 + stud.egzaminorez * 0.6;
+                stud.mediana = Mediana(stud.namudarburez); // Calculate median
+                stud.galutinisbalasmediana = stud.mediana * 0.4 + stud.egzaminorez * 0.6;
+                studentai.push_back(stud); // Add the student to the vector
+            }
         }
-        else if (pasirinkimas == 2) {
-            stud.egzaminorez = GenerateRandomGrade();
-            cout << "Sugeneruotas atsitiktinis egzamino balas: " << stud.egzaminorez << endl;
-        }
-        stud.namudarburezsuma = accumulate(stud.namudarburez.begin(), stud.namudarburez.end(), 0.0);
-        stud.vidurkis = stud.namudarburezsuma / stud.namudarburez.size();
-        stud.galutinisbalasvidurkis = stud.vidurkis * 0.4 + stud.egzaminorez * 0.6;
-        stud.mediana = Mediana(stud.namudarburez); // mediana skaiciuojama is rikiuoto vektoriaus
-        stud.galutinisbalasmediana = stud.mediana * 0.4 + stud.egzaminorez * 0.6;
-        studentai.push_back(stud); // siunciame studenta i vektoriu
-    }
+
     if (!studentai.empty())
     {
         cout << "Kurá galutinio balo skaièiavimo bûdà renkatës? (1 - vidurkis; 2 - mediana)" << endl;
