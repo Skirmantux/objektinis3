@@ -2,10 +2,14 @@
 #include <vector>
 #include <locale>
 #include <iomanip>
-#include <numeric>   
+#include <numeric>
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <chrono> // Added chrono library
 
 using namespace std;
 
@@ -13,7 +17,7 @@ struct Studentas
 {
     string vardas;
     string pavarde;
-    vector<double> namudarburez; // vektorius dinaminiam namu darbu rezultatu saugojimui
+    vector<double> namudarburez;
     double egzaminorez = 0.0;
     double namudarburezsuma = 0.0;
     double vidurkis = 0.0;
@@ -26,13 +30,17 @@ void NetinkamaIvestis()
 {
     cout << "Netinkama ávestis. Programa iðjungiama...";
 }
+void NeraFailo()
+{
+    cout << "Failas nerastas. Programa iðjungiama...";
+}
 
 void Rikiavimas(vector<double>& mas)
 {
-    sort(mas.begin(), mas.end()); // std::sort sortinimui
+    sort(mas.begin(), mas.end());
 }
 
-double Mediana(const vector<double>& namudarburez) // perduodame vektoriu kaip konstanta, kad nebutu galima jo pakeisti
+double Mediana(const vector<double>& namudarburez)
 {
     double mediana = 0.0;
     int namudarbai = namudarburez.size();
@@ -64,19 +72,59 @@ string GeneruotiPavardes()
     return pavardes[rand() % pavardes.size()];
 }
 
+bool vardolyginimas(const Studentas& a, const Studentas& b)
+{
+    return a.vardas < b.vardas;
+}
+
+bool pavardeslyginimas(const Studentas& a, const Studentas& b)
+{
+    return a.pavarde < b.pavarde;
+}
+
+bool vidurkiolyginimas(const Studentas& a, const Studentas& b)
+{
+    return a.galutinisbalasvidurkis < b.galutinisbalasvidurkis;
+}
+
+bool medianoslyginimas(const Studentas& a, const Studentas& b)
+{
+    return a.galutinisbalasmediana < b.galutinisbalasmediana;
+}
+
+void PrintStudents(const vector<Studentas>& studentai)
+{
+    auto start_print = chrono::high_resolution_clock::now();
+    cout << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (vid.)" << setw(30) << "Galutinis balas (med.)" << endl;
+    cout << "---------------------------------------------------------------------------------------------------" << endl;
+    for (const auto& stud : studentai)
+    {
+        cout << setw(15) << stud.pavarde << setw(15) << stud.vardas << setw(30) << fixed << setprecision(2) << stud.galutinisbalasvidurkis << setw(30) << fixed << setprecision(2) << stud.galutinisbalasmediana << endl;
+    }
+    auto end_print = chrono::high_resolution_clock::now();
+    chrono::duration<double> write_time = end_print - start_print;
+    cout << "Rasymo i ekrana trukme: " << write_time.count() << " sekundes" << endl;
+}
+
 int main()
 {
     setlocale(LC_ALL, "Lithuanian");
     srand(time(NULL));
-    vector<Studentas> studentai; // studentø vektorius
+    vector<Studentas> studentai;
     int pasirinkimas;
-    cout << "Pasirinkite bûdà ávesti balus:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\nPasirinkimas: ";
+    chrono::duration<double> process_time;
+    chrono::duration<double> read_time;
+    cout << "Pasirinkite bûdà ávesti balus:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\n4. Skaitymas ið failo.\n5. Baigti programà.\nPasirinkimas: ";
     while (true) {
-        if (cin >> pasirinkimas && (pasirinkimas == 1 || pasirinkimas == 2 || pasirinkimas == 3)) {
+        if (cin >> pasirinkimas && (pasirinkimas == 1 || pasirinkimas == 2 || pasirinkimas == 3 || pasirinkimas == 4)) {
             break;
         }
+        else if (pasirinkimas == 5) {
+            cout << "Programa iðjungiama...";
+            return 0;
+        }
         else {
-            cout << "Netinkama ávestis. Pasirinkite bûdà ávesti balus:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\nPasirinkimas: ";
+            cout << "Netinkama ávestis. Pasirinkite bûdà ávesti balus:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\n4. Skaitymas ið failo.\n5. Baigti programà.\nPasirinkimas: ";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
@@ -84,49 +132,81 @@ int main()
     while (true)
     {
         Studentas stud;
-        if (pasirinkimas == 1 || pasirinkimas == 2)
-        {
-            cout << "Áveskite studento vardà ir pavardæ. Norëdami baigti ávedimà, áveskite -1: ";
-            cin >> stud.vardas;
-            if (stud.vardas == "-1")
-                break;
-            cin >> stud.pavarde;
-        }
         if (pasirinkimas == 1) {
-            cout << "Áveskite namø darbø rezultatus. Norëdami baigti ávedimà, áveskite -1: ";
-            double namudarburez;
-            while (true)
-            {
-                if (!(cin >> namudarburez)) {
+            while (true) {
+                Studentas stud;
+                cout << "Áveskite studento vardà ir pavardæ. Norëdami baigti ávedimà, áveskite -1: ";
+                cin >> stud.vardas;
+                if (stud.vardas == "-1")
+                    break;
+                cin >> stud.pavarde;
+                if (stud.pavarde == "-1")
+                    break;
+                cout << "Áveskite namø darbø rezultatus. Norëdami baigti ávedimà, áveskite -1: ";
+                while (true) {
+                    double namudarburez;
+                    if (!(cin >> namudarburez)) {
+                        cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        continue;
+                    }
+                    if (namudarburez == -1)
+                        break;
+                    if (namudarburez >= 0 && namudarburez <= 10) {
+                        stud.namudarburez.push_back(namudarburez);
+                    }
+                    else {
+                        cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
+                    }
+                }
+                double egzaminorez;
+                cout << "Áveskite egzamino rezultatà: ";
+                cin >> egzaminorez;
+                if (egzaminorez >= 0 && egzaminorez <= 10) {
+                    stud.egzaminorez = egzaminorez;
+                }
+                else {
                     cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     continue;
                 }
-                if (namudarburez == -1)
-                    break;
-                if (namudarburez >= 0 && namudarburez <= 10)
-                {
-                    stud.namudarburez.push_back(namudarburez); // kisame rezultata i vektoriu
-                }
-                else
-                {
-                    cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
-                }
+
+                stud.namudarburezsuma = accumulate(stud.namudarburez.begin(), stud.namudarburez.end(), 0.0);
+                stud.vidurkis = stud.namudarburezsuma / stud.namudarburez.size();
+                stud.galutinisbalasvidurkis = stud.vidurkis * 0.4 + stud.egzaminorez * 0.6;
+                stud.mediana = Mediana(stud.namudarburez);
+                stud.galutinisbalasmediana = stud.mediana * 0.4 + stud.egzaminorez * 0.6;
+                studentai.push_back(stud);
             }
         }
         else if (pasirinkimas == 2) {
-            cout << "Generuojami atsitiktiniai balai uþ namø darbus..." << endl;
-            for (int i = 0; i < 5; ++i)
-            {
-                stud.namudarburez.push_back(GenerateRandomGrade());
+            while (true) {
+                cout << "Áveskite studento vardà ir pavardæ. Norëdami baigti ávedimà, áveskite -1: ";
+                cin >> stud.vardas;
+                if (stud.vardas == "-1")
+                    break;
+                cin >> stud.pavarde;
+                cout << "Generuojami atsitiktiniai balai uþ namø darbus..." << endl;
+                for (int i = 0; i < 5; ++i) {
+                    stud.namudarburez.push_back(GenerateRandomGrade());
+                }
+                stud.egzaminorez = GenerateRandomGrade();
+                stud.namudarburezsuma = accumulate(stud.namudarburez.begin(), stud.namudarburez.end(), 0.0);
+                stud.vidurkis = stud.namudarburezsuma / stud.namudarburez.size();
+                stud.galutinisbalasvidurkis = stud.vidurkis * 0.4 + stud.egzaminorez * 0.6;
+                stud.mediana = Mediana(stud.namudarburez);
+                stud.galutinisbalasmediana = stud.mediana * 0.4 + stud.egzaminorez * 0.6;
+                studentai.push_back(stud);
+                stud.namudarburez.clear();
             }
         }
         else if (pasirinkimas == 3) {
-            cout << "Generuojami balai, vardai ir pavardës spausdinimui" << endl;
-            int studentukiekis = rand() % 10;
-            for (int i = 0; i < studentukiekis; i++) {
-                for (int j = 0; j < 5; j++) {
+            cout << "Generuojami balai, vardai ir pavardës ir studentø kiekis spausdinimui" << endl;
+            int studentukiekis;
+            studentukiekis = rand() % 200;
+            for (int i = 0; i < studentukiekis; ++i) {
+                Studentas stud;
+                for (int j = 0; j < 5; ++j) {
                     stud.namudarburez.push_back(GenerateRandomGrade());
                 }
                 stud.egzaminorez = GenerateRandomGrade();
@@ -135,60 +215,135 @@ int main()
                 stud.namudarburezsuma = accumulate(stud.namudarburez.begin(), stud.namudarburez.end(), 0.0);
                 stud.vidurkis = stud.namudarburezsuma / stud.namudarburez.size();
                 stud.galutinisbalasvidurkis = stud.vidurkis * 0.4 + stud.egzaminorez * 0.6;
-                stud.mediana = Mediana(stud.namudarburez); // mediana skaiciuojama is rikiuoto vektoriaus
+                stud.mediana = Mediana(stud.namudarburez);
                 stud.galutinisbalasmediana = stud.mediana * 0.4 + stud.egzaminorez * 0.6;
-                studentai.push_back(stud); // Add the student to the vector
-                stud.namudarburez.clear(); // Clear the grades for the next student
-            }
-            break;
-        }
-        Rikiavimas(stud.namudarburez); // rikiuojame vektoriu su std::sort
-        if (pasirinkimas == 1) {
-            cout << "Áveskite egzamino rezultatà (turi bûti tarp 0 ir 10): ";
-            cin >> stud.egzaminorez;
-        }
-        else if (pasirinkimas == 2) {
-            stud.egzaminorez = GenerateRandomGrade();
-            cout << "Sugeneruotas atsitiktinis egzamino balas: " << stud.egzaminorez << endl;
-        }
-        stud.namudarburezsuma = accumulate(stud.namudarburez.begin(), stud.namudarburez.end(), 0.0);
-        stud.vidurkis = stud.namudarburezsuma / stud.namudarburez.size();
-        stud.galutinisbalasvidurkis = stud.vidurkis * 0.4 + stud.egzaminorez * 0.6;
-        stud.mediana = Mediana(stud.namudarburez); // mediana skaiciuojama is rikiuoto vektoriaus
-        stud.galutinisbalasmediana = stud.mediana * 0.4 + stud.egzaminorez * 0.6;
-        studentai.push_back(stud); // siunciame studenta i vektoriu
-    }
-    if (!studentai.empty())
-    {
-        cout << "Kurá galutinio balo skaièiavimo bûdà renkatës? (1 - vidurkis; 2 - mediana)" << endl;
-        int skaicbudas;
-        cin >> skaicbudas;
-        if (skaicbudas == 1)
-        {
-            cout << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (vid.)" << endl;
-            cout << "---------------------------------------------------------------------------------------------------" << endl;
-            for (const auto& stud : studentai)
-            {
-                cout << setw(15) << stud.pavarde << setw(15) << stud.vardas << setw(30) << fixed << setprecision(2) << stud.galutinisbalasvidurkis << endl;
+                studentai.push_back(stud);
+                stud.namudarburez.clear();
             }
         }
-        else if (skaicbudas == 2)
+        else if (pasirinkimas == 4)
         {
-            cout << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (med.)" << endl;
-            cout << "---------------------------------------------------------------------------------------------------" << endl;
-            for (const auto& stud : studentai)
+            auto start_read = chrono::high_resolution_clock::now();
+            cout << "Kuri faila norite atidaryti:\n1 - studentai10000.txt\n2 - studentai100000.txt\n3 - studentai1000000.txt\nPasirinkimas: ";
+            int failopasirinkimas;
+            cin >> failopasirinkimas;
+            ifstream failas;
+            switch (failopasirinkimas)
             {
-                cout << setw(15) << stud.pavarde << setw(15) << stud.vardas << setw(30) << fixed << setprecision(2) << stud.galutinisbalasmediana << endl;
+            case 1:
+                failas.open("studentai10000.txt");
+                break;
+            case 2:
+                failas.open("studentai100000.txt");
+                break;
+            case 3:
+                failas.open("studentai1000000.txt");
+                break;
+            default:
+                NeraFailo();
+                return -1;
+            }
+            if (!failas.is_open())
+            {
+                NeraFailo();
+                return -1;
+            }
+            auto end_read = chrono::high_resolution_clock::now();
+            read_time = end_read - start_read;
+            auto start_process = chrono::high_resolution_clock::now();
+            string line;
+            getline(failas, line);
+            istringstream iss(line);
+            int stulpeliai = 0;
+            string zodziai;
+            while (iss >> zodziai)
+            {
+                stulpeliai++;
+            }
+            int namudarbai = stulpeliai - 3;
+            while (failas.good())
+            {
+                Studentas stud;
+                if (!(failas >> stud.vardas >> stud.pavarde))
+                    break;
+                double grade;
+                for (int i = 0; i < namudarbai; i++)
+                {
+                    failas >> grade;
+                    stud.namudarburez.push_back(grade);
+                }
+                failas >> stud.egzaminorez;
+                stud.namudarburezsuma = accumulate(stud.namudarburez.begin(), stud.namudarburez.end(), 0.0);
+                stud.vidurkis = stud.namudarburezsuma / stud.namudarburez.size();
+                stud.galutinisbalasvidurkis = stud.vidurkis * 0.4 + stud.egzaminorez * 0.6;
+                stud.mediana = Mediana(stud.namudarburez);
+                stud.galutinisbalasmediana = stud.mediana * 0.4 + stud.egzaminorez * 0.6;
+                studentai.push_back(stud);
+                stud.namudarburez.clear();
+            }
+            auto end_process = chrono::high_resolution_clock::now();
+            process_time = end_process - start_process;
+            failas.close();
+        }
+        if (!studentai.empty())
+        {
+            cout << "Norite áraðyti duomenis atspausdinant á ekranà ar á failà?: 1 - ekranà; 2 - failà" << endl;
+            int skaicbudas;
+            cin >> skaicbudas;
+            cout << "Pasirinkite rikiavimo bûdà:\n1 - pagal vardus\n2 - pagal pavardes\n3 - pagal galutiná balà (vid.)\n4 - pagal galutiná balà (med.)\nPasirinkimas: ";
+            int sorting_choice;
+            cin >> sorting_choice;
+            switch (sorting_choice)
+            {
+            case 1:
+                sort(studentai.begin(), studentai.end(), vardolyginimas);
+                break;
+            case 2:
+                sort(studentai.begin(), studentai.end(), pavardeslyginimas);
+                break;
+            case 3:
+                sort(studentai.begin(), studentai.end(), vidurkiolyginimas);
+                break;
+            case 4:
+                sort(studentai.begin(), studentai.end(), medianoslyginimas);
+                break;
+            default:
+                NetinkamaIvestis();
+                break;
+            }
+            if (skaicbudas == 1)
+            {
+                PrintStudents(studentai);
+                break;
+            }
+            if (skaicbudas == 2)
+            {
+                auto start_writing = chrono::high_resolution_clock::now();
+                ofstream failasr("kursioku_duomenys.txt");
+                failasr << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (vid.)" << setw(30) << "Galutinis balas (med.)" << endl;
+                failasr << "---------------------------------------------------------------------------------------------------" << endl;
+                for (const auto& stud : studentai)
+                {
+                    failasr << setw(15) << stud.pavarde << setw(15) << stud.vardas << setw(30) << fixed << setprecision(2) << stud.galutinisbalasvidurkis << setw(30) << fixed << setprecision(2) << stud.galutinisbalasmediana << endl;
+                }
+                cout << "Áraðymas sëkmingas. Rezultatai iðsaugoti faile kursioku_duomenys.txt" << endl;
+                failasr.close();
+                auto end_writing = chrono::high_resolution_clock::now();
+                chrono::duration<double> writeFile_time = end_writing - start_writing;
+                cout << "Skaitymas ið failo truko: " << read_time.count() << " sekundes" << endl;
+                cout << "Mokiniø vidurkio/medianos skaièiavimas uþtruko: " << process_time.count() << " sekundes" << endl;
+                cout << "Áraðymas á failà truko: " << writeFile_time.count() << " sekundes" << endl;
+                break;
+            }
+            else
+            {
+                NetinkamaIvestis();
             }
         }
         else
         {
             NetinkamaIvestis();
         }
-    }
-    else
-    {
-        NetinkamaIvestis();
     }
     return 0;
 }
