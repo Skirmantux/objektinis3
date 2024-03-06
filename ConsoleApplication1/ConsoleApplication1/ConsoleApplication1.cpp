@@ -8,6 +8,7 @@
 #include <ctime>
 #include <fstream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -150,22 +151,29 @@ int main()
             if (!failas.is_open())
             {
                 cout << "Failas nerastas. Programa iðjungiama...";
-                return 404;
+                return -1;
             }
+            string line;
 
-            string header;
-            getline(failas, header); // Read and discard the header line
+            getline(failas, line);
+            istringstream iss(line);
+            int stulpeliai = 0;
+            string zodziai;
+            while (iss >> zodziai)
+            {
+				stulpeliai++;
+			}
+            int namudarbai = stulpeliai - 3;
             while (true)
             {
                 Studentas stud;
                 if (!(failas >> stud.vardas >> stud.pavarde)) // Read student's name and surname
                     break; // If unable to read, break out of the loop
                 double grade;
-                while (failas >> grade) // Read homework grades
-                {
-                    if (grade == -1)
-                        break;
-                    stud.namudarburez.push_back(grade);
+                    for(int i = 0; i < namudarbai; i++)
+                    {
+                        failas >> grade; // Read grade
+                        stud.namudarburez.push_back(grade);
                 }
                 failas >> stud.egzaminorez; // Read exam grade
                 stud.namudarburezsuma = accumulate(stud.namudarburez.begin(), stud.namudarburez.end(), 0.0);
@@ -177,37 +185,38 @@ int main()
             }
         }
 
-    if (!studentai.empty())
-    {
-        cout << "Kurá galutinio balo skaièiavimo bûdà renkatës? (1 - vidurkis; 2 - mediana)" << endl;
-        int skaicbudas;
-        cin >> skaicbudas;
-        if (skaicbudas == 1)
+        if (!studentai.empty())
         {
-            cout << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (vid.)" << endl;
-            cout << "---------------------------------------------------------------------------------------------------" << endl;
-            for (const auto& stud : studentai)
+            cout << "Kurá galutinio balo skaièiavimo bûdà renkatës? (1 - vidurkis; 2 - mediana)" << endl;
+            int skaicbudas;
+            cin >> skaicbudas;
+            if (skaicbudas == 1)
             {
-                cout << setw(15) << stud.pavarde << setw(15) << stud.vardas << setw(30) << fixed << setprecision(2) << stud.galutinisbalasvidurkis << endl;
+                cout << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (vid.)" << endl;
+                cout << "---------------------------------------------------------------------------------------------------" << endl;
+                for (const auto& stud : studentai)
+                {
+                    cout << setw(15) << stud.pavarde << setw(15) << stud.vardas << setw(30) << fixed << setprecision(2) << stud.galutinisbalasvidurkis << endl;
+                }
             }
-        }
-        else if (skaicbudas == 2)
-        {
-            cout << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (med.)" << endl;
-            cout << "---------------------------------------------------------------------------------------------------" << endl;
-            for (const auto& stud : studentai)
+            else if (skaicbudas == 2)
             {
-                cout << setw(15) << stud.pavarde << setw(15) << stud.vardas << setw(30) << fixed << setprecision(2) << stud.galutinisbalasmediana << endl;
+                cout << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (med.)" << endl;
+                cout << "---------------------------------------------------------------------------------------------------" << endl;
+                for (const auto& stud : studentai)
+                {
+                    cout << setw(15) << stud.pavarde << setw(15) << stud.vardas << setw(30) << fixed << setprecision(2) << stud.galutinisbalasmediana << endl;
+                }
+            }
+            else
+            {
+                NetinkamaIvestis();
             }
         }
         else
         {
             NetinkamaIvestis();
         }
+        return 0;
     }
-    else
-    {
-        NetinkamaIvestis();
-    }
-    return 0;
 }
