@@ -1,15 +1,7 @@
-#include <iostream>
-#include <vector>
 #include <locale>
-#include <iomanip>
 #include <numeric>
-#include <algorithm>
-#include <cstdlib>
-#include <ctime>
 #include <fstream>
-#include <string>
 #include <sstream>
-#include <chrono> // Added chrono library
 #include "MokiniuProcessing.h"
 #include "Skaiciavimaidarbai.h"
 
