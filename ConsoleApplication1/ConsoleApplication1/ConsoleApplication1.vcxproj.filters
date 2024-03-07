@@ -21,9 +21,18 @@
     <ClCompile Include="MokiniuProcessing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Skaiciavimaidarbas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Skaiciavimaidarbai.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MokiniuProcessing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Skaiciavimaidarbai.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

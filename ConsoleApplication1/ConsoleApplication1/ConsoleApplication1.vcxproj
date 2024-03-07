@@ -129,9 +129,12 @@
   <ItemGroup>
     <ClCompile Include="ConsoleApplication1.cpp" />
     <ClCompile Include="MokiniuProcessing.cpp" />
+    <ClCompile Include="Skaiciavimaidarbai.cpp" />
+    <ClCompile Include="Skaiciavimaidarbas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MokiniuProcessing.h" />
+    <ClInclude Include="Skaiciavimaidarbai.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
