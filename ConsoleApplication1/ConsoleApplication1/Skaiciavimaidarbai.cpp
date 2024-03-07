@@ -9,11 +9,6 @@ void NeraFailo()
     cout << "Failas nerastas. Programa iðjungiama...";
 }
 
-void Rikiavimas(vector<double>& mas)
-{
-    sort(mas.begin(), mas.end());
-}
-
 double Mediana(const vector<double>& namudarburez)
 {
     double mediana = 0.0;

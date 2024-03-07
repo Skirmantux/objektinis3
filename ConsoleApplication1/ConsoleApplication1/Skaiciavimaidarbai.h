@@ -4,9 +4,11 @@
 #include <vector>
 #include <string>
 #include <chrono>
+#include <iomanip>
+#include "MokiniuProcessing.h"
+
 void NetinkamaIvestis();
 void NeraFailo();
-void Rikiavimas(vector<double>& mas);
 double Mediana(const vector<double>& namudarburez);
 double GenerateRandomGrade();
 void PrintStudents(const vector<Studentas>& studentai);
