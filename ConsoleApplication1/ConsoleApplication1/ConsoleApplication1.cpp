@@ -10,21 +10,9 @@
 #include <string>
 #include <sstream>
 #include <chrono> // Added chrono library
+#include "MokiniuProcessing.h"
 
 using namespace std;
-
-struct Studentas
-{
-    string vardas;
-    string pavarde;
-    vector<double> namudarburez;
-    double egzaminorez = 0.0;
-    double namudarburezsuma = 0.0;
-    double vidurkis = 0.0;
-    double galutinisbalasvidurkis = 0.0;
-    double mediana = 0.0;
-    double galutinisbalasmediana = 0.0;
-};
 
 void NetinkamaIvestis()
 {
@@ -58,38 +46,6 @@ double Mediana(const vector<double>& namudarburez)
 double GenerateRandomGrade()
 {
     return rand() % 11;
-}
-
-string GeneruotiVardus()
-{
-    vector<string> vardai = { "Jonas", "Petras", "Antanas", "Marius", "Tomas" };
-    return vardai[rand() % vardai.size()];
-}
-
-string GeneruotiPavardes()
-{
-    vector<string> pavardes = { "Kazlauskas", "Petrauskas", "Stankevièius", "Gudelis", "Lukðys" };
-    return pavardes[rand() % pavardes.size()];
-}
-
-bool vardolyginimas(const Studentas& a, const Studentas& b)
-{
-    return a.vardas < b.vardas;
-}
-
-bool pavardeslyginimas(const Studentas& a, const Studentas& b)
-{
-    return a.pavarde < b.pavarde;
-}
-
-bool vidurkiolyginimas(const Studentas& a, const Studentas& b)
-{
-    return a.galutinisbalasvidurkis < b.galutinisbalasvidurkis;
-}
-
-bool medianoslyginimas(const Studentas& a, const Studentas& b)
-{
-    return a.galutinisbalasmediana < b.galutinisbalasmediana;
 }
 
 void PrintStudents(const vector<Studentas>& studentai)
