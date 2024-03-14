@@ -197,6 +197,7 @@ int main()
             }
         }
         else if (pasirinkimas == 5) 
+            cout << "Programa baigia darbà." << endl;
             break;
         if (!studentai.empty())
         {
