@@ -11,11 +11,11 @@ int main()
     int pasirinkimas;
     chrono::duration<double> process_time;
     chrono::duration<double> read_time;
-    cout << "Pasirinkite bûdà ávesti balus:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\n4. Skaitymas ið failo.\n5. Baigti programà.\nPasirinkimas: ";
+    cout << "Pasirinkite balø ávedimo metodà/generavimo funkcijà:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\n4. Skaitymas ið failo.\n5. Baigti programà.\n6. Generuoti studentø failà.\nPasirinkimas: ";
     while (true) {
         try {
             cin >> pasirinkimas;
-            if (pasirinkimas < 1 || pasirinkimas > 5) {
+            if (pasirinkimas < 1 || pasirinkimas > 6) {
                 throw invalid_argument("Netinkama ávestis.");
             }
             break;
@@ -196,9 +196,33 @@ int main()
                 }
             }
         }
-        else if (pasirinkimas == 5) 
+        else if (pasirinkimas == 5) {
             cout << "Programa baigia darbà." << endl;
             break;
+        }
+        else if (pasirinkimas == 6)
+            {
+                cout << "Pasirinkite kiek studentø norite sugeneruoti:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:";
+                int studentugen;
+                cin >> studentugen;
+                switch (studentugen)
+                {
+                    case 1:
+					    GeneruotiFaila("studentaic1000.txt", 1000);
+                    case 2: 
+                        GeneruotiFaila("studentaic10000.txt", 10000);
+                    case 3:
+                        GeneruotiFaila("studentaic100000.txt", 100000);
+                    case 4:
+                        GeneruotiFaila("studentaic1000000.txt", 1000000);
+                    case 5:
+                        GeneruotiFaila("studentaic10000000.txt", 10000000);
+                default:
+                    cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
+                    continue;
+                }
+
+            }
         if (!studentai.empty())
         {
             cout << "Norite áraðyti duomenis atspausdinant á ekranà ar á failà?: 1 - ekranà; 2 - failà" << endl;
@@ -230,7 +254,7 @@ int main()
                 PrintStudents(studentai);
                 break;
             }
-            if (skaicbudas == 2)
+            else if (skaicbudas == 2)
             {
                 auto start_writing = chrono::high_resolution_clock::now();
                 ofstream failasr("kursioku_duomenys.txt");
@@ -252,6 +276,7 @@ int main()
             else
             {
                 NetinkamaIvestis();
+                break;
             }
         }
         else

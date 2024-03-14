@@ -1,0 +1,9 @@
+﻿  Skaiciavimaidarbai.cpp
+C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\Skaiciavimaidarbai.cpp(15,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\Skaiciavimaidarbai.cpp(56,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Generating code
+  2 of 489 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  ConsoleApplication1.vcxproj -> C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\x64\Release\ConsoleApplication1.exe
