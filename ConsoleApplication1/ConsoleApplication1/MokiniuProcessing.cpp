@@ -30,3 +30,11 @@ bool medianoslyginimas(const Studentas& a, const Studentas& b)
 {
     return a.galutinisbalasmediana < b.galutinisbalasmediana;
 }
+void PatikrintiTeigiamajiSkaiciu(int skaicius) {
+    if (skaicius < 0 || skaicius > 10) {
+        throw invalid_argument("Netinkamas skaièius");
+    }
+}
+bool ContainsNumbers(const string& str) {
+    return any_of(str.begin(), str.end(), ::isdigit);
+}
