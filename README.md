@@ -1,4 +1,5 @@
 v0.3
+
 -Kodas perkeltas į header ir .cpp implementavimo failus;
 -Naudojamas exception handling neteisingų įvesčių atveju;
 -Teksto failų tikrinimas;
