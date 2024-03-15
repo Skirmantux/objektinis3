@@ -209,18 +209,53 @@ int main()
                 {
                     case 1:
 					    GeneruotiFaila("studentaic1000.txt", 1000);
+                        break;
                     case 2: 
                         GeneruotiFaila("studentaic10000.txt", 10000);
+                        break;
                     case 3:
                         GeneruotiFaila("studentaic100000.txt", 100000);
+                        break;
                     case 4:
                         GeneruotiFaila("studentaic1000000.txt", 1000000);
+                        break;
                     case 5:
                         GeneruotiFaila("studentaic10000000.txt", 10000000);
+                        break;
                 default:
                     cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
                     continue;
                 }
+                cout << "Kurá failà norite skaityti?" << endl;
+                int failopasirinkimas;
+                cin >> failopasirinkimas;
+                ifstream failas1;
+                switch (failopasirinkimas)
+                {
+                case 1:
+                    failas1.open("studentaic1000.txt");
+                    break;
+                case 2:
+                    failas1.open("studentaic10000.txt");
+                    break;
+                case 3:
+                    failas1.open("studentaic100000.txt");
+                    break;
+                case 4:
+                    failas1.open("studentaic1000000.txt");
+                    break;
+                    case 5:
+                    failas1.open("studentaic10000000.txt");
+					break;
+                    default:
+					cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
+					continue;
+                }
+                cout << "Studentai dalinami á normalius ir nenormalius." << endl;
+                cout << "Normalus studentai spausdinami á failà 'normalûs.txt'." << endl;
+                ofstream failas2("normalûs.txt");
+                cout << "Nenormalûs studentai spausdinami á failà 'nenuormalûs.txt'." << endl;
+                //ofstream failas3("nenormalûs.txt");
 
             }
         if (!studentai.empty())

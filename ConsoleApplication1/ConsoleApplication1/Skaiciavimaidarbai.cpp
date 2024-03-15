@@ -42,29 +42,23 @@ void PrintStudents(const vector<Studentas>& studentai)
     chrono::duration<double> write_time = end_print - start_print;
     cout << "Rasymo i ekrana trukme: " << write_time.count() << " sekundes" << endl;
 }
-void GeneruotiFaila(const string& pavadinimas, int studentuskaicius)
-{
-	ofstream failas(pavadinimas);
-    if (failas.is_open())
-    {
-        failas << "Vardas" << " " << setw(10) << "Pavarde" << " " << setw(10) << "ND1" << " " << setw(5) << "ND2" << " " << setw(5) << "ND3" << " " << setw(5) << "ND4" << " " << setw(5) << "ND5" << " " << setw(10) << "Egzaminas" << endl;
-        for (int i = 1; i <= studentuskaicius; i++)
-        {
-			failas << "Vardas" << i << " " << setw(10) << "Pavarde" << i << " ";
-            for (int j = 0; j < 5; j++)
-            {
+void GeneruotiFaila(const string& pavadinimas, int studentuskaicius) {
+    ofstream failas(pavadinimas);
+    if (failas.is_open()) {
+        failas << left << setw(20) << "Vardas" << setw(24) << "Pavarde" << setw(6) << "ND1" << setw(6) << "ND2" << setw(6) << "ND3" << setw(6) << "ND4" << setw(6) << "ND5" << setw(6) << "Egz." << endl;
+        for (int i = 1; i <= studentuskaicius; i++) {
+            failas << left << setw(20) << ("Vardas" + to_string(i)) << setw(20) << ("Pavarde" + to_string(i)) << right;
+            for (int j = 0; j < 5; j++) {
                 int pazymys = GenerateRandomGrade();
-                if (j == 0)
-                    failas << setw(10) << pazymys << " ";
-                else
-                    failas << setw(5) << pazymys << " ";
-			}
-			failas << setw(10) << GenerateRandomGrade() << endl;
-		}
-		failas.close();
-	}
-    else
-    {
-		NeraFailo();
-	}
+                failas << setw(6) << pazymys;
+            }
+            failas << setw(6) << GenerateRandomGrade() << endl;
+        }
+        failas.close();
+        cout << "Failas sugeneruotas." << endl;
+    }
+    else {
+        cout << "Neámanoma atidaryti failo." << endl;
+    }
+
 }
