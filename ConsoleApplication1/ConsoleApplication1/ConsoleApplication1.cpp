@@ -8,6 +8,8 @@ int main()
     setlocale(LC_ALL, "Lithuanian");
     srand(time(NULL));
     vector<Studentas> studentai;
+    vector<Studentas> normalus;
+    vector<Studentas> nenormalus;
     int pasirinkimas;
     chrono::duration<double> process_time;
     chrono::duration<double> read_time;
@@ -288,13 +290,20 @@ int main()
                     stud.galutinisbalasvidurkis = stud.vidurkis * 0.4 + stud.egzaminorez * 0.6;
                     stud.mediana = Mediana(stud.namudarburez);
                     stud.galutinisbalasmediana = stud.mediana * 0.4 + stud.egzaminorez * 0.6;
-                    studentai.push_back(stud);
+                    if(stud.galutinisbalasvidurkis >= 5.0)
+                    normalus.push_back(stud);
+					else
+                        nenormalus.push_back(stud);
                 }
                 auto end_process = chrono::high_resolution_clock::now();
                 process_time = end_process - start_process;
                 cout << "Studentai dalinami á normalius ir nenormalius." << endl;
                 cout << "Normalus studentai spausdinami á failà 'normalûs.txt'." << endl;
-                SpausdintiNormalius(studentuskaicius);
+                for (const auto& stud : normalus)
+                {
+                    failas2 << stud.vardas << " " << stud.pavarde;
+                }
+
                 cout << "Nenormalûs studentai spausdinami á failà 'nenormalûs.txt'." << endl;
                 ofstream failas3("nenormalûs.txt");
                 failas1.close();
