@@ -202,6 +202,7 @@ int main()
         }
         else if (pasirinkimas == 6)
             {
+                auto start_read = chrono::high_resolution_clock::now();
                 cout << "Pasirinkite kiek studentø norite sugeneruoti:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:";
                 int studentugen;
                 cin >> studentugen;
@@ -226,37 +227,78 @@ int main()
                     cout << "Netinkamas pasirinkimas. Prağome ávesti tinkamà pasirinkimà: " << endl;
                     continue;
                 }
-                cout << "Kurá failà norite skaityti?" << endl;
+                cout << "Kurá failà norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
                 int failopasirinkimas;
                 cin >> failopasirinkimas;
                 ifstream failas1;
+                int studentuskaicius;
                 switch (failopasirinkimas)
                 {
                 case 1:
                     failas1.open("studentaic1000.txt");
+                    studentuskaicius = 1000;
                     break;
                 case 2:
                     failas1.open("studentaic10000.txt");
+                    studentuskaicius = 10000;
                     break;
                 case 3:
                     failas1.open("studentaic100000.txt");
+                    studentuskaicius = 100000;
                     break;
                 case 4:
                     failas1.open("studentaic1000000.txt");
+                    studentuskaicius = 1000000;
                     break;
                     case 5:
                     failas1.open("studentaic10000000.txt");
+                    studentuskaicius = 10000000;
 					break;
-                    default:
+                default:
 					cout << "Netinkamas pasirinkimas. Prağome ávesti tinkamà pasirinkimà: " << endl;
 					continue;
                 }
+                auto end_read = chrono::high_resolution_clock::now();
+                read_time = end_read - start_read;
+                auto start_process = chrono::high_resolution_clock::now();
+                string line;
+                getline(failas1, line);
+                istringstream iss(line);
+                int stulpeliai = 0;
+                string zodziai;
+                while (iss >> zodziai)
+                {
+                    stulpeliai++;
+                }
+                int namudarbai = stulpeliai - 3;
+                while (failas1.good())
+                {
+                    Studentas stud;
+                    if (!(failas1 >> stud.vardas >> stud.pavarde))
+                        break;
+                    double grade;
+                    for (int i = 0; i < namudarbai; i++)
+                    {
+                        failas1 >> grade;
+                        stud.namudarburez.push_back(grade);
+                    }
+                    failas1 >> stud.egzaminorez;
+                    stud.namudarburezsuma = accumulate(stud.namudarburez.begin(), stud.namudarburez.end(), 0.0);
+                    stud.vidurkis = stud.namudarburezsuma / stud.namudarburez.size();
+                    stud.galutinisbalasvidurkis = stud.vidurkis * 0.4 + stud.egzaminorez * 0.6;
+                    stud.mediana = Mediana(stud.namudarburez);
+                    stud.galutinisbalasmediana = stud.mediana * 0.4 + stud.egzaminorez * 0.6;
+                    studentai.push_back(stud);
+                }
+                auto end_process = chrono::high_resolution_clock::now();
+                process_time = end_process - start_process;
                 cout << "Studentai dalinami á normalius ir nenormalius." << endl;
                 cout << "Normalus studentai spausdinami á failà 'normalûs.txt'." << endl;
-                ofstream failas2("normalûs.txt");
-                cout << "Nenormalûs studentai spausdinami á failà 'nenuormalûs.txt'." << endl;
-                //ofstream failas3("nenormalûs.txt");
-
+                SpausdintiNormalius(studentuskaicius);
+                cout << "Nenormalûs studentai spausdinami á failà 'nenormalûs.txt'." << endl;
+                ofstream failas3("nenormalûs.txt");
+                failas1.close();
+                break;
             }
         if (!studentai.empty())
         {

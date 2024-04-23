@@ -62,3 +62,10 @@ void GeneruotiFaila(const string& pavadinimas, int studentuskaicius) {
     }
 
 }
+void SpausdintiNormalius(int studentuskaicius)
+{
+    for (int i = 0; i < studentuskaicius; i++)
+    {
+
+    }
+}

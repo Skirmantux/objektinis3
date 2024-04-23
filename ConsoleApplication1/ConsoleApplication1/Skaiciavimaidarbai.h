@@ -11,3 +11,4 @@ double Mediana(const vector<double>& namudarburez);
 double GenerateRandomGrade();
 void PrintStudents(const vector<Studentas>& studentai);
 void GeneruotiFaila(const string& pavadinimas, int kiekis);
+void SpausdintiNormalius(int studentuskaicius);
