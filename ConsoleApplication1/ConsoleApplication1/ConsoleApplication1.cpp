@@ -205,6 +205,7 @@ int main()
         else if (pasirinkimas == 6)
             {
                 auto veikimo_pradzia = chrono::high_resolution_clock::now();
+                /*
                 cout << "Pasirinkite kiek studentø norite sugeneruoti:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:";
                 int studentugen;
                 cin >> studentugen;
@@ -232,7 +233,9 @@ int main()
                 }
                 auto end_read = chrono::high_resolution_clock::now();
                 read_time = end_read - start_read;
+                
                 cout << "Failo kurimas ir jo uzdarymas uztruko: " << read_time.count() << " sekundes" << endl;
+                */
                 cout << "Kurá failà norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
                 int failopasirinkimas;
                 cin >> failopasirinkimas;
