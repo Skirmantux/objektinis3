@@ -13,7 +13,7 @@ int main()
     int pasirinkimas;
     chrono::duration<double> process_time;
     chrono::duration<double> read_time;
-    cout << "Pasirinkite balø ávedimo metodà/generavimo funkcijà:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\n4. Skaitymas ið failo.\n5. Baigti programà.\n6. Generuoti studentø failà.\nPasirinkimas: ";
+    cout << "Pasirinkite balø ávedimo metodà/generavimo funkcijà:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\n4. Skaitymas ið failo.\n5. Baigti programà.\n6. Generuoti studentø failà.\n7.Stragegijø testavimas.\nPasirinkimas: ";
     while (true) {
         try {
             cin >> pasirinkimas;
@@ -205,7 +205,6 @@ int main()
         else if (pasirinkimas == 6)
             {
                 auto veikimo_pradzia = chrono::high_resolution_clock::now();
-                /*
                 cout << "Pasirinkite kiek studentø norite sugeneruoti:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:";
                 int studentugen;
                 cin >> studentugen;
@@ -233,9 +232,7 @@ int main()
                 }
                 auto end_read = chrono::high_resolution_clock::now();
                 read_time = end_read - start_read;
-                
                 cout << "Failo kurimas ir jo uzdarymas uztruko: " << read_time.count() << " sekundes" << endl;
-                */
                 cout << "Kurá failà norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
                 int failopasirinkimas;
                 cin >> failopasirinkimas;
@@ -339,6 +336,161 @@ int main()
                         failas3 << setw(15) << grade;
                     }
                     failas3 << setw(30) <<  stud.galutinisbalasvidurkis << setw(30) << fixed << setprecision(2) << stud.galutinisbalasmediana << endl;
+                }
+                failas3.close();
+                failas1.close();
+                failas2.close();
+                auto end_process = chrono::high_resolution_clock::now();
+                process_time = end_process - start_process;
+                cout << "Surusiuotu studentu isvedimas i du naujus failus uztruko: " << process_time.count() << " sekundes" << endl;
+                auto veikimo_pabaiga = chrono::high_resolution_clock::now();
+                process_time = veikimo_pabaiga - veikimo_pradzia;
+                cout << "Programa viso uztruko " << process_time.count() << " sekundes" << endl;
+                break;
+            }
+            else if (pasirinkimas == 7)
+            {
+                cout << "Bandoma pirma strategija..." << endl;
+                cout << "Pasirinkite kiek studentø norite sugeneruoti:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:";
+                int studentugen;
+                cin >> studentugen;
+                switch (studentugen)
+                {
+                case 1:
+                    GeneruotiFaila("studentaic1000.txt", 1000);
+                    break;
+                case 2:
+                    GeneruotiFaila("studentaic10000.txt", 10000);
+                    break;
+                case 3:
+                    GeneruotiFaila("studentaic100000.txt", 100000);
+                    break;
+                case 4:
+                    GeneruotiFaila("studentaic1000000.txt", 1000000);
+                    break;
+                case 5:
+                    GeneruotiFaila("studentaic10000000.txt", 10000000);
+                    break;
+                default:
+                    cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
+                    continue;
+                }
+                cout << "Failas sukurtas." << endl;
+                cout << "Kurá failà norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
+                int failopasirinkimas;
+                cin >> failopasirinkimas;
+                auto atidarymo_pradzia = chrono::high_resolution_clock::now();
+                ifstream failas1;
+                int studentuskaicius;
+                switch (failopasirinkimas)
+                {
+                case 1:
+                    failas1.open("studentaic1000.txt");
+                    studentuskaicius = 1000;
+                    break;
+                case 2:
+                    failas1.open("studentaic10000.txt");
+                    studentuskaicius = 10000;
+                    break;
+                case 3:
+                    failas1.open("studentaic100000.txt");
+                    studentuskaicius = 100000;
+                    break;
+                case 4:
+                    failas1.open("studentaic1000000.txt");
+                    studentuskaicius = 1000000;
+                    break;
+                case 5:
+                    failas1.open("studentaic10000000.txt");
+                    studentuskaicius = 10000000;
+                    break;
+                default:
+                    cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
+                    continue;
+                }
+                auto atidarymo_pabaiga = chrono::high_resolution_clock::now();
+                read_time = atidarymo_pabaiga - atidarymo_pradzia;
+                cout << "Duomenu nuskaitymas ið failo á konteinerá uþtruko: " << read_time.count() << " sekundes" << endl;
+                cout << "Kokiu bûdu norite rûðiuoti studentus?\n1. Pagal galutiná balà (vid.)\n2. Pagal galutiná balà (med.)\nPasirinkimas: ";
+                int sorting_choice;
+                cin >> sorting_choice;
+                switch (sorting_choice)
+                {
+                case 1:
+                    sort(studentai.begin(), studentai.end(), compareByGalutinisVid);
+					break;
+                case 2:
+					sort(studentai.begin(), studentai.end(), compareByGalutinisMed);
+					break;
+                }
+                auto rusiavimo_pradzia = chrono::high_resolution_clock::now();
+                string line;
+                getline(failas1, line);
+                istringstream iss(line);
+                int stulpeliai = 0;
+                string zodziai;
+                while (iss >> zodziai)
+                {
+                    stulpeliai++;
+                }
+                int namudarbai = stulpeliai - 3;
+                while (failas1.good())
+                {
+                    Studentas stud;
+                    if (!(failas1 >> stud.vardas >> stud.pavarde))
+                        break;
+                    double grade;
+                    for (int i = 0; i < namudarbai; i++)
+                    {
+                        failas1 >> grade;
+                        stud.namudarburez.push_back(grade);
+                    }
+                    failas1 >> stud.egzaminorez;
+                    stud.namudarburezsuma = accumulate(stud.namudarburez.begin(), stud.namudarburez.end(), 0.0);
+                    stud.vidurkis = stud.namudarburezsuma / stud.namudarburez.size();
+                    stud.galutinisbalasvidurkis = stud.vidurkis * 0.4 + stud.egzaminorez * 0.6;
+                    stud.mediana = Mediana(stud.namudarburez);
+                    stud.galutinisbalasmediana = stud.mediana * 0.4 + stud.egzaminorez * 0.6;
+                    if (stud.galutinisbalasvidurkis >= 5.0)
+                        normalus.push_back(stud);
+                    else
+                        nenormalus.push_back(stud);
+                }
+                auto rusiavimo_pabaiga = chrono::high_resolution_clock::now();
+                process_time = rusiavimo_pabaiga - rusiavimo_pradzia;
+                cout << "Studentai dalinami á normalius ir nenormalius." << endl;
+                cout << "Studentu rusiavimas i normalius ir nenormalius uztruko " << process_time.count() << " sekundes" << endl;
+                cout << "Normalus studentai spausdinami á failà 'normalûs.txt'." << endl;
+                auto start_process = chrono::high_resolution_clock::now();
+                ofstream failas2("normalûs.txt");
+                failas2 << fixed << setprecision(2);
+                failas2 << left << setw(20) << "Pavarde" << setw(20) << "Vardas";
+                for (int i = 0; i < 5; ++i) {
+                    failas2 << setw(15) << "ND" + to_string(i + 1);
+                }
+                failas2 << setw(30) << "Galutinis balas (vid.)" << setw(30) << "Galutinis balas (med.)" << endl;
+                for (const auto& stud : normalus) {
+                    failas2 << left << setw(20) << stud.pavarde << setw(20) << stud.vardas;
+                    for (const auto& grade : stud.namudarburez) {
+                        failas2 << setw(15) << grade;
+                    }
+                    failas2 << setw(30) << stud.galutinisbalasvidurkis << setw(30) << fixed << setprecision(2) << stud.galutinisbalasmediana << endl;
+                }
+                failas2.close();
+                cout << "Nenormalûs studentai spausdinami á failà 'nenormalûs.txt'." << endl;
+                ofstream failas3("nenormalûs.txt");
+                failas3 << fixed << setprecision(2);
+                failas3 << left << setw(15) << "Pavarde" << setw(15) << "Vardas";
+                for (int i = 0; i < 5; ++i) {
+                    failas3 << setw(15) << "ND" + to_string(i + 1);
+                }
+                failas3 << setw(30) << "Galutinis balas (vid.)" << setw(30) << "Galutinis balas (med.)" << endl;
+                for (const auto& stud : nenormalus) {
+                    failas3 << left << setw(15) << stud.pavarde << setw(15) << stud.vardas;
+                    for (const auto& grade : stud.namudarburez) {
+                        failas3 << setw(15) << grade;
+                    }
+                    failas3 << setw(30) << stud.galutinisbalasvidurkis << setw(30) << fixed << setprecision(2) << stud.galutinisbalasmediana << endl;
                 }
                 failas3.close();
                 failas1.close();
