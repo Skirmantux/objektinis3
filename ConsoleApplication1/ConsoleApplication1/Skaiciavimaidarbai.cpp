@@ -62,3 +62,10 @@ void GeneruotiFaila(const string& pavadinimas, int studentuskaicius) {
     }
 
 }
+
+bool compareByGalutinisVid(const Studentas& a, const Studentas& b) {
+    return a.galutinisbalasvidurkis < b.galutinisbalasvidurkis;
+}
+bool compareByGalutinisMed(const Studentas& a, const Studentas& b) {
+	return a.galutinisbalasmediana < b.galutinisbalasmediana;
+}
