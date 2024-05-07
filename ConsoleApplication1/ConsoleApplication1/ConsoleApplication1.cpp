@@ -11,7 +11,7 @@ int main()
     vector<Studentas> normalus;
     vector<Studentas> nenormalus;
     vector<Studentas> studentai1;
-    vector<Studentas> nenormalus1;
+    vector<Studentas> studentai2;
     int pasirinkimas;
     chrono::duration<double> process_time;
     chrono::duration<double> read_time;
@@ -353,31 +353,6 @@ int main()
         else if (pasirinkimas == 7)
         {
             cout << "Bandoma pirma strategija..." << endl;
-            /*cout << "Pasirinkite kiek studentø norite sugeneruoti:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:";
-            int studentugen;
-            cin >> studentugen;
-            switch (studentugen)
-            {
-            case 1:
-                GeneruotiFaila("studentaic1000.txt", 1000);
-                break;
-            case 2:
-                GeneruotiFaila("studentaic10000.txt", 10000);
-                break;
-            case 3:
-                GeneruotiFaila("studentaic100000.txt", 100000);
-                break;
-            case 4:
-                GeneruotiFaila("studentaic1000000.txt", 1000000);
-                break;
-            case 5:
-                GeneruotiFaila("studentaic10000000.txt", 10000000);
-                break;
-            default:
-                cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
-                continue;
-            }
-            cout << "Failas sukurtas." << endl;*/
             cout << "Kurá failà norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
             int failopasirinkimas;
             cin >> failopasirinkimas;
@@ -519,7 +494,7 @@ int main()
                 stud.galutinisbalasvidurkis = stud.vidurkis * 0.4 + stud.egzaminorez * 0.6;
                 stud.mediana = Mediana(stud.namudarburez);
                 stud.galutinisbalasmediana = stud.mediana * 0.4 + stud.egzaminorez * 0.6;
-                studentai.push_back(stud);
+                studentai1.push_back(stud);
             }
             auto atidarymo1_pabaiga = chrono::high_resolution_clock::now();
             read_time = atidarymo1_pabaiga - atidarymo1_pradzia;
@@ -528,10 +503,10 @@ int main()
             switch (sortpasirinkimas)
             {
             case 1:
-                sort(studentai.begin(), studentai.end(), compareByGalutinisVid);
+                sort(studentai1.begin(), studentai1.end(), compareByGalutinisVid);
                 break;
             case 2:
-                sort(studentai.begin(), studentai.end(), compareByGalutinisMed);
+                sort(studentai1.begin(), studentai1.end(), compareByGalutinisMed);
                 break;
             default:
                 cout << "Netinkamas pasirinkimas. Pasirinkite ið naujo." << endl;
@@ -542,16 +517,19 @@ int main()
             auto normnenorm_pradzia1 = chrono::high_resolution_clock::now();
             cout << "Mokiniu rusiavimas naudojant sort funkcija uztruko " << process_time.count() << " sekundes" << endl;
             cout << "Studentai dalinami á normalius ir nenormalius." << endl;
-            for (const auto& stud : studentai) {
-                if (stud.galutinisbalasvidurkis >= 5.0)
-                    normalus.push_back(stud);
-                else
-                    nenormalus.push_back(stud);
-            }
+            auto iter = std::remove_if(studentai1.begin(), studentai1.end(),
+                [&nenormalus](const Studentas& s) {
+                    if (s.galutinisbalasvidurkis < 5.0) {
+                        nenormalus.push_back(s); // Add to nenormalus vector
+                        return true; // Remove from studentai
+                    }
+                    return false; // Keep in studentai
+                });
             auto normnenorm_pabaiga1 = chrono::high_resolution_clock::now();
             process_time = normnenorm_pabaiga1 - normnenorm_pradzia1;
             cout << "Studentu rusiavimas i normalius ir nenormalius uztruko " << process_time.count() << " sekundes" << endl;
             cout << "Antra strategija baigta... Pradedama trecioji..." << endl;
+            failas1.close();
             //--------------------------------------------------------------------------------------------------------------
             switch (failopasirinkimas)
             {
@@ -579,7 +557,7 @@ int main()
                 cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
                 continue;
             }
-            auto atidarymo1_pradzia = chrono::high_resolution_clock::now();
+            auto atidarymo2_pradzia = chrono::high_resolution_clock::now();
             while (failas1.good())
             {
                 Studentas stud;
@@ -597,34 +575,35 @@ int main()
                 stud.galutinisbalasvidurkis = stud.vidurkis * 0.4 + stud.egzaminorez * 0.6;
                 stud.mediana = Mediana(stud.namudarburez);
                 stud.galutinisbalasmediana = stud.mediana * 0.4 + stud.egzaminorez * 0.6;
-                studentai.push_back(stud);
+                studentai2.push_back(stud);
             }
-            auto atidarymo1_pabaiga = chrono::high_resolution_clock::now();
-            read_time = atidarymo1_pabaiga - atidarymo1_pradzia;
-            cout << "Duomenu nuskaitymas ið failo á konteinerá uþtruko: " << read_time.count() << " sekundes" << endl;
-            auto sort_pradzia1 = chrono::high_resolution_clock::now();
+            auto atidarymo2_pabaiga = chrono::high_resolution_clock::now();
+            process_time = atidarymo2_pabaiga - atidarymo2_pradzia;
+            cout << "Duomenu nuskaitymas ið failo á konteinerá uþtruko: " << process_time.count() << " sekundes" << endl;
+            auto sort_pradzia2 = chrono::high_resolution_clock::now();
             switch (sortpasirinkimas)
             {
             case 1:
-                sort(studentai.begin(), studentai.end(), compareByGalutinisVid);
+                sort(studentai2.begin(), studentai2.end(), compareByGalutinisVid);
                 break;
             case 2:
-                sort(studentai.begin(), studentai.end(), compareByGalutinisMed);
+                sort(studentai2.begin(), studentai2.end(), compareByGalutinisMed);
                 break;
             default:
                 cout << "Netinkamas pasirinkimas. Pasirinkite ið naujo." << endl;
                 continue;
             }
-            auto sort_pabaiga1 = chrono::high_resolution_clock::now();
-            process_time = sort_pabaiga1 - sort_pradzia1;
-            auto normnenorm_pradzia1 = chrono::high_resolution_clock::now();
+            auto sort_pabaiga2 = chrono::high_resolution_clock::now();
+            process_time = sort_pabaiga2 - sort_pradzia2;
+            auto normnenorm_pradzia2 = chrono::high_resolution_clock::now();
             cout << "Mokiniu rusiavimas naudojant sort funkcija uztruko " << process_time.count() << " sekundes" << endl;
             cout << "Studentai dalinami á normalius ir nenormalius." << endl;
 
-            auto normnenorm_pabaiga1 = chrono::high_resolution_clock::now();
-            process_time = normnenorm_pabaiga1 - normnenorm_pradzia1;
+            auto normnenorm_pabaiga2 = chrono::high_resolution_clock::now();
+            process_time = normnenorm_pabaiga2 - normnenorm_pradzia2;
             cout << "Studentu rusiavimas i normalius ir nenormalius uztruko " << process_time.count() << " sekundes" << endl;
             break;
+            failas1.close();
         }
         if (!studentai.empty())
         {
