@@ -1,0 +1,29 @@
+﻿  ConsoleApplication1.cpp
+C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(9,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(582,18): error C2371: 'atidarymo1_pradzia': redefinition; different basic types
+  C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(504,18):
+  see declaration of 'atidarymo1_pradzia'
+  
+C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(602,18): error C2371: 'atidarymo1_pabaiga': redefinition; different basic types
+  C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(524,18):
+  see declaration of 'atidarymo1_pabaiga'
+  
+C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(603,44): error C2088: '-': illegal for class
+C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(605,18): error C2371: 'sort_pradzia1': redefinition; different basic types
+  C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(527,18):
+  see declaration of 'sort_pradzia1'
+  
+C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(618,18): error C2371: 'sort_pabaiga1': redefinition; different basic types
+  C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(540,18):
+  see declaration of 'sort_pabaiga1'
+  
+C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(619,42): error C2088: '-': illegal for class
+C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(620,18): error C2371: 'normnenorm_pradzia1': redefinition; different basic types
+  C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(542,18):
+  see declaration of 'normnenorm_pradzia1'
+  
+C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(624,18): error C2371: 'normnenorm_pabaiga1': redefinition; different basic types
+  C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(551,18):
+  see declaration of 'normnenorm_pabaiga1'
+  
+C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(625,48): error C2088: '-': illegal for class
