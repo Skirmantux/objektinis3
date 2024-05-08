@@ -11,11 +11,11 @@ int main()
     vector<Studentas> normalus;
     vector<Studentas> nenormalus;
     vector<Studentas> studentai1;
-    vector<Studentas> studentai2;
+    vector<Studentas> studentai2; 
     int pasirinkimas;
     chrono::duration<double> process_time;
     chrono::duration<double> read_time;
-    cout << "Pasirinkite balø ávedimo metodà/generavimo funkcijà:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\n4. Skaitymas ið failo.\n5. Baigti programà.\n6. Generuoti studentø failà.\n7.Stragegijø testavimas.\nPasirinkimas: ";
+    cout << "Pasirinkite balø ávedimo metodà/generavimo funkcijà:\n1. Ávesti rankiniu bûdu\n2. Sugeneruoti atsitiktinius balus\n3. Sugeneruoti balus, vardus ir pavardes\n4. Skaitymas ið failo.\n5. Baigti programà.\n6. Generuoti studentø failà.\n7. Strategijø testavimas.\nPasirinkimas: ";
     while (true) {
         try {
             cin >> pasirinkimas;
@@ -476,6 +476,15 @@ int main()
                 cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
                 continue;
             }
+            string line1;
+            getline(failas1, line1);
+            istringstream iss1(line1);
+            int stulpeliai1 = 0;
+            string zodziai1;
+            while (iss1 >> zodziai1)
+            {
+                stulpeliai1++;
+            }
             auto atidarymo1_pradzia = chrono::high_resolution_clock::now();
             while (failas1.good())
             {
@@ -514,9 +523,9 @@ int main()
             }
             auto sort_pabaiga1 = chrono::high_resolution_clock::now();
             process_time = sort_pabaiga1 - sort_pradzia1;
-            auto normnenorm_pradzia1 = chrono::high_resolution_clock::now();
             cout << "Mokiniu rusiavimas naudojant sort funkcija uztruko " << process_time.count() << " sekundes" << endl;
             cout << "Studentai dalinami á normalius ir nenormalius." << endl;
+            auto normnenorm_pradzia1 = chrono::high_resolution_clock::now();
             auto iter = std::remove_if(studentai1.begin(), studentai1.end(),
                 [&nenormalus](const Studentas& s) {
                     if (s.galutinisbalasvidurkis < 5.0) {
@@ -557,6 +566,15 @@ int main()
                 cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
                 continue;
             }
+            string line2;
+            getline(failas1, line2);
+            istringstream iss2(line2);
+            int stulpeliai2 = 0;
+            string zodziai2;
+            while (iss2 >> zodziai2)
+            {
+                stulpeliai2++;
+            }
             auto atidarymo2_pradzia = chrono::high_resolution_clock::now();
             while (failas1.good())
             {
@@ -595,10 +613,15 @@ int main()
             }
             auto sort_pabaiga2 = chrono::high_resolution_clock::now();
             process_time = sort_pabaiga2 - sort_pradzia2;
-            auto normnenorm_pradzia2 = chrono::high_resolution_clock::now();
             cout << "Mokiniu rusiavimas naudojant sort funkcija uztruko " << process_time.count() << " sekundes" << endl;
             cout << "Studentai dalinami á normalius ir nenormalius." << endl;
-
+            auto normnenorm_pradzia2 = chrono::high_resolution_clock::now();
+            auto partition_point = std::partition(studentai2.begin(), studentai2.end(),
+                [](const Studentas& stud) {
+                    return stud.galutinisbalasvidurkis >= 5.0;
+                });
+            std::move(studentai2.begin(), partition_point, std::back_inserter(normalus));
+            std::move(partition_point, studentai2.end(), std::back_inserter(nenormalus));
             auto normnenorm_pabaiga2 = chrono::high_resolution_clock::now();
             process_time = normnenorm_pabaiga2 - normnenorm_pradzia2;
             cout << "Studentu rusiavimas i normalius ir nenormalius uztruko " << process_time.count() << " sekundes" << endl;
