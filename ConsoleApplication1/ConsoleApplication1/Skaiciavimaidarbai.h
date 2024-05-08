@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <chrono>
 #include <iomanip>
+#include <list>
 #include "MokiniuProcessing.h"
 
 void NetinkamaIvestis();
