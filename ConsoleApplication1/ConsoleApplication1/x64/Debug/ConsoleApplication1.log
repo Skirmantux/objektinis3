@@ -1,4 +1,0 @@
-﻿  ConsoleApplication1.cpp
-C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(46,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(112,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  ConsoleApplication1.vcxproj -> C:\Users\skirm\Documents\GitHub\objektinis1\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
