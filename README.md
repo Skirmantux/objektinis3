@@ -52,9 +52,32 @@
 - List konteineris yra efektyviausias, nes gali įterpti ir pašalinti elementus be kitų perkėlimo.
 - Deque yra antras, o vector konteineris yra lėčiausias, nes reikalauja daugiausia elementų perkėlimo.
 
-## Perspėjimas
-(WARNING GitHub Syntax)
-Jei atliksite benchmark'us patys, prašome kartoti testus kuo daugiau ir imti vidurkį, nes dauguma laiko skirtumo atidarant/uždarant ir modifikuojant elementus failuose užima operacinė sistema, taip pat ji užima resursus, kuriuos galima būtų naudoti atidarant failus, todėl tai yra nenuspėjama. Testuojant pirmą kart buvo išrinkta greičiausia universali strategija ir su ja testuojami skirtingi konteineriai!!!
+> [!WARNING]  
+>Jei atliksite benchmark'us patys, prašome kartoti testus kuo daugiau ir imti vidurkį, nes dauguma laiko skirtumo atidarant/uždarant ir modifikuojant elementus failuose užima operacinė sistema, taip pat ji užima resursus, kuriuos galima būtų naudoti atidarant failus, todėl tai yra nenuspėjama. Testuojant pirmą kart buvo išrinkta greičiausia universali strategija ir su ja testuojami skirtingi konteineriai!!!
 
 ## Konteinerių Palyginimas
-Remiantis vidutiniais laikais, pastebima, kad vektorius yra labiausiai efektyvus skaitymo procesas, tačiau jis reikalauja daugiau laiko rūšiuojant palyginus su list ir deque. List, priešingai, rūšiuojasi greičiau, bet skaitymo procesas užtrunka ilgiau lyginant su vektoriumi ir dvipusiu sąrašu. Dvipusis sąrašas pasižymi tarpiniu elgesiu, kai skirstymas į "nenormalius" ir "normalius" nevyksta dažnai. Studentų klasifikavimas į nenormalius trunka trumpiausiai naudojant deque, o ilgiausiai naudojant list. Padidėjus duomenų kiekiui, studentų klasifikavimas į nenormalius trunka ilgiau visuose konteineriuose, tačiau dvipusis sąrašas pasirodo greitesnis nei vektorius ir list. Didžiausias studentų skaidymo laikas yra su 100 000 00 duomenų, o mažiausias su 1000 duomenų. Vektorius gali patirti didelį veikimo spartos sumažėjimą dė
+Remiantis vidutiniais laikais, pastebima, kad vektorius yra labiausiai efektyvus skaitymo procesas, tačiau jis reikalauja daugiau laiko rūšiuojant palyginus su list ir deque. List, priešingai, rūšiuojasi greičiau, bet skaitymo procesas užtrunka ilgiau lyginant su vektoriumi ir dvipusiu sąrašu. Dvipusis sąrašas pasižymi tarpiniu elgesiu, kai skirstymas į "nenormalius" ir "normalius" nevyksta dažnai. Studentų klasifikavimas į nenormalius trunka trumpiausiai naudojant deque, o ilgiausiai naudojant list. Padidėjus duomenų kiekiui, studentų klasifikavimas į nenormalius trunka ilgiau visuose konteineriuose, tačiau dvipusis sąrašas pasirodo greitesnis nei vektorius ir list. Didžiausias studentų skaidymo laikas yra su 100 000 00 duomenų, o mažiausias su 1000 duomenų. Vektorius gali patirti didelį veikimo spartos sumažėjimą dėl papildomo atminties kopijavimo. List gali būti geriau tinkamas pasirinkimas, jei didelės atminties reikalavimai, bet veikimo greitis nėra kritiškai svarbus. Deque gali būti efektyvesnis pasirinkimas nei vektorius dėl jo efektyvaus atminties manipuliavimo.
+
+# Kaip paleisti kodą?
+
+> [!NOTE]  
+> Šią instrukciją reikia sekti tik tada, kai neturite iš repozitorijos atsiųstų .exe failų!
+
+## Makefile
+
+> [!WARNING]  
+> Makefile nėra palaikomas Windows sistemose, todėl bus atskiras tutorial kaip jį įsidiegti.
+
+(Slightly larger "Windows")
+
+1. Nueikite į šią svetainę: [GNU Make for Windows](https://sourceforge.net/projects/gnuwin32/files/make/3.81/)
+2. Atsisiųskite naujausią versiją.
+3. Susikonfigūruokite. Jei sunku suprasti, kaip ką daryti, gali padėti YouTube vaizdo įrašas: [Makefile Installation Tutorial](https://www.youtube.com/watch?v=taCJhnBXG_w)
+4. Atsisiunčiame projekto .zip failą, jį išskleidžiame.
+5. Atidarius projekto aplankalą, jame paspaudžiame dešinįjį pelės mygtuką ir paspaudžiame "Atidaryti terminalą"
+6. Parašome "make"
+7. Atsiras .exe failai, kuriuos paleidus galite naudotis programa.
+
+> [!WARNING]  
+> Studentų failai nėra įdedami į GitHub repozitoriją. Prašome juos susigeneruoti naudojantis programa!
+
