@@ -47,7 +47,7 @@ DĖMĖSIO!!! - studentų (studentai10000.txt...) iš ankščiau sugeneruoti fail
 - Vietoj for ciklo naudojama accumulate() funkcija.
 - Pakeistos ciklo ribos, dabar ciklas baigsis tik tada, kai vartotojas įves -1. Neprašoma vartotojo įvesti namų darbų ir studentų skaičiaus.
 
-### v.pradinė
+### [v.pradinė](https://github.com/Skirmantux/objektinis1/releases/tag/subrelizas-v.pradin%C4%97)
 pirmoji prototipinė mokinių įvertinimo skaičiavimo ir spausdinimo versija. Ji ateityje bus tobulinama ir naudojama kaip pagrindas kitoms versijoms. Kaip atidaryti programą ir ją kompiliuoti yra aprašyta readme.md faile.
 
 ## Testavimo Duomenys ir Rezultatai
