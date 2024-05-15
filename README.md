@@ -6,6 +6,40 @@
 - RAM: 16 GB DDR5
 - SSD: 2TB NVMe KINGSTON SKC3000
 
+## Ankstesnių versijų aprašymai:
+### v0.4.1 naujienos:
+-Galimybė generuoti atsitiktinius studentų failus.
+-Galimybė pasirinkti kokio dydžio studentų failų norite.
+-Galimybė sugeneruotus failus atidaryti.
+-Galimybė sugeneruotus failus skirstyti į "normalius" ir "nenormalius" studentus, t.y studentus kurių vidurkiai yra daugiau arba lygūs 5 arba mažesni nei 5.
+-Galimybė skirstytus studentus išspausdinti į atskirus failus.
+-Galimybė matuoti programos veikimo ir procesų trukmę.
+
+### v0.3
+
+-Kodas perkeltas į header ir .cpp implementavimo failus; -Naudojamas exception handling neteisingų įvesčių atveju; -Teksto failų tikrinimas;
+
+Source failas - ConsoleApplication1, jį turime atidaryti norint pažiūrėti kodą. Norint kompiliuoti kodą per Visual Studio, reikia atidaryti .sln failą /ConsoleApplication1 aplanke ir paspausti "Local Windows Debugger" mygtuką viršuje. Tada tereikia sekti instrukcijas ekrane norint naudoti programą.
+
+DĖMĖSIO!!! - studentų (studentai10000.txt...) iš ankščiau sugeneruoti failai nėra įkeliami į repozitoriją, nes jų dydžiai yra per dideli. Prašome juos užsipildyti patiems arba atsisiųsti iš interneto.
+
+### v0.2.1 - tai dar labiau patobulinta mokinių galutinio pažymio skaičiuoklė. v0.2 naujienos:
+-Skaitymas/rašymas į failus;
+-Chronometras matuojantis, kiek laiko užima kiekviena operacija (read/write, process);
+-Optimizuotas kodas;
+-Galimybė užbaigti darbą per meniu;
+-Mokinių rikiavimas pagal balus, vardus, pavardes;
+
+### v0.1.1 - tai patobulinta v0.1 vektorių implementacija.
+-Pridėta naujų random skaičių generavimo funkcija.
+-Pridėtas vektoriaus patikrinimas, neišeis vietoj skaičiaus įrašyti raidės ir užcrashinti programą.
+-Vietoj bubble sort naudojama sort() funkcija.
+-Vietoj for ciklo naudojama accumulate() funkcija.
+-Pakeistos ciklo ribos, dabar ciklas baigsis tik tada, kai vartotojas įves -1. Neprašoma vartotojo įvesti namų darbų ir studentų skaičiaus.
+
+### v.pradinė
+pirmoji prototipinė mokinių įvertinimo skaičiavimo ir spausdinimo versija. Ji ateityje bus tobulinama ir naudojama kaip pagrindas kitoms versijoms. Kaip atidaryti programą ir ją kompiliuoti yra aprašyta readme.md faile.
+
 ## Testavimo Duomenys ir Rezultatai
 
 ### Testas Nr. 1 - Vektoriai
@@ -61,20 +95,20 @@ Remiantis vidutiniais laikais, pastebima, kad vektorius yra labiausiai efektyvus
 # Kaip paleisti kodą?
 
 > [!NOTE]  
-> Šią instrukciją reikia sekti tik tada, kai neturite iš repozitorijos atsiųstų .exe failų!
+> Šią instrukciją Windows OS reikia sekti tik tada, kai neturite iš repozitorijos atsiųstų .exe failų!
 
 ## Makefile
 
 > [!WARNING]  
-> Makefile nėra palaikomas Windows sistemose, todėl bus atskiras tutorial kaip jį įsidiegti.
+> Makefile nėra palaikomas Windows sistemose, todėl yra atskiri žingsniai kaip jį įsidiegti.
 
-(Slightly larger "Windows")
+### Windows
 
 1. Nueikite į šią svetainę: [GNU Make for Windows](https://sourceforge.net/projects/gnuwin32/files/make/3.81/)
 2. Atsisiųskite naujausią versiją.
 3. Susikonfigūruokite. Jei sunku suprasti, kaip ką daryti, gali padėti YouTube vaizdo įrašas: [Makefile Installation Tutorial](https://www.youtube.com/watch?v=taCJhnBXG_w)
 4. Atsisiunčiame projekto .zip failą, jį išskleidžiame.
-5. Atidarius projekto aplankalą, jame paspaudžiame dešinįjį pelės mygtuką ir paspaudžiame "Atidaryti terminalą"
+5. Atidarius projekto aplankalą, jame paspaudžiame dešinįjį pelės mygtuką ir paspaudžiame "Atidaryti terminalą" (CMD)
 6. Parašome "make"
 7. Atsiras .exe failai, kuriuos paleidus galite naudotis programa.
 
