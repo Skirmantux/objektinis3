@@ -1,0 +1,12 @@
+﻿  ConsoleApplication1.cpp
+C:\Users\skirm\Desktop\v1.0 project\ConsoleApplication1\ConsoleApplication1.cpp(9,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  MokiniuProcessing.cpp
+  Skaiciavimaidarbai.cpp
+C:\Users\skirm\Desktop\v1.0 project\ConsoleApplication1\Skaiciavimaidarbai.cpp(16,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\skirm\Desktop\v1.0 project\ConsoleApplication1\Skaiciavimaidarbai.cpp(50,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Generating code
+  686 of 698 functions (98.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  ConsoleApplication1.vcxproj -> C:\Users\skirm\Desktop\v1.0 project\x64\Release\ConsoleApplication1.exe
