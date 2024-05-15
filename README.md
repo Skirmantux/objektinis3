@@ -123,5 +123,5 @@ Remiantis vidutiniais laikais, pastebima, kad vektorius yra labiausiai efektyvus
 7. Atsiras .exe failai, kuriuos paleidus galite naudotis programa.
 
 > [!WARNING]  
-> Studentų failai nėra įdedami į GitHub repozitoriją. Prašome juos susigeneruoti naudojantis programa!
+> 10000000 Studentų failas nėra įdedamas į GitHub repozitoriją. Prašome jį susigeneruoti naudojantis programa!
 
