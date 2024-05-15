@@ -15,7 +15,7 @@
 - SSD: 2TB NVMe KINGSTON SKC3000
 
 ## Ankstesnių versijų aprašymai:
-### v0.4.1 naujienos:
+### [v0.4.1](https://github.com/Skirmantux/objektinis1/releases/tag/v0.4.1)
 - Galimybė generuoti atsitiktinius studentų failus.
 - Galimybė pasirinkti kokio dydžio studentų failų norite.
 - Galimybė sugeneruotus failus atidaryti.
@@ -23,7 +23,7 @@
 - Galimybė skirstytus studentus išspausdinti į atskirus failus.
 - Galimybė matuoti programos veikimo ir procesų trukmę.
 
-### v0.3
+### [v0.3.1](https://github.com/Skirmantux/objektinis1/releases/tag/v0.3.1)
 
 - Kodas perkeltas į header ir .cpp implementavimo failus;
 - Naudojamas exception handling neteisingų įvesčių atveju; 
@@ -33,14 +33,14 @@ Source failas - ConsoleApplication1, jį turime atidaryti norint pažiūrėti ko
 
 DĖMĖSIO!!! - studentų (studentai10000.txt...) iš ankščiau sugeneruoti failai nėra įkeliami į repozitoriją, nes jų dydžiai yra per dideli. Prašome juos užsipildyti patiems arba atsisiųsti iš interneto.
 
-### v0.2.1 - tai dar labiau patobulinta mokinių galutinio pažymio skaičiuoklė. v0.2 naujienos:
+### [v0.2.1](https://github.com/Skirmantux/objektinis1/releases/tag/v.0.2)
 - Skaitymas/rašymas į failus;
 - Chronometras matuojantis, kiek laiko užima kiekviena operacija (read/write, process);
 - Optimizuotas kodas;
 - Galimybė užbaigti darbą per meniu;
 - Mokinių rikiavimas pagal balus, vardus, pavardes;
 
-### v0.1.1 - tai patobulinta v0.1 vektorių implementacija.
+### [v0.1.2](https://github.com/Skirmantux/objektinis1/releases/tag/v0.1.2)
 - Pridėta naujų random skaičių generavimo funkcija.
 - Pridėtas vektoriaus patikrinimas, neišeis vietoj skaičiaus įrašyti raidės ir užcrashinti programą.
 - Vietoj bubble sort naudojama sort() funkcija.
