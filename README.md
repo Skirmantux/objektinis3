@@ -1,4 +1,12 @@
-# v1.0 Veikimo Įvertinimas
+# v1.0
+
+## Pakeitimai:
+- Optimizavimo strategijų testavimas
+- Konteinerių studentams testavimas (deque, vector, list)
+- Dauguma strategijų testavimo kodo sudėtos į funkcijas, dėl optimizavimo
+- Makefile
+- Paleidžiami .exe failai
+- Apvalyta repozitorija
 
 ## Kompiuterio Specifikacijos:
 - CPU: Intel Core i5-12450H
@@ -8,34 +16,36 @@
 
 ## Ankstesnių versijų aprašymai:
 ### v0.4.1 naujienos:
--Galimybė generuoti atsitiktinius studentų failus.
--Galimybė pasirinkti kokio dydžio studentų failų norite.
--Galimybė sugeneruotus failus atidaryti.
--Galimybė sugeneruotus failus skirstyti į "normalius" ir "nenormalius" studentus, t.y studentus kurių vidurkiai yra daugiau arba lygūs 5 arba mažesni nei 5.
--Galimybė skirstytus studentus išspausdinti į atskirus failus.
--Galimybė matuoti programos veikimo ir procesų trukmę.
+- Galimybė generuoti atsitiktinius studentų failus.
+- Galimybė pasirinkti kokio dydžio studentų failų norite.
+- Galimybė sugeneruotus failus atidaryti.
+- Galimybė sugeneruotus failus skirstyti į "normalius" ir "nenormalius" studentus, t.y studentus kurių vidurkiai yra daugiau arba lygūs 5 arba mažesni nei 5.
+- Galimybė skirstytus studentus išspausdinti į atskirus failus.
+- Galimybė matuoti programos veikimo ir procesų trukmę.
 
 ### v0.3
 
--Kodas perkeltas į header ir .cpp implementavimo failus; -Naudojamas exception handling neteisingų įvesčių atveju; -Teksto failų tikrinimas;
+- Kodas perkeltas į header ir .cpp implementavimo failus;
+- Naudojamas exception handling neteisingų įvesčių atveju; 
+- Teksto failų tikrinimas;
 
 Source failas - ConsoleApplication1, jį turime atidaryti norint pažiūrėti kodą. Norint kompiliuoti kodą per Visual Studio, reikia atidaryti .sln failą /ConsoleApplication1 aplanke ir paspausti "Local Windows Debugger" mygtuką viršuje. Tada tereikia sekti instrukcijas ekrane norint naudoti programą.
 
 DĖMĖSIO!!! - studentų (studentai10000.txt...) iš ankščiau sugeneruoti failai nėra įkeliami į repozitoriją, nes jų dydžiai yra per dideli. Prašome juos užsipildyti patiems arba atsisiųsti iš interneto.
 
 ### v0.2.1 - tai dar labiau patobulinta mokinių galutinio pažymio skaičiuoklė. v0.2 naujienos:
--Skaitymas/rašymas į failus;
--Chronometras matuojantis, kiek laiko užima kiekviena operacija (read/write, process);
--Optimizuotas kodas;
--Galimybė užbaigti darbą per meniu;
--Mokinių rikiavimas pagal balus, vardus, pavardes;
+- Skaitymas/rašymas į failus;
+- Chronometras matuojantis, kiek laiko užima kiekviena operacija (read/write, process);
+- Optimizuotas kodas;
+- Galimybė užbaigti darbą per meniu;
+- Mokinių rikiavimas pagal balus, vardus, pavardes;
 
 ### v0.1.1 - tai patobulinta v0.1 vektorių implementacija.
--Pridėta naujų random skaičių generavimo funkcija.
--Pridėtas vektoriaus patikrinimas, neišeis vietoj skaičiaus įrašyti raidės ir užcrashinti programą.
--Vietoj bubble sort naudojama sort() funkcija.
--Vietoj for ciklo naudojama accumulate() funkcija.
--Pakeistos ciklo ribos, dabar ciklas baigsis tik tada, kai vartotojas įves -1. Neprašoma vartotojo įvesti namų darbų ir studentų skaičiaus.
+- Pridėta naujų random skaičių generavimo funkcija.
+- Pridėtas vektoriaus patikrinimas, neišeis vietoj skaičiaus įrašyti raidės ir užcrashinti programą.
+- Vietoj bubble sort naudojama sort() funkcija.
+- Vietoj for ciklo naudojama accumulate() funkcija.
+- Pakeistos ciklo ribos, dabar ciklas baigsis tik tada, kai vartotojas įves -1. Neprašoma vartotojo įvesti namų darbų ir studentų skaičiaus.
 
 ### v.pradinė
 pirmoji prototipinė mokinių įvertinimo skaičiavimo ir spausdinimo versija. Ji ateityje bus tobulinama ir naudojama kaip pagrindas kitoms versijoms. Kaip atidaryti programą ir ją kompiliuoti yra aprašyta readme.md faile.
