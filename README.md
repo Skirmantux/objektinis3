@@ -83,8 +83,13 @@ Skaidymas
 ## Kompiliatoriaus flag'ų palyginimas programos veikime
 
 ### Be flag'ų
-
-
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/d7fb3c16-5315-4cd9-9dad-836e9013c879)
+### Su -O1 flag'u
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/1589658c-be9b-482b-af6c-66fbfdc86f62)
+### Su -O2 flag'u
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/8d51c8d5-d037-45ac-9a40-39e1cc72be1d)
+## Su -O3 flag'u
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/fd653508-daa0-4756-ae7c-1ceb4cedf08f)
 
 
 # Kaip paleisti kodą?
