@@ -1,12 +1,8 @@
-# v1.0
+# v1.1
 
 ## Pakeitimai:
-- Optimizavimo strategijų testavimas
-- Konteinerių studentams testavimas (deque, vector, list)
-- Dauguma strategijų testavimo kodo sudėtos į funkcijas, dėl optimizavimo
-- Makefile
-- Paleidžiami .exe failai
-- Apvalyta repozitorija
+- Vietoje struktūrų tipų naudojame klases, kurios veikia truputį efektyviau, ypač esant dideliam studentų skaičiui.
+- Nauji testavimo tyrimai.
 
 ## Kompiuterio Specifikacijos:
 - CPU: Intel Core i5-12450H
@@ -15,74 +11,51 @@
 - SSD: 2TB NVMe KINGSTON SKC3000
 
 ## Ankstesnių versijų aprašymai:
-### [v0.4.1](https://github.com/Skirmantux/objektinis1/releases/tag/v0.4.1)
-- Galimybė generuoti atsitiktinius studentų failus.
-- Galimybė pasirinkti kokio dydžio studentų failų norite.
-- Galimybė sugeneruotus failus atidaryti.
-- Galimybė sugeneruotus failus skirstyti į "normalius" ir "nenormalius" studentus, t.y studentus kurių vidurkiai yra daugiau arba lygūs 5 arba mažesni nei 5.
-- Galimybė skirstytus studentus išspausdinti į atskirus failus.
-- Galimybė matuoti programos veikimo ir procesų trukmę.
+### [v1.0](https://github.com/Skirmantux/objektinis1/releases/tag/v1.0)
+- Daug įvairių atnaujinimų.
 
-### [v0.3.1](https://github.com/Skirmantux/objektinis1/releases/tag/v0.3.1)
-
-- Kodas perkeltas į header ir .cpp implementavimo failus;
-- Naudojamas exception handling neteisingų įvesčių atveju; 
-- Teksto failų tikrinimas;
-
-Source failas - ConsoleApplication1, jį turime atidaryti norint pažiūrėti kodą. Norint kompiliuoti kodą per Visual Studio, reikia atidaryti .sln failą /ConsoleApplication1 aplanke ir paspausti "Local Windows Debugger" mygtuką viršuje. Tada tereikia sekti instrukcijas ekrane norint naudoti programą.
-
-DĖMĖSIO!!! - studentų (studentai10000.txt...) iš ankščiau sugeneruoti failai nėra įkeliami į repozitoriją, nes jų dydžiai yra per dideli. Prašome juos užsipildyti patiems arba atsisiųsti iš interneto.
-
-### [v0.2.1](https://github.com/Skirmantux/objektinis1/releases/tag/v.0.2)
-- Skaitymas/rašymas į failus;
-- Chronometras matuojantis, kiek laiko užima kiekviena operacija (read/write, process);
-- Optimizuotas kodas;
-- Galimybė užbaigti darbą per meniu;
-- Mokinių rikiavimas pagal balus, vardus, pavardes;
-
-### [v0.1.2](https://github.com/Skirmantux/objektinis1/releases/tag/v0.1.2)
-- Pridėta naujų random skaičių generavimo funkcija.
-- Pridėtas vektoriaus patikrinimas, neišeis vietoj skaičiaus įrašyti raidės ir užcrashinti programą.
-- Vietoj bubble sort naudojama sort() funkcija.
-- Vietoj for ciklo naudojama accumulate() funkcija.
-- Pakeistos ciklo ribos, dabar ciklas baigsis tik tada, kai vartotojas įves -1. Neprašoma vartotojo įvesti namų darbų ir studentų skaičiaus.
-
-### [v.pradinė](https://github.com/Skirmantux/objektinis1/releases/tag/subrelizas-v.pradin%C4%97)
-pirmoji prototipinė mokinių įvertinimo skaičiavimo ir spausdinimo versija. Ji ateityje bus tobulinama ir naudojama kaip pagrindas kitoms versijoms. Kaip atidaryti programą ir ją kompiliuoti yra aprašyta readme.md faile.
-
-## Testavimo Duomenys ir Rezultatai
+## Testavimo Duomenys ir Rezultatai (matuojami sekundėmis)
 
 ### Klasė
-| Klasė | # Studentų  | Skaitymas (s) | 1 strategija | 2 strategija | 3 strategija |
-|-------|-------------|---------------|--------------|--------------|--------------|
-|       | 100k        | 9.66472       | 9.72976      | 9.68985      |
-|       | 1m          | 95.5213       | 95.874       | 95.6021      |
+Skaitymas
 
-| Klasė  | Rūšiavimas (s) | 1 strategija | 2 strategija | 3 strategija |
-|--------|----------------|--------------|--------------|--------------|
-| 100k   |                | 0.0102049    | 0.013882     | 0.157393     |
-| 1m     |                | 0.157121     | 0.157262     | 0.157393     |
+|Studentų sk. | 1 strategija  | 2 strategija | 3 strategija |
+|-------------|---------------|--------------|--------------|
+| 100k        | 9.66472       | 9.72976      | 9.68985      |
+| 1m          | 95.5213       | 95.874       | 95.6021      |
 
-| Klasė  | Skaidymas (s) | 1 strategija | 2 strategija | 3 strategija |
-|--------|---------------|--------------|--------------|--------------|
-| 100k   |               | 0.203648     | 0.0147951    | 0.0119351    |
-| 1m     |               | 0.172753     | 0.125434     | 0.0313055    |
+Rūšiavimas
+
+| Studentų sk. | 1 strategija | 2 strategija | 3 strategija |
+|--------------|--------------|--------------|--------------|
+| 100k         | 0.0102049    | 0.013882     | 0.157393     |
+| 1m           | 0.157121     | 0.157262     | 0.157393     |
+
+Skaidymas
+
+| Studentų sk.  | 1 strategija | 2 strategija | 3 strategija |
+|---------------|--------------|--------------|--------------|
+| 100k          | 0.203648     | 0.0147951    | 0.0119351    |
+| 1m            | 0.172753     | 0.125434     | 0.0313055    |
 
 ### Struktūros 
-| Struktūros | # Studentų | Skaitymas (s) | 1 strategija | 2 strategija | 3 strategija |
-|------------|------------|---------------|--------------|--------------|--------------|
-|            | 100k       | 9.75101       | 9.66977      | 9.69309      |
-|            | 1m         | 97.2001       | 97.1917      | 97.3941      |
 
-| Struktūros | Rūšiavimas (s) | 1 strategija | 2 strategija | 3 strategija |
-|------------|----------------|--------------|--------------|--------------|
-| 100k       |                | 0.0149406    | 0.0158391    | 0.0101099    |
-| 1m         |                | 0.158945     | 0.168172     | 0.169934     |
+Skaitymas
 
-| Struktūros | Skaidymas (s)  | 1 strategija | 2 strategija | 3 strategija |
-|------------|----------------|--------------|--------------|--------------|
-| 100k       |                | 0.0157576    | 0.0091265    | 0.00004261   |
-| 1m         |                | 0.180168     | 0.111448     | 0.0352132    |
+| # Studentų | 1 strategija  | 2 strategija | 3 strategija |
+|------------|---------------|--------------|--------------|
+| 100k       | 9.75101       | 9.66977      | 9.69309      |
+| 1m         | 97.2001       | 97.1917      | 97.3941      |
+
+| Studentų sk. | 1 strategija | 2 strategija | 3 strategija |
+|--------------|--------------|--------------|--------------|
+| 100k         | 0.0149406    | 0.0158391    | 0.0101099    |
+| 1m           | 0.158945     | 0.168172     | 0.169934     |
+
+| Studentų sk. | 1 strategija | 2 strategija | 3 strategija |
+|--------------|--------------|--------------|--------------|
+| 100k         | 0.0157576    | 0.0091265    | 0.00004261   |
+| 1m           | 0.180168     | 0.111448     | 0.0352132    |
 
 ## Veikimo Analizė
 
