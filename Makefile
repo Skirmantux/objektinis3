@@ -2,7 +2,7 @@
 CC := g++
 
 # Compiler flags
-CFLAGS := -std=c++11 -O3
+CFLAGS := -std=c++17 -O3
 
 # Source directory
 SRC_DIR := src

@@ -52,35 +52,37 @@ pirmoji prototipinė mokinių įvertinimo skaičiavimo ir spausdinimo versija. J
 
 ## Testavimo Duomenys ir Rezultatai
 
-### Testas Nr. 1 - Vektoriai
+### Klasė
+| Klasė | # Studentų  | Skaitymas (s) | 1 strategija | 2 strategija | 3 strategija |
+|-------|-------------|---------------|--------------|--------------|--------------|
+|       | 100k        | 9.66472       | 9.72976      | 9.68985      |
+|       | 1m          | 95.5213       | 95.874       | 95.6021      |
 
-| # Studentų| Skaitymas (s)| Rūšiavimas (s) | Skaidymas (s) 
-|-----------|--------------|----------------|----------------
-| 1000      | 0.0022777    | 0.0001363      | 0.0001160      
-| 10000     | 0.0236244    | 0.0012293      | 0.0010826      
-| 100000    | 0.2216030    | 0.0161473      | 0.0010826      
-| 1000000   | 2.2053800    | 0.1892920      | 0.2374710      
-| 10000000  | 22.8862000   | 2.3103800      | 2.7045500      
+| Klasė  | Rūšiavimas (s) | 1 strategija | 2 strategija | 3 strategija |
+|--------|----------------|--------------|--------------|--------------|
+| 100k   |                | 0.0102049    | 0.013882     | 0.157393     |
+| 1m     |                | 0.157121     | 0.157262     | 0.157393     |
 
-### Testas Nr. 1 - Deque
+| Klasė  | Skaidymas (s) | 1 strategija | 2 strategija | 3 strategija |
+|--------|---------------|--------------|--------------|--------------|
+| 100k   |               | 0.203648     | 0.0147951    | 0.0119351    |
+| 1m     |               | 0.172753     | 0.125434     | 0.0313055    |
 
-| # Studentų| Skaitymas (s)| Rūšiavimas (s)  | Skaidymas (s) 
-|-----------|--------------|-----------------|-----------------
-| 1000      | 0.0037541    | 0.0001979       | 0.0001114      
-| 10000     | 0.223408     | 0.0011828       | 0.0008896      
-| 100000    | 0.2275090    | 0.0148839       | 0.0270712      
-| 1000000   | 2.2069500    | 0.1862820       | 0.1672080      
-| 10000000  | 22.5660000   | 2.2550900       | 2.2518800      
+### Struktūros 
+| Struktūros | # Studentų | Skaitymas (s) | 1 strategija | 2 strategija | 3 strategija |
+|------------|------------|---------------|--------------|--------------|--------------|
+|            | 100k       | 9.75101       | 9.66977      | 9.69309      |
+|            | 1m         | 97.2001       | 97.1917      | 97.3941      |
 
-### Testas Nr. 1 - List
+| Struktūros | Rūšiavimas (s) | 1 strategija | 2 strategija | 3 strategija |
+|------------|----------------|--------------|--------------|--------------|
+| 100k       |                | 0.0149406    | 0.0158391    | 0.0101099    |
+| 1m         |                | 0.158945     | 0.168172     | 0.169934     |
 
-| List      | # Studentų  | Skaitymas (s)  | Rūšiavimas (s) 
-|-----------|-------------|----------------|---------------
-| 1000      | 0.0022424   | 0.0001336      | 0.0001521      
-| 10000     | 0.0219628   | 0.0011320      | 0.0031113      
-| 100000    | 0.2220000   | 0.0150706      | 0.0131362      
-| 1000000   | 2.2095000   | 0.1879120      | 0.1137770      
-| 10000000  | 22.6014000  | 2.2339300      | 1.2377700      
+| Struktūros | Skaidymas (s)  | 1 strategija | 2 strategija | 3 strategija |
+|------------|----------------|--------------|--------------|--------------|
+| 100k       |                | 0.0157576    | 0.0091265    | 0.00004261   |
+| 1m         |                | 0.180168     | 0.111448     | 0.0352132    |
 
 ## Veikimo Analizė
 
@@ -97,10 +99,10 @@ pirmoji prototipinė mokinių įvertinimo skaičiavimo ir spausdinimo versija. J
 - Deque yra antras, o vector konteineris yra lėčiausias, nes reikalauja daugiausia elementų perkėlimo.
 
 > [!WARNING]  
->Jei atliksite benchmark'us patys, prašome kartoti testus kuo daugiau ir imti vidurkį, nes dauguma laiko skirtumo atidarant/uždarant ir modifikuojant elementus failuose užima operacinė sistema, taip pat ji užima resursus, kuriuos galima būtų naudoti atidarant failus, todėl tai yra nenuspėjama. Testuojant pirmą kart buvo išrinkta greičiausia universali strategija ir su ja testuojami skirtingi konteineriai!!!
+> Jei atliksite benchmark'us patys, prašome kartoti testus kuo daugiau ir imti vidurkį, nes dauguma laiko skirtumo atidarant/uždarant ir modifikuojant elementus failuose užima operacinė sistema, taip pat ji užima resursus, kuriuos galima būtų naudoti atidarant failus, todėl tai yra nenuspėjama. Testuojant pirmą kartą buvo išrinkta greičiausia universali strategija ir su ja testuojami skirtingi konteineriai!!!
 
 ## Konteinerių Palyginimas
-Remiantis vidutiniais laikais, pastebima, kad vektorius yra labiausiai efektyvus skaitymo procesas, tačiau jis reikalauja daugiau laiko rūšiuojant palyginus su list ir deque. List, priešingai, rūšiuojasi greičiau, bet skaitymo procesas užtrunka ilgiau lyginant su vektoriumi ir dvipusiu sąrašu. Dvipusis sąrašas pasižymi tarpiniu elgesiu, kai skirstymas į "nenormalius" ir "normalius" nevyksta dažnai. Studentų klasifikavimas į nenormalius trunka trumpiausiai naudojant deque, o ilgiausiai naudojant list. Padidėjus duomenų kiekiui, studentų klasifikavimas į nenormalius trunka ilgiau visuose konteineriuose, tačiau dvipusis sąrašas pasirodo greitesnis nei vektorius ir list. Didžiausias studentų skaidymo laikas yra su 100 000 00 duomenų, o mažiausias su 1000 duomenų. Vektorius gali patirti didelį veikimo spartos sumažėjimą dėl papildomo atminties kopijavimo. List gali būti geriau tinkamas pasirinkimas, jei didelės atminties reikalavimai, bet veikimo greitis nėra kritiškai svarbus. Deque gali būti efektyvesnis pasirinkimas nei vektorius dėl jo efektyvaus atminties manipuliavimo.
+Remiantis vidutiniais laikais, pastebima, kad vektorius yra labiausiai efektyvus skaitymo procesas, tačiau jis reikalauja daugiau laiko rūšiuojant palyginus su list ir deque. List, priešingai, rūšiuojasi greičiau, bet skaitymo procesas užtrunka ilgiau lyginant su vektoriumi ir dvipusiu sąrašu. Dvipusis sąrašas pasižymi tarpiniu elgesiu, kai skirstymas į "nenormalius" ir "normalius" nevyksta dažnai. Studentų klasifikavimas į nenormalius trunka trumpiausiai naudojant deque, o ilgiausiai naudojant list. Padidėjus duomenų kiekiui, studentų klasifikavimas į nenormalius trunka ilgiau visuose konteineriuose, tačiau dvipusis sąrašas pasirodo greitesnis nei vektorius ir list. Didžiausias studentų skaidymo laikas yra su 10000000 duomenų, o mažiausias su 1000 duomenų. Vektorius gali patirti didelį veikimo spartos sumažėjimą dėl papildomo atminties kopijavimo. List gali būti geriau tinkamas pasirinkimas, jei didelės atminties reikalavimai, bet veikimo greitis nėra kritiškai svarbus. Deque gali būti efektyvesnis pasirinkimas nei vektorius dėl jo efektyvaus atminties manipuliavimo.
 
 # Kaip paleisti kodą?
 
@@ -124,4 +126,3 @@ Remiantis vidutiniais laikais, pastebima, kad vektorius yra labiausiai efektyvus
 
 > [!WARNING]  
 > 10000000 Studentų failas nėra įdedamas į GitHub repozitoriją. Prašome jį susigeneruoti naudojantis programa!
-
