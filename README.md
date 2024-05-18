@@ -42,15 +42,19 @@ Skaidymas
 
 Skaitymas
 
-| # Studentų | 1 strategija  | 2 strategija | 3 strategija |
-|------------|---------------|--------------|--------------|
-| 100k       | 9.75101       | 9.66977      | 9.69309      |
-| 1m         | 97.2001       | 97.1917      | 97.3941      |
+| Studentų sk. | 1 strategija  | 2 strategija | 3 strategija |
+|--------------|---------------|--------------|--------------|
+| 100k         | 9.75101       | 9.66977      | 9.69309      |
+| 1m           | 97.2001       | 97.1917      | 97.3941      |
+
+Rūšiavimas
 
 | Studentų sk. | 1 strategija | 2 strategija | 3 strategija |
 |--------------|--------------|--------------|--------------|
 | 100k         | 0.0149406    | 0.0158391    | 0.0101099    |
 | 1m           | 0.158945     | 0.168172     | 0.169934     |
+
+Skaidymas
 
 | Studentų sk. | 1 strategija | 2 strategija | 3 strategija |
 |--------------|--------------|--------------|--------------|
@@ -60,22 +64,28 @@ Skaitymas
 ## Veikimo Analizė
 
 ### Duomenų Skaitymas:
-- Skaitymas naudojant list konteinerį yra greičiausias, tačiau mažesniuose failuose jo naudotojas neturėtų pastebėti skirtumo.
+- Skaitymas naudojant klases yra pastebimai geresnis tik esant didesniam studentų skaičiui.
 
 ### Duomenų Rūšiavimas:
-- Vektorių konteineris rūšiuoja studentus greičiausiai, nes jis gali prieiti įrašus atsitiktinai, kas yra labai padeda rūšiavimo algoritmui.
-- List lėtesnis, nes jame elementus reikia prieiti iš eilės.
-- Deque lėčiausias, nes nėra tam sukurtas.
+- Rūšiavimas su klasėmis veikia panašiai kaip ir su struktūromis.
+- Esant didesniam studentų skaičiui, klasės matavimai yra daug stabilesni, t.y. laikas surūšiuoti elementus klasėje mažai kito.
 
 ### Studentų Skaidymas:
-- List konteineris yra efektyviausias, nes gali įterpti ir pašalinti elementus be kitų perkėlimo.
-- Deque yra antras, o vector konteineris yra lėčiausias, nes reikalauja daugiausia elementų perkėlimo.
+- Esant didesniam mokinių skaičiui, klasės veikia greičiau ir stabiliau.
+- Struktūros greitesnės tik tada, kai mažesnis studentų skaičius ir tik naudojantis tam tikromis, letesnemis strategijomis.
 
 > [!WARNING]  
 > Jei atliksite benchmark'us patys, prašome kartoti testus kuo daugiau ir imti vidurkį, nes dauguma laiko skirtumo atidarant/uždarant ir modifikuojant elementus failuose užima operacinė sistema, taip pat ji užima resursus, kuriuos galima būtų naudoti atidarant failus, todėl tai yra nenuspėjama. Testuojant pirmą kartą buvo išrinkta greičiausia universali strategija ir su ja testuojami skirtingi konteineriai!!!
 
-## Konteinerių Palyginimas
-Remiantis vidutiniais laikais, pastebima, kad vektorius yra labiausiai efektyvus skaitymo procesas, tačiau jis reikalauja daugiau laiko rūšiuojant palyginus su list ir deque. List, priešingai, rūšiuojasi greičiau, bet skaitymo procesas užtrunka ilgiau lyginant su vektoriumi ir dvipusiu sąrašu. Dvipusis sąrašas pasižymi tarpiniu elgesiu, kai skirstymas į "nenormalius" ir "normalius" nevyksta dažnai. Studentų klasifikavimas į nenormalius trunka trumpiausiai naudojant deque, o ilgiausiai naudojant list. Padidėjus duomenų kiekiui, studentų klasifikavimas į nenormalius trunka ilgiau visuose konteineriuose, tačiau dvipusis sąrašas pasirodo greitesnis nei vektorius ir list. Didžiausias studentų skaidymo laikas yra su 10000000 duomenų, o mažiausias su 1000 duomenų. Vektorius gali patirti didelį veikimo spartos sumažėjimą dėl papildomo atminties kopijavimo. List gali būti geriau tinkamas pasirinkimas, jei didelės atminties reikalavimai, bet veikimo greitis nėra kritiškai svarbus. Deque gali būti efektyvesnis pasirinkimas nei vektorius dėl jo efektyvaus atminties manipuliavimo.
+## Klasių/struktūrų Palyginimas
+- Klasės leidžia mums saugoti elementus nuo neleistino pakeitimo, taip išsaugodami duomenis. Taip pat jos minimaliai greitesnės.
+
+## Kompiliatoriaus flag'ų palyginimas programos veikime
+
+### Be flag'ų
+
+
+
 
 # Kaip paleisti kodą?
 
