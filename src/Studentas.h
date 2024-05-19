@@ -1,19 +1,16 @@
 #pragma once
 
-#include <iostream>
 #include <string>
 #include <vector>
-#include <numeric>
-#include <iomanip>
-#include <algorithm>
-#include <chrono>
 
 class Studentas {
-public:
+private:
     std::string vardas_;
     std::string pavarde_;
     std::vector<double> namudarburez_;
     double egzaminorez_;
+
+public:
     double namudarburezsuma_;
     double vidurkis_;
     double galutinisbalasvidurkis_;
@@ -25,25 +22,26 @@ public:
     Studentas(std::istream& is);
 
     // Getters
-    std::string getVardas() const;
-    std::string getPavarde() const;
-    double getGalBalasVidurkis() const;
-    double getGalBalasMediana() const;
+    std::string getVardas() const { return vardas_; }
+    std::string getPavarde() const { return pavarde_; }
+    double getEgzaminoRez() const { return egzaminorez_; }
+    const std::vector<double>& getNamudarbuRez() const { return namudarburez_; }
 
     // Setters
-    std::istream& readStudent(std::istream&);
+    void setVardas(const std::string& vardas) { vardas_ = vardas; }
+    void setPavarde(const std::string& pavarde) { pavarde_ = pavarde; }
+    void setEgzaminoRez(double egzaminorez) { egzaminorez_ = egzaminorez; }
+    void addGrade(double grade) { namudarburez_.push_back(grade); }
 
     // Other member functions
+    std::istream& readStudent(std::istream&);
     void calculateFinalGrades();
 };
 
-// Non-member functions
 bool vardolyginimas(const Studentas& a, const Studentas& b);
 bool pavardeslyginimas(const Studentas& a, const Studentas& b);
 bool vidurkiolyginimas(const Studentas& a, const Studentas& b);
 bool medianoslyginimas(const Studentas& a, const Studentas& b);
-
-// Utility functions
 void PrintStudents(const std::vector<Studentas>& studentai);
 void readAndProcessData(const std::string& filename, std::vector<Studentas>& studentai, int& namudarbai, int studentuskaicius);
 void sortStudents(std::vector<Studentas>& studentai, int sortpasirinkimas);
