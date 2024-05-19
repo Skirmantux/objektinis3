@@ -3,12 +3,12 @@
 #include "Studentas.h"
 void NetinkamaIvestis()
 {
-    cout << "Netinkama ávestis. Programa iðjungiama...";
+    cout << "Netinkama Ä¯vestis. Programa iÅ¡jungiama...";
 }
 
 void NeraFailo()
 {
-    cout << "Failas nerastas. Programa iðjungiama...";
+    cout << "Failas nerastas. Programa iÅ¡jungiama...";
 }
 
 double Mediana(vector<double>& vec) {
