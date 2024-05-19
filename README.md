@@ -84,12 +84,16 @@ Skaidymas
 
 ### Be flag'ų
 ![image](https://github.com/Skirmantux/objektinis2/assets/149015954/d7fb3c16-5315-4cd9-9dad-836e9013c879)
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/e8615ea7-b6fb-4ebf-9004-227e63a613e6)
 ### Su -O1 flag'u
 ![image](https://github.com/Skirmantux/objektinis2/assets/149015954/1589658c-be9b-482b-af6c-66fbfdc86f62)
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/5d0b4ed5-afc5-4843-abd8-24e04f39df18)
 ### Su -O2 flag'u
 ![image](https://github.com/Skirmantux/objektinis2/assets/149015954/8d51c8d5-d037-45ac-9a40-39e1cc72be1d)
-## Su -O3 flag'u
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/74b04bc5-44f3-4327-9189-9c1aec84c40c)
+### Su -O3 flag'u
 ![image](https://github.com/Skirmantux/objektinis2/assets/149015954/fd653508-daa0-4756-ae7c-1ceb4cedf08f)
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/fdc79252-052b-4017-ae26-5f69e69bd32c)
 
 
 # Kaip paleisti kodą?
