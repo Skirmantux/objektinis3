@@ -42,50 +42,52 @@ int main()
 
     while (true) {
         Studentas stud;
+        string vardas;
+        string pavarde;
         if (pasirinkimas == 1) {
             while (true) {
                 try {
                     cout << "Áveskite studento vardà ir pavardæ. Norëdami baigti ávedimà, áveskite -1: ";
-                    cin >> stud.vardas_;
-                    if (stud.vardas_ == "-1")
+                    cin >> vardas;
+                    stud.setVardas(vardas);
+                    if (vardas == "-1")
                         break;
-                    if (ContainsNumbers(stud.vardas_)) {
+                    if (ContainsNumbers(vardas)) {
                         throw invalid_argument("Vardas negali turëti skaièiø. Praðome ávesti vardà be skaièiø.");
                     }
-                    cin >> stud.pavarde_;
-                    if (stud.pavarde_ == "-1")
+                    cin >> pavarde;
+                    stud.setPavarde(pavarde);
+                    if (pavarde == "-1")
                         break;
-                    if (ContainsNumbers(stud.pavarde_)) {
+                    if (ContainsNumbers(pavarde)) {
                         throw invalid_argument("Pavardë negali turëti skaièiø. Praðome ávesti pavardæ be skaièiø.");
                     }
                     cout << "Áveskite namø darbø rezultatus. Norëdami baigti ávedimà, áveskite -1: ";
                     while (true) {
-                        double namudarburez_;
-                        if (!(cin >> namudarburez_)) {
+                        double namudarburezultatas;
+                        if (!(cin >> namudarburezultatas)) {
                             cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
                             cin.clear();
                             cin.ignore(numeric_limits<streamsize>::max(), '\n');
                             continue;
                         }
-                        if (namudarburez_ == -1)
+                        if (namudarburezultatas == -1)
                             break;
-                        if (namudarburez_ >= 0 && namudarburez_ <= 10) {
-                            stud.namudarburez_.push_back(namudarburez_);
+                        if (namudarburezultatas >= 0 && namudarburezultatas <= 10) {
+                            stud.addGrade(namudarburezultatas);
                         }
                         else {
                             cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
                         }
                     }
-                    double egzaminorez;
+                    double egzaminorezultatas;
                     cout << "Áveskite egzamino rezultatà: ";
-                    cin >> egzaminorez;
-                    if (egzaminorez < 0 || egzaminorez > 10) {
+                    cin >> egzaminorezultatas;
+                    stud.setEgzaminoRez(egzaminorezultatas);
+                    if (egzaminorezultatas < 0 || egzaminorezultatas > 10) {
                         throw out_of_range("Netinkama ávestis.");
                     }
-                    stud.namudarburezsuma_ = accumulate(stud.namudarburez_.begin(), stud.namudarburez_.end(), 0.0);
-                    stud.vidurkis_ = stud.namudarburezsuma_ / stud.namudarburez_.size();
-                    stud.galutinisbalasvidurkis_ = stud.vidurkis_ * 0.4 + egzaminorez * 0.6;
-                    studentai.push_back(stud);
+                    stud.calculateFinalGrades();
                 }
                 catch (const exception& e) {
                     cerr << e.what() << endl;
@@ -96,42 +98,37 @@ int main()
         }
         else if (pasirinkimas == 2) {
             while (true) {
+                Studentas stud;
                 cout << "Áveskite studento vardà ir pavardæ. Norëdami baigti ávedimà, áveskite -1: ";
-                cin >> stud.vardas_;
-                if (stud.vardas_ == "-1")
+                std::string vardas, pavarde;
+                cin >> vardas;
+                if (vardas == "-1")
                     break;
-                cin >> stud.pavarde_;
+                cin >> pavarde;
+                stud.setVardas(vardas);
+                stud.setPavarde(pavarde);
                 cout << "Generuojami atsitiktiniai balai uþ namø darbus..." << endl;
                 for (int i = 0; i < 5; ++i) {
-                    stud.namudarburez_.push_back(GenerateRandomGrade());
+                    stud.addGrade(GenerateRandomGrade());
                 }
-                stud.egzaminorez_ = GenerateRandomGrade();
-                stud.namudarburezsuma_ = accumulate(stud.namudarburez_.begin(), stud.namudarburez_.end(), 0.0);
-                stud.vidurkis_ = stud.namudarburezsuma_ / stud.namudarburez_.size();
-                stud.galutinisbalasvidurkis_ = stud.vidurkis_ * 0.4 + stud.egzaminorez_ * 0.6;
-                stud.mediana_ = Mediana(stud.namudarburez_);
-                stud.galutinisbalasmediana_ = stud.mediana_ * 0.4 + stud.egzaminorez_ * 0.6;
+                stud.setEgzaminoRez(GenerateRandomGrade());
+                stud.calculateFinalGrades();
                 studentai.push_back(stud);
-                stud.namudarburez_.clear();
             }
         }
         else if (pasirinkimas == 3) {
             cout << "Generuojami balai, vardai ir pavardës ir studentø kiekis spausdinimui" << endl;
-            int studentukiekis = rand() % 200;
+            int studentukiekis = rand() % 50;
             for (int i = 0; i < studentukiekis; ++i) {
+                Studentas stud;
                 for (int j = 0; j < 5; ++j) {
-                    stud.namudarburez_.push_back(GenerateRandomGrade());
+                    stud.addGrade(GenerateRandomGrade());
                 }
-                stud.egzaminorez_ = GenerateRandomGrade();
-                stud.vardas_ = GeneruotiVardus();
-                stud.pavarde_ = GeneruotiPavardes();
-                stud.namudarburezsuma_ = accumulate(stud.namudarburez_.begin(), stud.namudarburez_.end(), 0.0);
-                stud.vidurkis_ = stud.namudarburezsuma_ / stud.namudarburez_.size();
-                stud.galutinisbalasvidurkis_ = stud.vidurkis_ * 0.4 + stud.egzaminorez_ * 0.6;
-                stud.mediana_ = Mediana(stud.namudarburez_);
-                stud.galutinisbalasmediana_ = stud.mediana_ * 0.4 + stud.egzaminorez_ * 0.6;
+                stud.setEgzaminoRez(GenerateRandomGrade());
+                stud.setVardas(GeneruotiVardus());
+                stud.setPavarde(GeneruotiPavardes());
+                stud.calculateFinalGrades();
                 studentai.push_back(stud);
-                stud.namudarburez_.clear();
             }
         }
         else if (pasirinkimas == 4) {
@@ -173,19 +170,20 @@ int main()
                     int namudarbai = stulpeliai - 3;
                     while (failas.good()) {
                         Studentas stud;
-                        if (!(failas >> stud.vardas_ >> stud.pavarde_))
+                        string vardas, pavarde;
+                        if (!(failas >> vardas >> pavarde))
                             break;
+                        stud.setVardas(vardas);
+                        stud.setPavarde(pavarde);
                         double grade;
                         for (int i = 0; i < namudarbai; i++) {
                             failas >> grade;
-                            stud.namudarburez_.push_back(grade);
+                            stud.addGrade(grade);
                         }
-                        failas >> stud.egzaminorez_;
-                        stud.namudarburezsuma_ = accumulate(stud.namudarburez_.begin(), stud.namudarburez_.end(), 0.0);
-                        stud.vidurkis_ = stud.namudarburezsuma_ / stud.namudarburez_.size();
-                        stud.galutinisbalasvidurkis_ = stud.vidurkis_ * 0.4 + stud.egzaminorez_ * 0.6;
-                        stud.mediana_ = Mediana(stud.namudarburez_);
-                        stud.galutinisbalasmediana_ = stud.mediana_ * 0.4 + stud.egzaminorez_ * 0.6;
+                        double egzaminoRez;
+                        failas >> egzaminoRez;
+                        stud.setEgzaminoRez(egzaminoRez);
+                        stud.calculateFinalGrades();
                         studentai.push_back(stud);
                     }
                     auto end_process = chrono::high_resolution_clock::now();
@@ -274,6 +272,7 @@ int main()
             readAndProcessData(readFilename, studentai, namudarbai, studentuskaicius);
             vector<Studentas> normalus;
             vector<Studentas> nenormalus;
+            partitionStudents1(studentai, normalus, nenormalus);
             auto start_write = chrono::high_resolution_clock::now();
             WriteWeirdStudents(nenormalus);
             WriteNormalStudents(normalus);
@@ -284,7 +283,7 @@ int main()
             chrono::duration<double> process_time = veikimo_pabaiga - veikimo_pradzia;
             cout << "Programa viso uztruko " << process_time.count() << " sekundes" << endl;
             break;
-        }
+            }
         else if (pasirinkimas == 7) {
             cout << "Bandoma pirma strategija..." << endl;
             cout << "Kurá failà norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
@@ -367,9 +366,10 @@ int main()
                 ofstream failasr("kursioku_duomenys.txt");
                 failasr << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(30) << "Galutinis balas (vid.)" << setw(30) << "Galutinis balas (med.)" << endl;
                 failasr << "---------------------------------------------------------------------------------------------------" << endl;
+                int vardas, pavarde;
                 for (const auto& stud : studentai)
                 {
-                    failasr << setw(15) << stud.pavarde_ << setw(15) << stud.vardas_ << setw(30) << fixed << setprecision(2) << stud.galutinisbalasvidurkis_ << setw(30) << fixed << setprecision(2) << stud.galutinisbalasmediana_ << endl;
+                    failasr << setw(15) << stud.getPavarde() << setw(15) << stud.getVardas() << setw(30) << fixed << setprecision(2) << stud.galutinisbalasvidurkis_ << setw(30) << fixed << setprecision(2) << stud.galutinisbalasmediana_ << endl;
                 }
                 cout << "Áraðymas sëkmingas. Rezultatai iðsaugoti faile kursioku_duomenys.txt" << endl;
                 failasr.close();
