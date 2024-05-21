@@ -17,10 +17,10 @@ Bent dalis šių metodų jau buvo naudojamos mano programoje, todėl laikantis t
 ## Input/Output operators
 Input ir Output operatoriai buvo perkrauti Studentas klasei:
 Input perkrovimas:
-
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/8f9bfb2b-329c-448c-a0ca-7e41dcfb01a6)
 Tai optimizuoja skaitymą iš įvesties srauto (std::cin arba std::ifstream) į Studentas objektą.
 Output perkrovimas:
-
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/6c8d915a-769a-487a-a006-bf94b1b941cd)
 Tai optimizuoja išvedimą į įvesties srauto (std::cout arba std::ofstream) iš Studentas objekto.
 
 ## Kompiuterio Specifikacijos:
