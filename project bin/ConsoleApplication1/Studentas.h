@@ -58,3 +58,4 @@ void partitionStudents2(std::vector<Studentas>& studentai, std::vector<Studentas
 void partitionStudents3(std::vector<Studentas>& studentai, std::vector<Studentas>& normalus, std::vector<Studentas>& nenormalus);
 void WriteWeirdStudents(std::vector<Studentas>& nenormalus);
 void WriteNormalStudents(std::vector<Studentas>& normalus);
+void testConstructors();

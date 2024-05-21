@@ -4,7 +4,7 @@
 #include <chrono>  
 #include <algorithm> 
 
-using namespace std; // For brevity
+using namespace std;
 
 // Constructor implementation
 Studentas::Studentas() : egzaminorez_(0.0) {
@@ -105,28 +105,32 @@ void WriteWeirdStudents(std::vector<Studentas>& nenormalus)
 
 // Function to read and process data
 void readAndProcessData(const std::string& filename, std::vector<Studentas>& studentai, int& namudarbai, int studentuskaicius) {
-    std::ifstream failas1;
-    failas1.open(filename);
+    std::ifstream failas1(filename);
     if (!failas1.is_open()) {
         std::cerr << "Unable to open file: " << filename << std::endl;
         return;
     }
     std::string line;
-    std::string vardas, pavarde;
+    std::getline(failas1, line); // Skip the header line
     std::chrono::high_resolution_clock::time_point atidarymo_pradzia = std::chrono::high_resolution_clock::now();
     studentai.reserve(studentuskaicius);
-    while (failas1 >> std::ws && getline(failas1, line)) {
+    while (std::getline(failas1, line)) {
+        if (line.empty()) {
+            continue; // Skip empty lines
+        }
         Studentas stud;
         std::istringstream iss(line);
+        std::string vardas, pavarde;
         if (!(iss >> vardas >> pavarde)) {
+            std::cerr << "Error reading name and surname." << std::endl;
             break;
         }
         stud.setVardas(vardas);
         stud.setPavarde(pavarde);
         double grade;
-        for (int i = 0; i < namudarbai; i++) {
+        for (int i = 0; i < namudarbai; ++i) {
             if (!(iss >> grade)) {
-                std::cerr << "Error reading grades." << std::endl;
+                std::cerr << "Error reading grade " << (i + 1) << "." << std::endl;
                 return;
             }
             stud.addGrade(grade);
@@ -143,8 +147,8 @@ void readAndProcessData(const std::string& filename, std::vector<Studentas>& stu
     std::chrono::high_resolution_clock::time_point atidarymo_pabaiga = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> read_time = atidarymo_pabaiga - atidarymo_pradzia;
     std::cout << "Duomenu nuskaitymas ið failo á konteinerá ir galutiniø balø skaièiavimas uþtruko: " << read_time.count() << " sekundes" << std::endl;
-    failas1.close();
 }
+
 
 // Function to sort students
 void sortStudents(vector<Studentas>& studentai, int sortpasirinkimas) {
@@ -297,4 +301,30 @@ std::istream& operator>>(std::istream& is, Studentas& studentas) {
         studentas.addGrade(pazymys);
     }
     return is;
+}
+void testConstructors() {
+    std::vector<double> grades = { 5, 6, 7, 8, 9 };
+    // Test parameterized constructor
+    Studentas s1;
+    s1.setVardas("Skirmantas");
+    s1.setPavarde("Strasinskas");
+    s1.setEgzaminoRez(8);
+    for (double grade : grades) {
+        s1.addGrade(grade);
+    }
+    s1.calculateFinalGrades();
+    std::cout << "Parameterized Constructor (s1): " << s1.getVardas() << " " << s1.getPavarde() << std::endl;
+
+    // Test copy constructor
+    Studentas s2(s1);
+    std::cout << "Copy Constructor (s1 copy - > s2): " << s2.getVardas() << " " << s2.getPavarde() << std::endl;
+
+    // Test move constructor
+    Studentas s3(std::move(s2));
+    std::cout << "Move Constructor (s2 move -> s3): " << s3.getVardas() << " " << s3.getPavarde() << std::endl;
+    cout << "s2 liekana: " << s2.getVardas() << " " << s2.getPavarde() << endl;
+
+    // Test default constructor
+    Studentas s4;
+    std::cout << "Default Constructor: " << s4.getVardas() << " " << s4.getPavarde() << std::endl;
 }

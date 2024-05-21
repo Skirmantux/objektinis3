@@ -22,12 +22,13 @@ int main()
         << "5. Baigti programà\n"
         << "6. Generuoti studentø failà\n"
         << "7. Strategijø testavimas\n"
+        << "8. Studento klasës operatoriø testavimas\n"
         << "Pasirinkimas: ";
 
     while (true) {
         try {
             cin >> pasirinkimas;
-            if (pasirinkimas < 1 || pasirinkimas > 7) {
+            if (pasirinkimas < 1 || pasirinkimas > 8) {
                 throw invalid_argument("Netinkama ávestis.");
             }
             break;
@@ -327,6 +328,10 @@ int main()
             studentai.clear();
             normalus.clear();
             nenormalus.clear();
+            break;
+        }
+        else if (pasirinkimas == 8) {
+            testConstructors();
             break;
         }
         if (!studentai.empty())

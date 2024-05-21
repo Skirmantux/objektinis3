@@ -8,13 +8,13 @@ string GeneruotiVardus()
 
 string GeneruotiPavardes()
 {
-    vector<string> pavardes = { "Kazlauskas", "Petrauskas", "StankeviÄius", "Gudelis", "LukÅ¡ys" };
+    vector<string> pavardes = { "Kazlauskas", "Petrauskas", "Stankevièius", "Gudelis", "Lukğys" };
     return pavardes[rand() % pavardes.size()];
 }
 
 void PatikrintiTeigiamajiSkaiciu(double skaicius) {
     if (skaicius < 0 || skaicius > 10) {
-        throw invalid_argument("Netinkamas skaiÄius");
+        throw invalid_argument("Netinkamas skaièius");
     }
 }
 

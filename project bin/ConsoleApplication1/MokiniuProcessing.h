@@ -12,7 +12,9 @@
 #include <chrono>
 #include <iomanip>
 #include "Studentas.h"
+
 using namespace std;
+
 string GeneruotiVardus();
 string GeneruotiPavardes();
 void PatikrintiTeigiamajiSkaiciu(double skaicius);

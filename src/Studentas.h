@@ -25,7 +25,7 @@ public:
     std::string getVardas() const { return vardas_; }
     std::string getPavarde() const { return pavarde_; }
     double getEgzaminoRez() const { return egzaminorez_; }
-    const std::vector<double>& getNamudarbuRez() const { return namudarburez_; }
+    std::vector<double>& getNamudarbuRez() { return namudarburez_; }
 
     // Setters
     void setVardas(const std::string& vardas) { vardas_ = vardas; }
@@ -36,6 +36,14 @@ public:
     // Other member functions
     std::istream& readStudent(std::istream&);
     void calculateFinalGrades();
+
+    //Destructor
+    ~Studentas();
+    Studentas(const Studentas& other);
+    Studentas& operator=(const Studentas& other);
+    Studentas(Studentas&& other) noexcept;
+    Studentas& operator=(Studentas&& other) noexcept;
+
 };
 
 bool vardolyginimas(const Studentas& a, const Studentas& b);
@@ -50,3 +58,4 @@ void partitionStudents2(std::vector<Studentas>& studentai, std::vector<Studentas
 void partitionStudents3(std::vector<Studentas>& studentai, std::vector<Studentas>& normalus, std::vector<Studentas>& nenormalus);
 void WriteWeirdStudents(std::vector<Studentas>& nenormalus);
 void WriteNormalStudents(std::vector<Studentas>& normalus);
+void testConstructors();

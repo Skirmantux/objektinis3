@@ -1,5 +1,4 @@
 Pavarde        Vardas         Galutinis balas (vid.)        
-Pavarde1       Vardas1        2.64                          
 Pavarde7       Vardas7        2.12                          
 Pavarde8       Vardas8        4.20                          
 Pavarde10      Vardas10       2.68                          

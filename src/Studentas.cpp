@@ -4,7 +4,7 @@
 #include <chrono>  
 #include <algorithm> 
 
-using namespace std; // For brevity
+using namespace std;
 
 // Constructor implementation
 Studentas::Studentas() : egzaminorez_(0.0) {
@@ -79,8 +79,8 @@ void PrintStudents(const vector<Studentas>& studentai) {
 
 void WriteNormalStudents(std::vector<Studentas>& normalus)
 {
-    cout << "Normalus studentai spausdinami Ä¯ failÄ… 'normalÅ«s.txt'." << endl;
-    ofstream failas2("normalÅ«s.txt");
+    cout << "Normalus studentai spausdinami á failà 'normalûs.txt'." << endl;
+    ofstream failas2("normalûs.txt");
     failas2 << fixed << setprecision(2);
     failas2 << left << setw(15) << "Pavarde" << setw(15) << "Vardas";
     failas2 << setw(30) << "Galutinis balas (vid.)" << endl;
@@ -92,8 +92,8 @@ void WriteNormalStudents(std::vector<Studentas>& normalus)
 
 void WriteWeirdStudents(std::vector<Studentas>& nenormalus)
 {
-    cout << "Nenormalus studentai spausdinami Ä¯ failÄ… 'nenormalÅ«s.txt'." << endl;
-    std::ofstream nenormalus1("nenormalÅ«s.txt");
+    cout << "Nenormalus studentai spausdinami á failà 'nenormalûs.txt'." << endl;
+    std::ofstream nenormalus1("nenormalûs.txt");
     nenormalus1 << std::fixed << std::setprecision(2);
     nenormalus1 << std::left << std::setw(15) << "Pavarde" << std::setw(15) << "Vardas";
     nenormalus1 << std::setw(30) << "Galutinis balas (vid.)" << std::endl;
@@ -105,28 +105,32 @@ void WriteWeirdStudents(std::vector<Studentas>& nenormalus)
 
 // Function to read and process data
 void readAndProcessData(const std::string& filename, std::vector<Studentas>& studentai, int& namudarbai, int studentuskaicius) {
-    std::ifstream failas1;
-    failas1.open(filename);
+    std::ifstream failas1(filename);
     if (!failas1.is_open()) {
         std::cerr << "Unable to open file: " << filename << std::endl;
         return;
     }
     std::string line;
-    std::string vardas, pavarde;
+    std::getline(failas1, line); // Skip the header line
     std::chrono::high_resolution_clock::time_point atidarymo_pradzia = std::chrono::high_resolution_clock::now();
     studentai.reserve(studentuskaicius);
-    while (failas1 >> std::ws && getline(failas1, line)) {
+    while (std::getline(failas1, line)) {
+        if (line.empty()) {
+            continue; // Skip empty lines
+        }
         Studentas stud;
         std::istringstream iss(line);
+        std::string vardas, pavarde;
         if (!(iss >> vardas >> pavarde)) {
+            std::cerr << "Error reading name and surname." << std::endl;
             break;
         }
         stud.setVardas(vardas);
         stud.setPavarde(pavarde);
         double grade;
-        for (int i = 0; i < namudarbai; i++) {
+        for (int i = 0; i < namudarbai; ++i) {
             if (!(iss >> grade)) {
-                std::cerr << "Error reading grades." << std::endl;
+                std::cerr << "Error reading grade " << (i + 1) << "." << std::endl;
                 return;
             }
             stud.addGrade(grade);
@@ -142,9 +146,9 @@ void readAndProcessData(const std::string& filename, std::vector<Studentas>& stu
     }
     std::chrono::high_resolution_clock::time_point atidarymo_pabaiga = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> read_time = atidarymo_pabaiga - atidarymo_pradzia;
-    std::cout << "Duomenu nuskaitymas iÅ¡ failo Ä¯ konteinerÄ¯ ir galutiniÅ³ balÅ³ skaiÄiavimas uÅ¾truko: " << read_time.count() << " sekundes" << std::endl;
-    failas1.close();
+    std::cout << "Duomenu nuskaitymas ið failo á konteinerá ir galutiniø balø skaièiavimas uþtruko: " << read_time.count() << " sekundes" << std::endl;
 }
+
 
 // Function to sort students
 void sortStudents(vector<Studentas>& studentai, int sortpasirinkimas) {
@@ -152,7 +156,7 @@ void sortStudents(vector<Studentas>& studentai, int sortpasirinkimas) {
     switch (sortpasirinkimas) {
     case 1: sort(studentai.begin(), studentai.end(), vidurkiolyginimas); break;
     case 2: sort(studentai.begin(), studentai.end(), medianoslyginimas); break;
-    default: cout << "Netinkamas pasirinkimas. Pasirinkite iÅ¡ naujo." << endl; return;
+    default: cout << "Netinkamas pasirinkimas. Pasirinkite ið naujo." << endl; return;
     }
     auto sort_pabaiga = chrono::high_resolution_clock::now();
     chrono::duration<double> sort_time = sort_pabaiga - sort_pradzia;
@@ -161,7 +165,7 @@ void sortStudents(vector<Studentas>& studentai, int sortpasirinkimas) {
 
 // Function to partition students (method 1)
 void partitionStudents1(const vector<Studentas>& studentai, vector<Studentas>& normalus, vector<Studentas>& nenormalus) {
-    cout << "Studentai dalinami Ä¯ normalius ir nenormalius." << endl;
+    cout << "Studentai dalinami á normalius ir nenormalius." << endl;
     auto normnenorm_pradzia = chrono::high_resolution_clock::now();
     for (const auto& stud : studentai) {
         if (stud.galutinisbalasvidurkis_ >= 5.0) normalus.push_back(stud);
@@ -169,12 +173,12 @@ void partitionStudents1(const vector<Studentas>& studentai, vector<Studentas>& n
     }
     auto normnenorm_pabaiga = chrono::high_resolution_clock::now();
     chrono::duration<double> normnenorm_time = normnenorm_pabaiga - normnenorm_pradzia;
-    cout << "StudentÅ³ rÅ«Å¡iavimas Ä¯ normalius ir nenormalius uÅ¾truko " << normnenorm_time.count() << " sekundes" << endl;
+    cout << "Studentø rûðiavimas á normalius ir nenormalius uþtruko " << normnenorm_time.count() << " sekundes" << endl;
 }
 
 // Function to partition students (method 2)
 void partitionStudents2(vector<Studentas>& studentai, vector<Studentas>& nenormalus) {
-    cout << "Studentai dalinami Ä¯ normalius ir nenormalius." << endl;
+    cout << "Studentai dalinami á normalius ir nenormalius." << endl;
     auto normnenorm_pradzia = chrono::high_resolution_clock::now();
     auto iter = remove_if(studentai.begin(), studentai.end(),
         [&nenormalus](const Studentas& s) {
@@ -187,12 +191,12 @@ void partitionStudents2(vector<Studentas>& studentai, vector<Studentas>& nenorma
     studentai.erase(iter, studentai.end());
     auto normnenorm_pabaiga = chrono::high_resolution_clock::now();
     chrono::duration<double> normnenorm_time = normnenorm_pabaiga - normnenorm_pradzia;
-    cout << "StudentÅ³ rÅ«Å¡iavimas Ä¯ normalius ir nenormalius uÅ¾truko " << normnenorm_time.count() << " sekundes" << endl;
+    cout << "Studentø rûðiavimas á normalius ir nenormalius uþtruko " << normnenorm_time.count() << " sekundes" << endl;
 }
 
 // Function to partition students (method 3)
 void partitionStudents3(vector<Studentas>& studentai, vector<Studentas>& normalus, vector<Studentas>& nenormalus) {
-    cout << "Studentai dalinami Ä¯ normalius ir nenormalius." << endl;
+    cout << "Studentai dalinami á normalius ir nenormalius." << endl;
     auto normnenorm_pradzia = chrono::high_resolution_clock::now();
     auto partition_point = partition(studentai.begin(), studentai.end(),
         [](const Studentas& stud) {
@@ -203,6 +207,124 @@ void partitionStudents3(vector<Studentas>& studentai, vector<Studentas>& normalu
     studentai.clear();
     auto normnenorm_pabaiga = chrono::high_resolution_clock::now();
     chrono::duration<double> normnenorm_time = normnenorm_pabaiga - normnenorm_pradzia;
-    cout << "StudentÅ³ rÅ«Å¡iavimas Ä¯ normalius ir nenormalius uÅ¾truko " << normnenorm_time.count() << " sekundes" << endl;
+    cout << "Studentø rûðiavimas á normalius ir nenormalius uþtruko " << normnenorm_time.count() << " sekundes" << endl;
+}
+//bomberis
+Studentas::~Studentas() {
+    vardas_ = "";
+    pavarde_ = "";
+    namudarburez_.clear();
+    egzaminorez_ = 0.0;
 }
 
+// Copy constructor implementation
+Studentas::Studentas(const Studentas& other)
+    : vardas_(other.vardas_), pavarde_(other.pavarde_),
+    namudarburez_(other.namudarburez_), egzaminorez_(other.egzaminorez_),
+    namudarburezsuma_(other.namudarburezsuma_), vidurkis_(other.vidurkis_),
+    galutinisbalasvidurkis_(other.galutinisbalasvidurkis_),
+    mediana_(other.mediana_), galutinisbalasmediana_(other.galutinisbalasmediana_) {}
+
+// Copy assignment operator implementation
+Studentas& Studentas::operator=(const Studentas& other) {
+    if (this != &other) {
+        vardas_ = other.vardas_;
+        pavarde_ = other.pavarde_;
+        namudarburez_ = other.namudarburez_;
+        egzaminorez_ = other.egzaminorez_;
+        namudarburezsuma_ = other.namudarburezsuma_;
+        vidurkis_ = other.vidurkis_;
+        galutinisbalasvidurkis_ = other.galutinisbalasvidurkis_;
+        mediana_ = other.mediana_;
+        galutinisbalasmediana_ = other.galutinisbalasmediana_;
+    }
+    return *this;
+}
+
+// Move constructor implementation
+Studentas::Studentas(Studentas&& other) noexcept
+    : vardas_(std::move(other.vardas_)), pavarde_(std::move(other.pavarde_)),
+    namudarburez_(std::move(other.namudarburez_)), egzaminorez_(other.egzaminorez_),
+    namudarburezsuma_(other.namudarburezsuma_), vidurkis_(other.vidurkis_),
+    galutinisbalasvidurkis_(other.galutinisbalasvidurkis_),
+    mediana_(other.mediana_), galutinisbalasmediana_(other.galutinisbalasmediana_) {
+    // Resetting the moved object
+    other.namudarburezsuma_ = 0.0;
+    other.vidurkis_ = 0.0;
+    other.galutinisbalasvidurkis_ = 0.0;
+    other.mediana_ = 0.0;
+    other.galutinisbalasmediana_ = 0.0;
+}
+
+// Move assignment operator implementation
+Studentas& Studentas::operator=(Studentas&& other) noexcept {
+    if (this != &other) {
+        vardas_ = std::move(other.vardas_);
+        pavarde_ = std::move(other.pavarde_);
+        namudarburez_ = std::move(other.namudarburez_);
+        egzaminorez_ = other.egzaminorez_;
+        namudarburezsuma_ = other.namudarburezsuma_;
+        vidurkis_ = other.vidurkis_;
+        galutinisbalasvidurkis_ = other.galutinisbalasvidurkis_;
+        mediana_ = other.mediana_;
+        galutinisbalasmediana_ = other.galutinisbalasmediana_;
+
+        // Resetting the moved object
+        other.namudarburezsuma_ = 0.0;
+        other.vidurkis_ = 0.0;
+        other.galutinisbalasvidurkis_ = 0.0;
+        other.mediana_ = 0.0;
+        other.galutinisbalasmediana_ = 0.0;
+    }
+    return *this;
+}
+// Output Operator (Serialization)
+std::ostream& operator<<(std::ostream& os, Studentas& studentas) {
+    os << studentas.getVardas() << " " << studentas.getPavarde() << " " << studentas.getEgzaminoRez() << " ";
+    for (double pazymys : studentas.getNamudarbuRez()) {
+        os << pazymys << " ";
+    }
+    return os;
+}
+
+// Input Operator (Deserialization)
+std::istream& operator>>(std::istream& is, Studentas& studentas) {
+    std::string vardas, pavarde;
+    double egzaminas;
+    is >> vardas >> pavarde >> egzaminas;
+    studentas.setVardas(vardas);
+    studentas.setPavarde(pavarde);
+    studentas.setEgzaminoRez(egzaminas);
+    studentas.getNamudarbuRez().clear();
+    double pazymys;
+    while (is >> pazymys) {
+        studentas.addGrade(pazymys);
+    }
+    return is;
+}
+void testConstructors() {
+    std::vector<double> grades = { 5, 6, 7, 8, 9 };
+    // Test parameterized constructor
+    Studentas s1;
+    s1.setVardas("Skirmantas");
+    s1.setPavarde("Strasinskas");
+    s1.setEgzaminoRez(8);
+    for (double grade : grades) {
+        s1.addGrade(grade);
+    }
+    s1.calculateFinalGrades();
+    std::cout << "Parameterized Constructor (s1): " << s1.getVardas() << " " << s1.getPavarde() << std::endl;
+
+    // Test copy constructor
+    Studentas s2(s1);
+    std::cout << "Copy Constructor (s1 copy - > s2): " << s2.getVardas() << " " << s2.getPavarde() << std::endl;
+
+    // Test move constructor
+    Studentas s3(std::move(s2));
+    std::cout << "Move Constructor (s2 move -> s3): " << s3.getVardas() << " " << s3.getPavarde() << std::endl;
+    cout << "s2 liekana: " << s2.getVardas() << " " << s2.getPavarde() << endl;
+
+    // Test default constructor
+    Studentas s4;
+    std::cout << "Default Constructor: " << s4.getVardas() << " " << s4.getPavarde() << std::endl;
+}
