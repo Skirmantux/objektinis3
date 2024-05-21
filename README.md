@@ -37,6 +37,8 @@ Tai optimizuoja išvedimą į įvesties srauto (std::cout arba std::ofstream) i�
 
 ## Ankstesnių versijų aprašymai:
 ### [v1.2](https://github.com/Skirmantux/objektinis2/releases/tag/v1.2.0)
+- Vietoj įprastų operatorių naudojami "Rule of five" operatoriai.
+- Parašyti testai, tikrinantys ar veikiantys metodai veikia adekvačiai.
 ### [v1.1](https://github.com/Skirmantux/objektinis2/releases/tag/v1.1.0)
 - Vietoje struktūrų tipų naudojame klases, kurios veikia truputį efektyviau, ypač esant dideliam studentų skaičiui.
 - Nauji testavimo tyrimai.
