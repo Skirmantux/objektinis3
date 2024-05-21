@@ -11,6 +11,7 @@
 - SSD: 2TB NVMe KINGSTON SKC3000
 
 ## Ankstesnių versijų aprašymai:
+### [v1.1](https://github.com/Skirmantux/objektinis2/releases/tag/v1.1.0)
 ### [v1.0](https://github.com/Skirmantux/objektinis1/releases/tag/v1.0)
 - Daug įvairių atnaujinimų.
 
