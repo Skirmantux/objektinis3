@@ -3,7 +3,16 @@
 #include <string>
 #include <vector>
 
-class Studentas {
+class Zmogus {
+public:
+    virtual ~Zmogus() = default;
+    // Getters
+    virtual std::string getVardas() const = 0;
+    virtual std::string getPavarde() const = 0;
+    virtual double getEgzaminoRez() const = 0;
+    virtual std::vector<double>& getNamudarbuRez() = 0;
+};
+class Studentas: public Zmogus {
 private:
     std::string vardas_;
     std::string pavarde_;
@@ -45,6 +54,8 @@ public:
     Studentas& operator=(Studentas&& other) noexcept;
 
 };
+// Negalima kurti zmogus objekto - 
+// Zmogus a;
 
 bool vardolyginimas(const Studentas& a, const Studentas& b);
 bool pavardeslyginimas(const Studentas& a, const Studentas& b);
@@ -59,3 +70,4 @@ void partitionStudents3(std::vector<Studentas>& studentai, std::vector<Studentas
 void WriteWeirdStudents(std::vector<Studentas>& nenormalus);
 void WriteNormalStudents(std::vector<Studentas>& normalus);
 void testConstructors();
+
