@@ -16,7 +16,7 @@ Bent dalis šių metodų jau buvo naudojamos mano programoje, todėl laikantis t
 
 ## Input/Output operators
 
-Input ir Output operatoriai buvo perkrauti Studentas klasei:
+###Input ir Output operatoriai buvo perkrauti Studentas klasei:
 
 Input perkrovimas:
 
