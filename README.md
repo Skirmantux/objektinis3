@@ -4,6 +4,25 @@
 - Vietoj įprastų operatorių naudojami "Rule of five" operatoriai.
 - Parašyti testai, tikrinantys ar veikiantys metodai veikia adekvačiai.
 
+## Rule of Five
+Rule of Five yra C++ taisyklė, kuri nurodo, jei klasė turi bet kurį iš šių narių funkcijų, tai ji turėtų turėti juos visus arba nei vieno:
+- Destructor;
+- Copy contructor;
+- Copy assignment operator;
+- Mover constructor;
+- Move assignment operator;
+
+Bent dalis šių metodų jau buvo naudojamos mano programoje, todėl laikantis taisyklės, reikėjo implementuoti ir kitus. Tai užtikrina tinkamą resource naudojimą, kai klasės Studentas objektai yra kopijuojami arba perkeliami.
+
+## Input/Output operators
+Input ir Output operatoriai buvo perkrauti Studentas klasei:
+Input perkrovimas:
+
+Tai optimizuoja skaitymą iš įvesties srauto (std::cin arba std::ifstream) į Studentas objektą.
+Output perkrovimas:
+
+Tai optimizuoja išvedimą į įvesties srauto (std::cout arba std::ofstream) iš Studentas objekto.
+
 ## Kompiuterio Specifikacijos:
 - CPU: Intel Core i5-12450H
 - GPU: NVIDIA RTX 4060 Laptop GPU
