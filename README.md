@@ -12,6 +12,8 @@
 
 ## Ankstesnių versijų aprašymai:
 ### [v1.1](https://github.com/Skirmantux/objektinis2/releases/tag/v1.1.0)
+- Vietoje struktūrų tipų naudojame klases, kurios veikia truputį efektyviau, ypač esant dideliam studentų skaičiui.
+- Nauji testavimo tyrimai.
 ### [v1.0](https://github.com/Skirmantux/objektinis1/releases/tag/v1.0)
 - Daug įvairių atnaujinimų.
 
