@@ -1,8 +1,8 @@
-# v1.1
+# v1.2
 
 ## Pakeitimai:
-- Vietoje struktūrų tipų naudojame klases, kurios veikia truputį efektyviau, ypač esant dideliam studentų skaičiui.
-- Nauji testavimo tyrimai.
+- Vietoj įprastų operatorių naudojami "Rule of five" operatoriai.
+- Parašyti testai, tikrinantys ar veikiantys metodai veikia adekvačiai.
 
 ## Kompiuterio Specifikacijos:
 - CPU: Intel Core i5-12450H
