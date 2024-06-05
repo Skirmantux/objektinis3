@@ -9,6 +9,9 @@
 - Programos klasė pratestuota naudojant Google Tests (Unit Tests).
 ![image](https://github.com/Skirmantux/objektinis2/assets/149015954/4fb3c5e5-02d1-4b18-8855-edf953097cb1)
 
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/b51d93b0-90a1-4562-aa6f-86fa4ed9991b)
+
+
 ## Rule of Five
 Rule of Five yra C++ taisyklė, kuri nurodo, jei klasė turi bet kurį iš šių narių funkcijų, tai ji turėtų turėti juos visus arba nei vieno:
 - Destructor;
