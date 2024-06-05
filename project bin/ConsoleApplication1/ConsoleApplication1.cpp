@@ -1,19 +1,27 @@
 #include "MokiniuProcessing.h"
 #include "Skaiciavimaidarbai.h"
 
-using namespace std;
-
+/**
+ * @brief Main function that serves as the entry point of the program.
+ *
+ * The main function initializes the necessary components, handles user input, and directs
+ * the program flow based on the user's choices. It provides options for entering student data
+ * manually, generating random data, reading from files, and testing different strategies.
+ *
+ * @return int Returns 0 on successful execution.
+ */
 int main()
 {
-    setlocale(LC_ALL, "Lithuanian");
-    srand(time(NULL));
-    vector<Studentas> studentai;
-    vector<Studentas> normalus;
-    vector<Studentas> nenormalus;
-    int pasirinkimas;
-    chrono::duration<double> process_time;
-    chrono::duration<double> read_time;
-
+    //main function
+    setlocale(LC_ALL, "Lithuanian"); // Sets the locale to Lithuanian
+    srand(time(NULL)); // Seeds the random number generator with the current time
+    vector<Studentas> studentai; // Vector to store all students
+    vector<Studentas> normalus; // Vector to store normal students
+    vector<Studentas> nenormalus; // Vector to store abnormal students
+    int pasirinkimas; // Variable to store the user's choice
+    chrono::duration<double> process_time; // Variable to measure processing time
+    chrono::duration<double> read_time; // Variable to measure reading time
+    //menu selection
     cout << "Pasirinkite balø ávedimo metodà/generavimo funkcijà:\n"
         << "1. Ávesti rankiniu bûdu\n"
         << "2. Sugeneruoti atsitiktinius balus\n"
@@ -26,8 +34,9 @@ int main()
         << "Pasirinkimas: ";
 
     while (true) {
+        //try selection
         try {
-            cin >> pasirinkimas;
+            std::cin >> pasirinkimas;
             if (pasirinkimas < 1 || pasirinkimas > 8) {
                 throw invalid_argument("Netinkama ávestis.");
             }
@@ -35,9 +44,9 @@ int main()
         }
         catch (const exception& e) {
             cerr << e.what() << endl;
-            cout << "Pasirinkimas: ";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            std::cout << "Pasirinkimas: ";
+            std::cin.clear();
+            std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
     }
 
@@ -48,28 +57,28 @@ int main()
         if (pasirinkimas == 1) {
             while (true) {
                 try {
-                    cout << "Áveskite studento vardà ir pavardæ. Norëdami baigti ávedimà, áveskite -1: ";
-                    cin >> vardas;
+                    std::cout << "Áveskite studento vardà ir pavardæ. Norëdami baigti ávedimà, áveskite -1: ";
+                    std::cin >> vardas;
                     stud.setVardas(vardas);
                     if (vardas == "-1")
                         break;
                     if (ContainsNumbers(vardas)) {
                         throw invalid_argument("Vardas negali turëti skaièiø. Praðome ávesti vardà be skaièiø.");
                     }
-                    cin >> pavarde;
+                    std::cin >> pavarde;
                     stud.setPavarde(pavarde);
                     if (pavarde == "-1")
                         break;
                     if (ContainsNumbers(pavarde)) {
                         throw invalid_argument("Pavardë negali turëti skaièiø. Praðome ávesti pavardæ be skaièiø.");
                     }
-                    cout << "Áveskite namø darbø rezultatus. Norëdami baigti ávedimà, áveskite -1: ";
+                    std::cout << "Áveskite namø darbø rezultatus. Norëdami baigti ávedimà, áveskite -1: ";
                     while (true) {
                         double namudarburezultatas;
-                        if (!(cin >> namudarburezultatas)) {
-                            cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
-                            cin.clear();
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        if (!(std::cin >> namudarburezultatas)) {
+                            std::cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
+                            std::cin.clear();
+                            std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                             continue;
                         }
                         if (namudarburezultatas == -1)
@@ -78,12 +87,12 @@ int main()
                             stud.addGrade(namudarburezultatas);
                         }
                         else {
-                            cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
+                            std::cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
                         }
                     }
                     double egzaminorezultatas;
-                    cout << "Áveskite egzamino rezultatà: ";
-                    cin >> egzaminorezultatas;
+                    std::cout << "Áveskite egzamino rezultatà: ";
+                    std::cin >> egzaminorezultatas;
                     stud.setEgzaminoRez(egzaminorezultatas);
                     if (egzaminorezultatas < 0 || egzaminorezultatas > 10) {
                         throw out_of_range("Netinkama ávestis.");
@@ -92,23 +101,24 @@ int main()
                 }
                 catch (const exception& e) {
                     cerr << e.what() << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    std::cin.clear();
+                    std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
             }
         }
         else if (pasirinkimas == 2) {
+            //Manual input with random grade generation
             while (true) {
                 Studentas stud;
-                cout << "Áveskite studento vardà ir pavardæ. Norëdami baigti ávedimà, áveskite -1: ";
+                std::cout << "Áveskite studento vardà ir pavardæ. Norëdami baigti ávedimà, áveskite -1: ";
                 std::string vardas, pavarde;
-                cin >> vardas;
+                std::cin >> vardas;
                 if (vardas == "-1")
                     break;
-                cin >> pavarde;
+                std::cin >> pavarde;
                 stud.setVardas(vardas);
                 stud.setPavarde(pavarde);
-                cout << "Generuojami atsitiktiniai balai uþ namø darbus..." << endl;
+                std::cout << "Generuojami atsitiktiniai balai uþ namø darbus..." << endl;
                 for (int i = 0; i < 5; ++i) {
                     stud.addGrade(GenerateRandomGrade());
                 }
@@ -118,7 +128,8 @@ int main()
             }
         }
         else if (pasirinkimas == 3) {
-            cout << "Generuojami balai, vardai ir pavardës ir studentø kiekis spausdinimui" << endl;
+            //Grade, name and surname and student amount generation
+            std::cout << "Generuojami balai, vardai ir pavardës ir studentø kiekis spausdinimui" << endl;
             int studentukiekis = rand() % 50;
             for (int i = 0; i < studentukiekis; ++i) {
                 Studentas stud;
@@ -133,12 +144,13 @@ int main()
             }
         }
         else if (pasirinkimas == 4) {
+            // Student file reading and processing
             while (true) {
                 try {
                     auto start_read = chrono::high_resolution_clock::now();
-                    cout << "Kuri faila norite atidaryti:\n1 - studentai10000.txt\n2 - studentai100000.txt\n3 - studentai1000000.txt\nPasirinkimas: ";
+                    std::cout << "Kuri faila norite atidaryti:\n1 - studentai10000.txt\n2 - studentai100000.txt\n3 - studentai1000000.txt\nPasirinkimas: ";
                     int failopasirinkimas;
-                    cin >> failopasirinkimas;
+                    std::cin >> failopasirinkimas;
                     string failoPavadinimas;
                     switch (failopasirinkimas) {
                     case 1:
@@ -194,24 +206,26 @@ int main()
                 }
                 catch (const exception& e) {
                     cerr << e.what() << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    std::cin.clear();
+                    std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
             }
         }
         else if (pasirinkimas == 5) {
-            cout << "Programa baigia darbà." << endl;
+            // Exit selection
+            std::cout << "Programa baigia darbà." << endl;
             break;
         }
         else if (pasirinkimas == 6) {
-            cout << "Ar norite generuoti studentø failà? (1 - taip, 2 - ne): ";
+            // Generate student file
+            std::cout << "Ar norite generuoti studentø failà? (1 - taip, 2 - ne): ";
             int pasirinkimasgen;
-            cin >> pasirinkimasgen;
+            std::cin >> pasirinkimasgen;
             auto veikimo_pradzia = chrono::high_resolution_clock::now();
             if (pasirinkimasgen == 1) {
-                cout << "Pasirinkite kiek studentø norite sugeneruoti:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:";
+                std::cout << "Pasirinkite kiek studentø norite sugeneruoti:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:";
                 int studentugen;
-                cin >> studentugen;
+                std::cin >> studentugen;
                 auto start_read = chrono::high_resolution_clock::now();
                 switch (studentugen)
                 {
@@ -231,16 +245,16 @@ int main()
                     GeneruotiFaila("studentaic10000000.txt", 10000000);
                     break;
                 default:
-                    cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
+                    std::cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
                     continue;
                 }
                 auto end_read = chrono::high_resolution_clock::now();
                 read_time = end_read - start_read;
-                cout << "Failo kurimas ir jo uzdarymas uztruko: " << read_time.count() << " sekundes" << endl;
+                std::cout << "Failo kurimas ir jo uzdarymas uztruko: " << read_time.count() << " sekundes" << endl;
             }
-            cout << "Kurá failà norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
+            std::cout << "Kurá failà norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
             int failopasirinkimas;
-            cin >> failopasirinkimas;
+            std::cin >> failopasirinkimas;
             string readFilename;
             int studentuskaicius;
             switch (failopasirinkimas) {
@@ -268,28 +282,29 @@ int main()
                 NetinkamaIvestis();
                 return 0;
             }
-            vector<Studentas> studentai;
             int namudarbai = 5;
             readAndProcessData(readFilename, studentai, namudarbai, studentuskaicius);
-            vector<Studentas> normalus;
-            vector<Studentas> nenormalus;
             partitionStudents1(studentai, normalus, nenormalus);
             auto start_write = chrono::high_resolution_clock::now();
             WriteWeirdStudents(nenormalus);
             WriteNormalStudents(normalus);
             auto end_write = chrono::high_resolution_clock::now();
             chrono::duration<double> write_time = end_write - start_write;
-            cout << "Rasymas i failus uztruko : " << write_time.count() << " sekundes" << endl;
+            std::cout << "Rasymas i failus uztruko : " << write_time.count() << " sekundes" << endl;
             auto veikimo_pabaiga = chrono::high_resolution_clock::now();
             chrono::duration<double> process_time = veikimo_pabaiga - veikimo_pradzia;
-            cout << "Programa viso uztruko " << process_time.count() << " sekundes" << endl;
+            std::cout << "Programa viso uztruko " << process_time.count() << " sekundes" << endl;
+            normalus.clear();
+            nenormalus.clear();
+            studentai.clear();
             break;
-            }
+        }
         else if (pasirinkimas == 7) {
-            cout << "Bandoma pirma strategija..." << endl;
-            cout << "Kurá failà norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
+            // Reading strategy testing
+            std::cout << "Bandoma pirma strategija..." << endl;
+            std::cout << "Kurá failà norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
             int failopasirinkimas;
-            cin >> failopasirinkimas;
+            std::cin >> failopasirinkimas;
             string filename;
             int studentuskaicius;
             switch (failopasirinkimas) {
@@ -299,29 +314,26 @@ int main()
             case 4: filename = "studentaic1000000.txt"; studentuskaicius = 1000000; break;
             case 5: filename = "studentaic10000000.txt"; studentuskaicius = 10000000; break;
             default:
-                cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
+                std::cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
                 return 1;
             }
-            vector<Studentas> studentai;
             int namudarbai = 5;
             readAndProcessData(filename, studentai, namudarbai, studentuskaicius);
-            cout << "Kaip norite rusiuoti studentø vektoriø?\n1. Pagal vidurká\n2. Pagal medianà\nPasirinkimas: ";
+            std::cout << "Kaip norite rusiuoti studentø vektoriø?\n1. Pagal vidurká\n2. Pagal medianà\nPasirinkimas: ";
             int sortpasirinkimas;
-            cin >> sortpasirinkimas;
+            std::cin >> sortpasirinkimas;
             sortStudents(studentai, sortpasirinkimas);
-            vector<Studentas> normalus;
-            vector<Studentas> nenormalus;
             partitionStudents1(studentai, normalus, nenormalus);
             studentai.clear();
             normalus.clear();
             nenormalus.clear();
-            cout << "Bandoma antra strategija..." << endl;
+            std::cout << "Bandoma antra strategija..." << endl;
             readAndProcessData(filename, studentai, namudarbai, studentuskaicius);
             sortStudents(studentai, sortpasirinkimas);
             partitionStudents2(studentai, nenormalus);
             studentai.clear();
             nenormalus.clear();
-            cout << "Bandoma treèia strategija..." << endl;
+            std::cout << "Bandoma treèia strategija..." << endl;
             readAndProcessData(filename, studentai, namudarbai, studentuskaicius);
             sortStudents(studentai, sortpasirinkimas);
             partitionStudents3(studentai, normalus, nenormalus);
@@ -331,17 +343,18 @@ int main()
             break;
         }
         else if (pasirinkimas == 8) {
+            // Testing student class operators
             testConstructors();
-            break;
         }
         if (!studentai.empty())
+            // End screen for manual input
         {
-            cout << "Norite áraðyti duomenis atspausdinant á ekranà ar á failà?: 1 - ekranà; 2 - failà" << endl;
+            std::cout << "Norite áraðyti duomenis atspausdinant á ekranà ar á failà?: 1 - ekranà; 2 - failà" << endl;
             int skaicbudas;
-            cin >> skaicbudas;
-            cout << "Pasirinkite rikiavimo bûdà:\n1 - pagal vardus\n2 - pagal pavardes\n3 - pagal galutiná balà (vid.)\n4 - pagal galutiná balà (med.)\nPasirinkimas: ";
+            std::cin >> skaicbudas;
+            std::cout << "Pasirinkite rikiavimo bûdà:\n1 - pagal vardus\n2 - pagal pavardes\n3 - pagal galutiná balà (vid.)\n4 - pagal galutiná balà (med.)\nPasirinkimas: ";
             int sorting_choice;
-            cin >> sorting_choice;
+            std::cin >> sorting_choice;
             switch (sorting_choice)
             {
             case 1:
@@ -376,13 +389,13 @@ int main()
                 {
                     failasr << setw(15) << stud.getPavarde() << setw(15) << stud.getVardas() << setw(30) << fixed << setprecision(2) << stud.galutinisbalasvidurkis_ << setw(30) << fixed << setprecision(2) << stud.galutinisbalasmediana_ << endl;
                 }
-                cout << "Áraðymas sëkmingas. Rezultatai iðsaugoti faile kursioku_duomenys.txt" << endl;
+                std::cout << "Áraðymas sëkmingas. Rezultatai iðsaugoti faile kursioku_duomenys.txt" << endl;
                 failasr.close();
                 auto end_writing = chrono::high_resolution_clock::now();
                 chrono::duration<double> writeFile_time = end_writing - start_writing;
-                cout << "Skaitymas ið failo truko: " << read_time.count() << " sekundes" << endl;
-                cout << "Mokiniø vidurkio/medianos skaièiavimas uþtruko: " << process_time.count() << " sekundes" << endl;
-                cout << "Áraðymas á failà truko: " << writeFile_time.count() << " sekundes" << endl;
+                std::cout << "Skaitymas ið failo truko: " << read_time.count() << " sekundes" << endl;
+                std::cout << "Mokiniø vidurkio/medianos skaièiavimas uþtruko: " << process_time.count() << " sekundes" << endl;
+                std::cout << "Áraðymas á failà truko: " << writeFile_time.count() << " sekundes" << endl;
                 break;
             }
             else
@@ -393,11 +406,12 @@ int main()
         }
         else
         {
-            cout << "Studentø masyvas tuðèias." << endl;
+            std::cout << "Studentø masyvas tuðèias." << endl;
         }
     }
-    cout << "Vector programos versija baigta. Paspauskite bet koká mygtukà ir ENTER norint uþbaigti programà..." << endl;
+    std::cout << "Vector programos versija baigta. Paspauskite bet koká mygtukà ir ENTER norint uþbaigti programà..." << endl;
     int a;
-    cin >> a;
+    std::cin >> a;
     return 0;
 }
+

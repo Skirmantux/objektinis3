@@ -17,7 +17,7 @@ SRCS := $(wildcard $(SRC_DIR)/*.cpp)
 OBJS := $(patsubst $(SRC_DIR)/%.cpp, %.o, $(SRCS))
 
 # Executable name
-EXEC := v1.5.exe
+EXEC := v2.0.exe
 
 # Default target
 all: $(EXEC)
