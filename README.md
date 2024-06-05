@@ -2,7 +2,10 @@
 
 ## Pakeitimai:
 - Įkelta kodo dokumentacija HTML ir TeX (pdf) formomis.
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/d067ba4f-0435-4854-ab30-f5ef0aa470fc)
+
 - Programos klasė pratestuota naudojant Google Tests (Unit Tests).
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/4fb3c5e5-02d1-4b18-8855-edf953097cb1)
 
 ## Rule of Five
 Rule of Five yra C++ taisyklė, kuri nurodo, jei klasė turi bet kurį iš šių narių funkcijų, tai ji turėtų turėti juos visus arba nei vieno:
