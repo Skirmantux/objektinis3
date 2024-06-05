@@ -4,6 +4,8 @@
 - Įkelta kodo dokumentacija HTML ir TeX (pdf) formomis.
 ![image](https://github.com/Skirmantux/objektinis2/assets/149015954/d067ba4f-0435-4854-ab30-f5ef0aa470fc)
 
+![image](https://github.com/Skirmantux/objektinis2/assets/149015954/4b20bbda-e10c-4c73-983e-cb45f4c754b7)
+
 - Programos klasė pratestuota naudojant Google Tests (Unit Tests).
 ![image](https://github.com/Skirmantux/objektinis2/assets/149015954/4fb3c5e5-02d1-4b18-8855-edf953097cb1)
 
