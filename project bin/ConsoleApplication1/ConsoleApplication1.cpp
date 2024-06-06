@@ -1,5 +1,6 @@
 #include "MokiniuProcessing.h"
 #include "Skaiciavimaidarbai.h"
+#include "Vektorius.h"
 
 /**
  * @brief Main function that serves as the entry point of the program.
@@ -13,32 +14,32 @@
 int main()
 {
     //main function
-    setlocale(LC_ALL, "Lithuanian"); // Sets the locale to Lithuanian
     srand(time(NULL)); // Seeds the random number generator with the current time
-    vector<Studentas> studentai; // Vector to store all students
-    vector<Studentas> normalus; // Vector to store normal students
-    vector<Studentas> nenormalus; // Vector to store abnormal students
+    Vector<Studentas> studentai; // Vector to store all students
+    Vector<Studentas> normalus; // Vector to store normal students
+    Vector<Studentas> nenormalus; // Vector to store abnormal students
     int pasirinkimas; // Variable to store the user's choice
     chrono::duration<double> process_time; // Variable to measure processing time
     chrono::duration<double> read_time; // Variable to measure reading time
     //menu selection
-    cout << "Pasirinkite balø ávedimo metodà/generavimo funkcijà:\n"
-        << "1. Ávesti rankiniu bûdu\n"
+    cout << "Pasirinkite balu ivedimo metoda/generavimo funkcija:\n"
+        << "1. Ivesti rankiniu budu\n"
         << "2. Sugeneruoti atsitiktinius balus\n"
         << "3. Sugeneruoti balus, vardus ir pavardes\n"
-        << "4. Skaitymas ið failo\n"
-        << "5. Baigti programà\n"
-        << "6. Generuoti studentø failà\n"
-        << "7. Strategijø testavimas\n"
-        << "8. Studento klasës operatoriø testavimas\n"
+        << "4. Skaitymas is failo\n"
+        << "5. Baigti programa\n"
+        << "6. Generuoti studentu faila\n"
+        << "7. Strategiju testavimas\n"
+        << "8. Studento klases operatoriu testavimas\n"
+        << "9. Vektoriu klases testavimas\n"
         << "Pasirinkimas: ";
 
     while (true) {
         //try selection
         try {
             std::cin >> pasirinkimas;
-            if (pasirinkimas < 1 || pasirinkimas > 8) {
-                throw invalid_argument("Netinkama ávestis.");
+            if (pasirinkimas < 1 || pasirinkimas > 9) {
+                throw invalid_argument("Netinkama ivestis.");
             }
             break;
         }
@@ -57,26 +58,26 @@ int main()
         if (pasirinkimas == 1) {
             while (true) {
                 try {
-                    std::cout << "Áveskite studento vardà ir pavardæ. Norëdami baigti ávedimà, áveskite -1: ";
+                    std::cout << " veskite studento varda ir pavarde. Noredami baigti ivedima, iveskite -1: ";
                     std::cin >> vardas;
                     stud.setVardas(vardas);
                     if (vardas == "-1")
                         break;
                     if (ContainsNumbers(vardas)) {
-                        throw invalid_argument("Vardas negali turëti skaièiø. Praðome ávesti vardà be skaièiø.");
+                        throw invalid_argument("Vardas negali tureti skaiciu. Prasome ivesti varda be skaiciu.");
                     }
                     std::cin >> pavarde;
                     stud.setPavarde(pavarde);
                     if (pavarde == "-1")
                         break;
                     if (ContainsNumbers(pavarde)) {
-                        throw invalid_argument("Pavardë negali turëti skaièiø. Praðome ávesti pavardæ be skaièiø.");
+                        throw invalid_argument("Pavarde negali tureti skaiciu. Prasome ivesti pavarde be skaiciu.");
                     }
-                    std::cout << "Áveskite namø darbø rezultatus. Norëdami baigti ávedimà, áveskite -1: ";
+                    std::cout << " veskite nam  darb  rezultatus. Nor dami baigti  vedim ,  veskite -1: ";
                     while (true) {
                         double namudarburezultatas;
                         if (!(std::cin >> namudarburezultatas)) {
-                            std::cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
+                            std::cout << "Netinkama  vestis.  veskite skai i  tarp 0 ir 10." << endl;
                             std::cin.clear();
                             std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                             continue;
@@ -87,15 +88,15 @@ int main()
                             stud.addGrade(namudarburezultatas);
                         }
                         else {
-                            std::cout << "Netinkama ávestis. Áveskite skaièiø tarp 0 ir 10." << endl;
+                            std::cout << "Netinkama  vestis.  veskite skai i  tarp 0 ir 10." << endl;
                         }
                     }
                     double egzaminorezultatas;
-                    std::cout << "Áveskite egzamino rezultatà: ";
+                    std::cout << " veskite egzamino rezultat : ";
                     std::cin >> egzaminorezultatas;
                     stud.setEgzaminoRez(egzaminorezultatas);
                     if (egzaminorezultatas < 0 || egzaminorezultatas > 10) {
-                        throw out_of_range("Netinkama ávestis.");
+                        throw out_of_range("Netinkama  vestis.");
                     }
                     stud.calculateFinalGrades();
                 }
@@ -110,7 +111,7 @@ int main()
             //Manual input with random grade generation
             while (true) {
                 Studentas stud;
-                std::cout << "Áveskite studento vardà ir pavardæ. Norëdami baigti ávedimà, áveskite -1: ";
+                std::cout << " veskite studento vard  ir pavard . Nor dami baigti  vedim ,  veskite -1: ";
                 std::string vardas, pavarde;
                 std::cin >> vardas;
                 if (vardas == "-1")
@@ -118,7 +119,7 @@ int main()
                 std::cin >> pavarde;
                 stud.setVardas(vardas);
                 stud.setPavarde(pavarde);
-                std::cout << "Generuojami atsitiktiniai balai uþ namø darbus..." << endl;
+                std::cout << "Generuojami atsitiktiniai balai u  nam  darbus..." << endl;
                 for (int i = 0; i < 5; ++i) {
                     stud.addGrade(GenerateRandomGrade());
                 }
@@ -129,7 +130,7 @@ int main()
         }
         else if (pasirinkimas == 3) {
             //Grade, name and surname and student amount generation
-            std::cout << "Generuojami balai, vardai ir pavardës ir studentø kiekis spausdinimui" << endl;
+            std::cout << "Generuojami balai, vardai ir pavard s ir student  kiekis spausdinimui" << endl;
             int studentukiekis = rand() % 50;
             for (int i = 0; i < studentukiekis; ++i) {
                 Studentas stud;
@@ -213,17 +214,17 @@ int main()
         }
         else if (pasirinkimas == 5) {
             // Exit selection
-            std::cout << "Programa baigia darbà." << endl;
+            std::cout << "Programa baigia darb ." << endl;
             break;
         }
         else if (pasirinkimas == 6) {
             // Generate student file
-            std::cout << "Ar norite generuoti studentø failà? (1 - taip, 2 - ne): ";
+            std::cout << "Ar norite generuoti student  fail ? (1 - taip, 2 - ne): ";
             int pasirinkimasgen;
             std::cin >> pasirinkimasgen;
             auto veikimo_pradzia = chrono::high_resolution_clock::now();
             if (pasirinkimasgen == 1) {
-                std::cout << "Pasirinkite kiek studentø norite sugeneruoti:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:";
+                std::cout << "Pasirinkite kiek student  norite sugeneruoti:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:";
                 int studentugen;
                 std::cin >> studentugen;
                 auto start_read = chrono::high_resolution_clock::now();
@@ -245,14 +246,14 @@ int main()
                     GeneruotiFaila("studentaic10000000.txt", 10000000);
                     break;
                 default:
-                    std::cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
+                    std::cout << "Netinkamas pasirinkimas. Pra ome  vesti tinkam  pasirinkim : " << endl;
                     continue;
                 }
                 auto end_read = chrono::high_resolution_clock::now();
                 read_time = end_read - start_read;
                 std::cout << "Failo kurimas ir jo uzdarymas uztruko: " << read_time.count() << " sekundes" << endl;
             }
-            std::cout << "Kurá failà norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
+            std::cout << "Kur  fail  norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
             int failopasirinkimas;
             std::cin >> failopasirinkimas;
             string readFilename;
@@ -302,7 +303,7 @@ int main()
         else if (pasirinkimas == 7) {
             // Reading strategy testing
             std::cout << "Bandoma pirma strategija..." << endl;
-            std::cout << "Kurá failà norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
+            std::cout << "Kuri faila norite skaityti?:\n1. 1 000\n2. 10 000\n3. 100 000\n4. 1 000 000\n5. 10 000 000\nPasirinkimas:" << endl;
             int failopasirinkimas;
             std::cin >> failopasirinkimas;
             string filename;
@@ -314,12 +315,12 @@ int main()
             case 4: filename = "studentaic1000000.txt"; studentuskaicius = 1000000; break;
             case 5: filename = "studentaic10000000.txt"; studentuskaicius = 10000000; break;
             default:
-                std::cout << "Netinkamas pasirinkimas. Praðome ávesti tinkamà pasirinkimà: " << endl;
+                std::cout << "Netinkamas pasirinkimas. Prasome ivesti tinkama pasirinkima: " << endl;
                 return 1;
             }
             int namudarbai = 5;
             readAndProcessData(filename, studentai, namudarbai, studentuskaicius);
-            std::cout << "Kaip norite rusiuoti studentø vektoriø?\n1. Pagal vidurká\n2. Pagal medianà\nPasirinkimas: ";
+            std::cout << "Kaip norite rusiuoti studentu vektoriu?\n1. Pagal vidurki\n2. Pagal mediana\nPasirinkimas: ";
             int sortpasirinkimas;
             std::cin >> sortpasirinkimas;
             sortStudents(studentai, sortpasirinkimas);
@@ -333,7 +334,7 @@ int main()
             partitionStudents2(studentai, nenormalus);
             studentai.clear();
             nenormalus.clear();
-            std::cout << "Bandoma treèia strategija..." << endl;
+            std::cout << "Bandoma trecia strategija..." << endl;
             readAndProcessData(filename, studentai, namudarbai, studentuskaicius);
             sortStudents(studentai, sortpasirinkimas);
             partitionStudents3(studentai, normalus, nenormalus);
@@ -345,14 +346,63 @@ int main()
         else if (pasirinkimas == 8) {
             // Testing student class operators
             testConstructors();
+	    break;
+        }
+        else if (pasirinkimas == 9) {
+			// Testing vector class
+            VectorExample();
+            // Example vectors
+            Vector<int> vec1 = { 1, 3, 5, 7, 9 };
+            Vector<int> vec2 = { 2, 4, 6, 8, 10 };
+            Vector<int> vec3 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            Vector<int> vec4 = { 5, 2, 7, 2, 8, 5, 1, 9, 3, 7 };
+            std::cout << "Pirmasis pavyzdinis vektorius:" << std::endl;
+            for (int elem : vec1) {
+                std::cout << elem << " ";
+            }
+            std::cout << std::endl;
+            std::cout << "Antrasis pavyzdinis vektorius:" << std::endl;
+            for (int elem1 : vec2) {
+				std::cout << elem1 << " ";
+			}
+            std::cout << std::endl;
+            std::cout << "Treciasis pavyzdinis vektorius:" << std::endl;
+            for (int elem2 : vec3) {
+				std::cout << elem2 << " ";
+			}
+            std::cout << std::endl;
+            std::cout << "Ketvirtasis pavyzdinis vektorius:" << std::endl;
+            for (int elem3 : vec4) {
+                std::cout << elem3 << " ";
+            }
+            std::cout << std::endl;
+            // Testing functions
+            std::cout << "Pirmojo vektoriaus suma: " << sumVector(vec1) << std::endl;
+            std::cout << "Ar pirmasis vektorius rusiuotas? " << (isSorted(vec1) ? "Yes" : "No") << std::endl;
+            removeDuplicates(vec4);
+            std::cout << "Ketvirtasis vektorius po tokiu paciu skaiciu istrinimo: ";
+            for (int elem : vec4) {
+                std::cout << elem << " ";
+            }
+            std::cout << std::endl;
+            Vector<int> merged = mergeSortedVectors(vec1, vec2);
+            std::cout << "Pirmasis ir antrasis vektorius sujungti: ";
+            for (int elem : merged) {
+                std::cout << elem << " ";
+            }
+            std::cout << std::endl;
+            std::pair<int, int> maxElem = findMaxElement(vec3);
+            std::cout << "Maksimalus elementas treciame vektoriuje: " << maxElem.second << " at index " << maxElem.first << std::endl;
+            VectorUzpildymas();
+            break;
         }
         if (!studentai.empty())
             // End screen for manual input
         {
-            std::cout << "Norite áraðyti duomenis atspausdinant á ekranà ar á failà?: 1 - ekranà; 2 - failà" << endl;
+            std::cout << "Norite irasyti duomenis atspausdinant i ekrana ar i faila?: 1 - ekrana; 2 - faila" << endl;
             int skaicbudas;
             std::cin >> skaicbudas;
-            std::cout << "Pasirinkite rikiavimo bûdà:\n1 - pagal vardus\n2 - pagal pavardes\n3 - pagal galutiná balà (vid.)\n4 - pagal galutiná balà (med.)\nPasirinkimas: ";
+            std::cout << "Pasirinkite rikiavimo buda:\n1 - pagal vardus\n2 - pagal pavardes\n3 - pagal galutini bala (vid.)\n4 - pagal galutini bala (med.)\nPasirinkimas: ";
             int sorting_choice;
             std::cin >> sorting_choice;
             switch (sorting_choice)
@@ -389,13 +439,13 @@ int main()
                 {
                     failasr << setw(15) << stud.getPavarde() << setw(15) << stud.getVardas() << setw(30) << fixed << setprecision(2) << stud.galutinisbalasvidurkis_ << setw(30) << fixed << setprecision(2) << stud.galutinisbalasmediana_ << endl;
                 }
-                std::cout << "Áraðymas sëkmingas. Rezultatai iðsaugoti faile kursioku_duomenys.txt" << endl;
+                std::cout << "irasymas sekmingas. Rezultatai issaugoti faile kursioku_duomenys.txt" << endl;
                 failasr.close();
                 auto end_writing = chrono::high_resolution_clock::now();
                 chrono::duration<double> writeFile_time = end_writing - start_writing;
-                std::cout << "Skaitymas ið failo truko: " << read_time.count() << " sekundes" << endl;
-                std::cout << "Mokiniø vidurkio/medianos skaièiavimas uþtruko: " << process_time.count() << " sekundes" << endl;
-                std::cout << "Áraðymas á failà truko: " << writeFile_time.count() << " sekundes" << endl;
+                std::cout << "Skaitymas is failo truko: " << read_time.count() << " sekundes" << endl;
+                std::cout << "Mokiniu vidurkio/medianos skaiciavimas uztruko: " << process_time.count() << " sekundes" << endl;
+                std::cout << "irasymas i faila truko: " << writeFile_time.count() << " sekundes" << endl;
                 break;
             }
             else
@@ -406,12 +456,21 @@ int main()
         }
         else
         {
-            std::cout << "Studentø masyvas tuðèias." << endl;
+            std::cout << "Studentu masyvas tuscias." << endl;
         }
     }
-    std::cout << "Vector programos versija baigta. Paspauskite bet koká mygtukà ir ENTER norint uþbaigti programà..." << endl;
+    std::cout << "Vector programos versija baigta. Ar norite kartoti programa? 1 - taip; Bet kokia kita ivestis - ne." << endl;
     int a;
     std::cin >> a;
-    return 0;
+    if (a == 1)
+    {
+        system("cls");
+		main();
+	}
+    else
+    {
+        std::cout << "Programa isjungiama...";
+        return 0;
+	}
 }
 

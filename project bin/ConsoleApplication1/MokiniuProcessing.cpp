@@ -2,27 +2,27 @@
 /**
  * @brief Generates a random Lithuanian first name from a predefined list.
  *
- * This function selects a random first name from a vector of common Lithuanian names
+ * This function selects a random first name from a Vector of common Lithuanian names
  * and returns it as a string.
  *
  * @return string A randomly selected Lithuanian first name.
  */
 string GeneruotiVardus()
 {
-    vector<string> vardai = { "Jonas", "Petras", "Antanas", "Marius", "Tomas" };
+    Vector<string> vardai = { "Jonas", "Petras", "Antanas", "Marius", "Tomas" };
     return vardai[rand() % vardai.size()];
 }
 /**
  * @brief Generates a random Lithuanian last name from a predefined list.
  *
- * This function selects a random last name from a vector of common Lithuanian surnames
+ * This function selects a random last name from a Vector of common Lithuanian surnames
  * and returns it as a string.
  *
  * @return string A randomly selected Lithuanian last name.
  */
 string GeneruotiPavardes()
 {
-    vector<string> pavardes = { "Kazlauskas", "Petrauskas", "Stankevièius", "Gudelis", "Lukðys" };
+    Vector<string> pavardes = { "Kazlauskas", "Petrauskas", "Stankevièius", "Gudelis", "Lukðys" };
     return pavardes[rand() % pavardes.size()];
 }
 /**

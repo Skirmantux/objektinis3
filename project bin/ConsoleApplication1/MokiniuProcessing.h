@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <chrono>
 #include <iomanip>
+#include <stdlib.h>
 #include "Studentas.h"
 
 using namespace std;

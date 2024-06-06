@@ -2,7 +2,8 @@
 #include "Skaiciavimaidarbai.h"
 #include <fstream> 
 #include <chrono>  
-#include <algorithm> 
+#include <algorithm>
+#include "Vektorius.h"
 
 using namespace std;
 
@@ -115,9 +116,9 @@ bool medianoslyginimas(const Studentas& a, const Studentas& b) {
 /**
  * @brief Prints a list of students to the console.
  *
- * @param studentai The vector of students to print.
+ * @param studentai The Vector of students to print.
  */
-void PrintStudents(const vector<Studentas>& studentai) {
+void PrintStudents(const Vector<Studentas>& studentai) {
     auto start_print = chrono::high_resolution_clock::now();
     cout << setw(15) << "Pavarde" << setw(15) << "Vardas"
         << setw(30) << "Galutinis balas (vid.)"
@@ -135,12 +136,12 @@ void PrintStudents(const vector<Studentas>& studentai) {
 /**
  * @brief Writes normal students to a file.
  *
- * @param normalus The vector of normal students.
+ * @param normalus The Vector of normal students.
  */
-void WriteNormalStudents(std::vector<Studentas>& normalus)
+void WriteNormalStudents(Vector<Studentas>& normalus)
 {
-    cout << "Normalus studentai spausdinami   fail  'normal s.txt'." << endl;
-    ofstream failas2("normal s.txt");
+    cout << "Normalus studentai spausdinami i faila 'normalus.txt'." << endl;
+    ofstream failas2("normalus.txt");
     failas2 << fixed << setprecision(2);
     failas2 << left << setw(15) << "Pavarde" << setw(15) << "Vardas";
     failas2 << setw(30) << "Galutinis balas (vid.)" << endl;
@@ -152,12 +153,12 @@ void WriteNormalStudents(std::vector<Studentas>& normalus)
 /**
  * @brief Writes weird students to a file.
  *
- * @param nenormalus The vector of weird students.
+ * @param nenormalus The Vector of weird students.
  */
-void WriteWeirdStudents(std::vector<Studentas>& nenormalus)
+void WriteWeirdStudents(Vector<Studentas>& nenormalus)
 {
-    cout << "Nenormalus studentai spausdinami   fail  'nenormal s.txt'." << endl;
-    std::ofstream nenormalus1("nenormal s.txt");
+    cout << "Nenormalus studentai spausdinami i faila 'nenormalus.txt'." << endl;
+    std::ofstream nenormalus1("nenormalus.txt");
     nenormalus1 << std::fixed << std::setprecision(2);
     nenormalus1 << std::left << std::setw(15) << "Pavarde" << std::setw(15) << "Vardas";
     nenormalus1 << std::setw(30) << "Galutinis balas (vid.)" << std::endl;
@@ -173,14 +174,14 @@ void WriteWeirdStudents(std::vector<Studentas>& nenormalus)
  * @brief Reads and processes student data from a file.
  *
  * @param filename The name of the file to read from.
- * @param studentai The vector to store the read students.
+ * @param studentai The Vector to store the read students.
  * @param namudarbai The number of homework grades.
  * @param studentuskaicius The number of students.
  */
-void readAndProcessData(const std::string& filename, std::vector<Studentas>& studentai, int& namudarbai, int studentuskaicius) {
+void readAndProcessData(const std::string& filename, Vector<Studentas>& studentai, int& namudarbai, int studentuskaicius) {
     std::ifstream failas1(filename);
     if (!failas1.is_open()) {
-        std::cerr << "Unable to open file: " << filename << std::endl;
+        std::cerr << "Klaida atidarant faila pavadinimu: " << filename << std::endl;
         return;
     }
     std::string line;
@@ -195,7 +196,7 @@ void readAndProcessData(const std::string& filename, std::vector<Studentas>& stu
         std::istringstream iss(line);
         std::string vardas, pavarde;
         if (!(iss >> vardas >> pavarde)) {
-            std::cerr << "Error reading name and surname." << std::endl;
+            std::cerr << "Klaida nuskaitant varda ir pavarde." << std::endl;
             break;
         }
         stud.setVardas(vardas);
@@ -203,14 +204,14 @@ void readAndProcessData(const std::string& filename, std::vector<Studentas>& stu
         double grade;
         for (int i = 0; i < namudarbai; ++i) {
             if (!(iss >> grade)) {
-                std::cerr << "Error reading grade " << (i + 1) << "." << std::endl;
+                std::cerr << "Klaida nuskaitant pazymius " << (i + 1) << "." << std::endl;
                 return;
             }
             stud.addGrade(grade);
         }
         double egzaminorez;
         if (!(iss >> egzaminorez)) {
-            std::cerr << "Error reading exam grade." << std::endl;
+            std::cerr << "Klaida nuskaitant egzamino pazymi." << std::endl;
             return;
         }
         stud.setEgzaminoRez(egzaminorez);
@@ -219,7 +220,7 @@ void readAndProcessData(const std::string& filename, std::vector<Studentas>& stu
     }
     std::chrono::high_resolution_clock::time_point atidarymo_pabaiga = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> read_time = atidarymo_pabaiga - atidarymo_pradzia;
-    std::cout << "Duomenu nuskaitymas i  failo   konteiner  ir galutini  bal  skai iavimas u truko: " << read_time.count() << " sekundes" << std::endl;
+    std::cout << "Duomenu nuskaitymas is failo i konteineri ir galutiniu balu skaiciavimas uztruko: " << read_time.count() << " sekundes" << std::endl;
 }
 
 
@@ -228,15 +229,15 @@ void readAndProcessData(const std::string& filename, std::vector<Studentas>& stu
 /**
  * @brief Sorts students using the STL sort function.
  *
- * @param studentai The vector to store the read students.
+ * @param studentai The Vector to store the read students.
  * @param sortpasirinkimas The sorting option to use.
  */
-void sortStudents(vector<Studentas>& studentai, int sortpasirinkimas) {
+void sortStudents(Vector<Studentas>& studentai, int sortpasirinkimas) {
     auto sort_pradzia = chrono::high_resolution_clock::now();
     switch (sortpasirinkimas) {
     case 1: sort(studentai.begin(), studentai.end(), vidurkiolyginimas); break;
     case 2: sort(studentai.begin(), studentai.end(), medianoslyginimas); break;
-    default: cout << "Netinkamas pasirinkimas. Pasirinkite i  naujo." << endl; return;
+    default: cout << "Netinkamas pasirinkimas. Pasirinkite is naujo." << endl; return;
     }
     auto sort_pabaiga = chrono::high_resolution_clock::now();
     chrono::duration<double> sort_time = sort_pabaiga - sort_pradzia;
@@ -247,12 +248,12 @@ void sortStudents(vector<Studentas>& studentai, int sortpasirinkimas) {
 /**
  * @brief Partitions students into normal and not normal students using method 1
  *
- * @param studentai The vector to store the read students.
- * @param normalus The vector to store normal students.
- * @param nenormalus The vector to store not normal students.
+ * @param studentai The Vector to store the read students.
+ * @param normalus The Vector to store normal students.
+ * @param nenormalus The Vector to store not normal students.
  */
-void partitionStudents1(const vector<Studentas>& studentai, vector<Studentas>& normalus, vector<Studentas>& nenormalus) {
-    cout << "Studentai dalinami á normalius ir nenormalius." << endl;
+void partitionStudents1(const Vector<Studentas>& studentai, Vector<Studentas>& normalus, Vector<Studentas>& nenormalus) {
+    cout << "Studentai dalinami i normalius ir nenormalius." << endl;
     auto normnenorm_pradzia = chrono::high_resolution_clock::now();
     for (const auto& stud : studentai) {
         if (stud.galutinisbalasvidurkis_ >= 5.0) normalus.push_back(stud);
@@ -260,18 +261,18 @@ void partitionStudents1(const vector<Studentas>& studentai, vector<Studentas>& n
     }
     auto normnenorm_pabaiga = chrono::high_resolution_clock::now();
     chrono::duration<double> normnenorm_time = normnenorm_pabaiga - normnenorm_pradzia;
-    cout << "Studentø rûðiavimas á normalius ir nenormalius uþtruko " << normnenorm_time.count() << " sekundes" << endl;
+    cout << "Studentu rusiavimas i normalius ir nenormalius uztruko " << normnenorm_time.count() << " sekundes" << endl;
 }
 
 // Function to partition students (method 2)
 /**
  * @brief Partitions students into normal and not normal students using method 2
  *
- * @param studentai The vector to store the read students.
- * @param nenormalus The vector to store not normal students.
+ * @param studentai The Vector to store the read students.
+ * @param nenormalus The Vector to store not normal students.
  */
-void partitionStudents2(vector<Studentas>& studentai, vector<Studentas>& nenormalus) {
-    cout << "Studentai dalinami á normalius ir nenormalius." << endl;
+void partitionStudents2(Vector<Studentas>& studentai, Vector<Studentas>& nenormalus) {
+    cout << "Studentai dalinami i normalius ir nenormalius." << endl;
     auto normnenorm_pradzia = chrono::high_resolution_clock::now();
     auto iter = remove_if(studentai.begin(), studentai.end(),
         [&nenormalus](const Studentas& s) {
@@ -284,19 +285,19 @@ void partitionStudents2(vector<Studentas>& studentai, vector<Studentas>& nenorma
     studentai.erase(iter, studentai.end());
     auto normnenorm_pabaiga = chrono::high_resolution_clock::now();
     chrono::duration<double> normnenorm_time = normnenorm_pabaiga - normnenorm_pradzia;
-    cout << "Studentø rûðiavimas á normalius ir nenormalius uþtruko " << normnenorm_time.count() << " sekundes" << endl;
+    cout << "Studentu rusiavimas i normalius ir nenormalius uztruko " << normnenorm_time.count() << " sekundes" << endl;
 }
 
 // Function to partition students (method 3)
 /**
  * @brief Partitions students into normal and not normal students using method 3
  *
- * @param studentai The vector to store the read students.
- * @param normalus The vector to store normal students.
- * @param nenormalus The vector to store not normal students.
+ * @param studentai The Vector to store the read students.
+ * @param normalus The Vector to store normal students.
+ * @param nenormalus The Vector to store not normal students.
  */
-void partitionStudents3(vector<Studentas>& studentai, vector<Studentas>& normalus, vector<Studentas>& nenormalus) {
-    cout << "Studentai dalinami   normalius ir nenormalius." << endl;
+void partitionStudents3(Vector<Studentas>& studentai, Vector<Studentas>& normalus, Vector<Studentas>& nenormalus) {
+    cout << "Studentai dalinami i normalius ir nenormalius." << endl;
     auto normnenorm_pradzia = chrono::high_resolution_clock::now();
     auto partition_point = partition(studentai.begin(), studentai.end(),
         [](const Studentas& stud) {
@@ -307,7 +308,7 @@ void partitionStudents3(vector<Studentas>& studentai, vector<Studentas>& normalu
     studentai.clear();
     auto normnenorm_pabaiga = chrono::high_resolution_clock::now();
     chrono::duration<double> normnenorm_time = normnenorm_pabaiga - normnenorm_pradzia;
-    cout << "Studentø rûðiavimas á normalius ir nenormalius uþtruko " << normnenorm_time.count() << " sekundes" << endl;
+    cout << "Studentu rusiavimas i normalius ir nenormalius uztruko " << normnenorm_time.count() << " sekundes" << endl;
 }
 /**
  * @brief ClassDestructor for Studentas class.
@@ -443,7 +444,7 @@ std::istream& operator>>(std::istream& is, Studentas& studentas) {
  * Test constructors.
  */
 void testConstructors() {
-    std::vector<double> grades = { 5, 6, 7, 8, 9 };
+    Vector<double> grades = { 5, 6, 7, 8, 9 };
     // Test parameterized constructor
     Studentas s1;
     s1.setVardas("Skirmantas");
