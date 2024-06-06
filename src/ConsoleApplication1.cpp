@@ -1,5 +1,6 @@
 #include "MokiniuProcessing.h"
 #include "Skaiciavimaidarbai.h"
+#include "Vektorius.h"
 
 /**
  * @brief Main function that serves as the entry point of the program.
@@ -14,15 +15,15 @@ int main()
 {
     //main function
     srand(time(NULL)); // Seeds the random number generator with the current time
-    vector<Studentas> studentai; // Vector to store all students
-    vector<Studentas> normalus; // Vector to store normal students
-    vector<Studentas> nenormalus; // Vector to store abnormal students
+    Vector<Studentas> studentai; // Vector to store all students
+    Vector<Studentas> normalus; // Vector to store normal students
+    Vector<Studentas> nenormalus; // Vector to store abnormal students
     int pasirinkimas; // Variable to store the user's choice
     chrono::duration<double> process_time; // Variable to measure processing time
     chrono::duration<double> read_time; // Variable to measure reading time
     //menu selection
     cout << "Pasirinkite balu ivedimo metoda/generavimo funkcija:\n"
-        << "1. ivesti rankiniu budu\n"
+        << "1. Ivesti rankiniu budu\n"
         << "2. Sugeneruoti atsitiktinius balus\n"
         << "3. Sugeneruoti balus, vardus ir pavardes\n"
         << "4. Skaitymas is failo\n"
@@ -30,13 +31,14 @@ int main()
         << "6. Generuoti studentu faila\n"
         << "7. Strategiju testavimas\n"
         << "8. Studento klases operatoriu testavimas\n"
+        << "9. Vektoriu klases testavimas\n"
         << "Pasirinkimas: ";
 
     while (true) {
         //try selection
         try {
             std::cin >> pasirinkimas;
-            if (pasirinkimas < 1 || pasirinkimas > 8) {
+            if (pasirinkimas < 1 || pasirinkimas > 9) {
                 throw invalid_argument("Netinkama ivestis.");
             }
             break;
@@ -318,7 +320,7 @@ int main()
             }
             int namudarbai = 5;
             readAndProcessData(filename, studentai, namudarbai, studentuskaicius);
-            std::cout << "Kaip norite rusiuoti student  vektori ?\n1. Pagal vidurk \n2. Pagal median \nPasirinkimas: ";
+            std::cout << "Kaip norite rusiuoti studentu vektoriu?\n1. Pagal vidurki\n2. Pagal mediana\nPasirinkimas: ";
             int sortpasirinkimas;
             std::cin >> sortpasirinkimas;
             sortStudents(studentai, sortpasirinkimas);
@@ -332,7 +334,7 @@ int main()
             partitionStudents2(studentai, nenormalus);
             studentai.clear();
             nenormalus.clear();
-            std::cout << "Bandoma tre ia strategija..." << endl;
+            std::cout << "Bandoma trecia strategija..." << endl;
             readAndProcessData(filename, studentai, namudarbai, studentuskaicius);
             sortStudents(studentai, sortpasirinkimas);
             partitionStudents3(studentai, normalus, nenormalus);
@@ -346,13 +348,61 @@ int main()
             testConstructors();
 	    break;
         }
+        else if (pasirinkimas == 9) {
+			// Testing vector class
+            VectorExample();
+            // Example vectors
+            Vector<int> vec1 = { 1, 3, 5, 7, 9 };
+            Vector<int> vec2 = { 2, 4, 6, 8, 10 };
+            Vector<int> vec3 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            Vector<int> vec4 = { 5, 2, 7, 2, 8, 5, 1, 9, 3, 7 };
+            std::cout << "Pirmasis pavyzdinis vektorius:" << std::endl;
+            for (int elem : vec1) {
+                std::cout << elem << " ";
+            }
+            std::cout << std::endl;
+            std::cout << "Antrasis pavyzdinis vektorius:" << std::endl;
+            for (int elem1 : vec2) {
+				std::cout << elem1 << " ";
+			}
+            std::cout << std::endl;
+            std::cout << "Treciasis pavyzdinis vektorius:" << std::endl;
+            for (int elem2 : vec3) {
+				std::cout << elem2 << " ";
+			}
+            std::cout << std::endl;
+            std::cout << "Ketvirtasis pavyzdinis vektorius:" << std::endl;
+            for (int elem3 : vec4) {
+                std::cout << elem3 << " ";
+            }
+            std::cout << std::endl;
+            // Testing functions
+            std::cout << "Pirmojo vektoriaus suma: " << sumVector(vec1) << std::endl;
+            std::cout << "Ar pirmasis vektorius rusiuotas? " << (isSorted(vec1) ? "Yes" : "No") << std::endl;
+            removeDuplicates(vec4);
+            std::cout << "Ketvirtasis vektorius po tokiu paciu skaiciu istrinimo: ";
+            for (int elem : vec4) {
+                std::cout << elem << " ";
+            }
+            std::cout << std::endl;
+            Vector<int> merged = mergeSortedVectors(vec1, vec2);
+            std::cout << "Pirmasis ir antrasis vektorius sujungti: ";
+            for (int elem : merged) {
+                std::cout << elem << " ";
+            }
+            std::cout << std::endl;
+            std::pair<int, int> maxElem = findMaxElement(vec3);
+            std::cout << "Maksimalus elementas treciame vektoriuje: " << maxElem.second << " at index " << maxElem.first << std::endl;
+            VectorUzpildymas();
+            break;
+        }
         if (!studentai.empty())
             // End screen for manual input
         {
-            std::cout << "Norite  ra yti duomenis atspausdinant   ekran  ar   fail ?: 1 - ekran ; 2 - fail " << endl;
+            std::cout << "Norite irasyti duomenis atspausdinant i ekrana ar i faila?: 1 - ekrana; 2 - faila" << endl;
             int skaicbudas;
             std::cin >> skaicbudas;
-            std::cout << "Pasirinkite rikiavimo b d :\n1 - pagal vardus\n2 - pagal pavardes\n3 - pagal galutin  bal  (vid.)\n4 - pagal galutin  bal  (med.)\nPasirinkimas: ";
+            std::cout << "Pasirinkite rikiavimo buda:\n1 - pagal vardus\n2 - pagal pavardes\n3 - pagal galutini bala (vid.)\n4 - pagal galutini bala (med.)\nPasirinkimas: ";
             int sorting_choice;
             std::cin >> sorting_choice;
             switch (sorting_choice)
@@ -394,7 +444,7 @@ int main()
                 auto end_writing = chrono::high_resolution_clock::now();
                 chrono::duration<double> writeFile_time = end_writing - start_writing;
                 std::cout << "Skaitymas is failo truko: " << read_time.count() << " sekundes" << endl;
-                std::cout << "Mokiniu vidurkio/medianos skai iavimas uztruko: " << process_time.count() << " sekundes" << endl;
+                std::cout << "Mokiniu vidurkio/medianos skaiciavimas uztruko: " << process_time.count() << " sekundes" << endl;
                 std::cout << "irasymas i faila truko: " << writeFile_time.count() << " sekundes" << endl;
                 break;
             }
@@ -409,9 +459,18 @@ int main()
             std::cout << "Studentu masyvas tuscias." << endl;
         }
     }
-    std::cout << "Vector programos versija baigta. Paspauskite bet koki mygtuka ir ENTER norint uzbaigti programa..." << endl;
+    std::cout << "Vector programos versija baigta. Ar norite kartoti programa? 1 - taip; Bet kokia kita ivestis - ne." << endl;
     int a;
     std::cin >> a;
-    return 0;
+    if (a == 1)
+    {
+        system("cls");
+		main();
+	}
+    else
+    {
+        std::cout << "Programa isjungiama...";
+        return 0;
+	}
 }
 

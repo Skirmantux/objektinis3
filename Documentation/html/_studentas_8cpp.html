@@ -98,6 +98,7 @@ $(function(){ initResizable(false); });
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
+<code>#include &quot;<a class="el" href="_vektorius_8h_source.html">Vektorius.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -113,30 +114,30 @@ Functions</h2></td></tr>
 <tr class="memitem:ad57e483519a2e3b830a8c5327e100922" id="r_ad57e483519a2e3b830a8c5327e100922"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad57e483519a2e3b830a8c5327e100922">medianoslyginimas</a> (const <a class="el" href="class_studentas.html">Studentas</a> &amp;a, const <a class="el" href="class_studentas.html">Studentas</a> &amp;b)</td></tr>
 <tr class="memdesc:ad57e483519a2e3b830a8c5327e100922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two students by their final median grade.  <br /></td></tr>
 <tr class="separator:ad57e483519a2e3b830a8c5327e100922"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08698a036319d1f8b04f20c8c9965182" id="r_a08698a036319d1f8b04f20c8c9965182"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08698a036319d1f8b04f20c8c9965182">PrintStudents</a> (const vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;studentai)</td></tr>
-<tr class="memdesc:a08698a036319d1f8b04f20c8c9965182"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a list of students to the console.  <br /></td></tr>
-<tr class="separator:a08698a036319d1f8b04f20c8c9965182"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07a0b3eb37811649aa169f0102f16463" id="r_a07a0b3eb37811649aa169f0102f16463"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07a0b3eb37811649aa169f0102f16463">WriteNormalStudents</a> (std::vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;normalus)</td></tr>
-<tr class="memdesc:a07a0b3eb37811649aa169f0102f16463"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes normal students to a file.  <br /></td></tr>
-<tr class="separator:a07a0b3eb37811649aa169f0102f16463"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9c17cee518d1d58236a33506105562f" id="r_ad9c17cee518d1d58236a33506105562f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9c17cee518d1d58236a33506105562f">WriteWeirdStudents</a> (std::vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;nenormalus)</td></tr>
-<tr class="memdesc:ad9c17cee518d1d58236a33506105562f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes weird students to a file.  <br /></td></tr>
-<tr class="separator:ad9c17cee518d1d58236a33506105562f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba3f510c1334521100b46b2df09fce8f" id="r_aba3f510c1334521100b46b2df09fce8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba3f510c1334521100b46b2df09fce8f">readAndProcessData</a> (const std::string &amp;filename, std::vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;studentai, int &amp;namudarbai, int studentuskaicius)</td></tr>
-<tr class="memdesc:aba3f510c1334521100b46b2df09fce8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads and processes student data from a file.  <br /></td></tr>
-<tr class="separator:aba3f510c1334521100b46b2df09fce8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5037a37681f3a63514720e07a980131" id="r_ad5037a37681f3a63514720e07a980131"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5037a37681f3a63514720e07a980131">sortStudents</a> (vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;studentai, int sortpasirinkimas)</td></tr>
-<tr class="memdesc:ad5037a37681f3a63514720e07a980131"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts students using the STL sort function.  <br /></td></tr>
-<tr class="separator:ad5037a37681f3a63514720e07a980131"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65ed4633d9212ab65b7f69cca81d689a" id="r_a65ed4633d9212ab65b7f69cca81d689a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65ed4633d9212ab65b7f69cca81d689a">partitionStudents1</a> (const vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;studentai, vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;normalus, vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;nenormalus)</td></tr>
-<tr class="memdesc:a65ed4633d9212ab65b7f69cca81d689a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partitions students into normal and not normal students using method 1.  <br /></td></tr>
-<tr class="separator:a65ed4633d9212ab65b7f69cca81d689a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2e1366e6cf7c6030ede8716c0c948d0" id="r_aa2e1366e6cf7c6030ede8716c0c948d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2e1366e6cf7c6030ede8716c0c948d0">partitionStudents2</a> (vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;studentai, vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;nenormalus)</td></tr>
-<tr class="memdesc:aa2e1366e6cf7c6030ede8716c0c948d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partitions students into normal and not normal students using method 2.  <br /></td></tr>
-<tr class="separator:aa2e1366e6cf7c6030ede8716c0c948d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa815e3d853591260008d91f1a3ec39a7" id="r_aa815e3d853591260008d91f1a3ec39a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa815e3d853591260008d91f1a3ec39a7">partitionStudents3</a> (vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;studentai, vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;normalus, vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;nenormalus)</td></tr>
-<tr class="memdesc:aa815e3d853591260008d91f1a3ec39a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partitions students into normal and not normal students using method 3.  <br /></td></tr>
-<tr class="separator:aa815e3d853591260008d91f1a3ec39a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44fdea65ad227171728fa663ee69c461" id="r_a44fdea65ad227171728fa663ee69c461"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44fdea65ad227171728fa663ee69c461">PrintStudents</a> (const <a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;studentai)</td></tr>
+<tr class="memdesc:a44fdea65ad227171728fa663ee69c461"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a list of students to the console.  <br /></td></tr>
+<tr class="separator:a44fdea65ad227171728fa663ee69c461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a679629e3933d80354a1d4bcbeedf0066" id="r_a679629e3933d80354a1d4bcbeedf0066"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a679629e3933d80354a1d4bcbeedf0066">WriteNormalStudents</a> (<a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;normalus)</td></tr>
+<tr class="memdesc:a679629e3933d80354a1d4bcbeedf0066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes normal students to a file.  <br /></td></tr>
+<tr class="separator:a679629e3933d80354a1d4bcbeedf0066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eb9377f0eeb4f06574928052b0cdb48" id="r_a1eb9377f0eeb4f06574928052b0cdb48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1eb9377f0eeb4f06574928052b0cdb48">WriteWeirdStudents</a> (<a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;nenormalus)</td></tr>
+<tr class="memdesc:a1eb9377f0eeb4f06574928052b0cdb48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes weird students to a file.  <br /></td></tr>
+<tr class="separator:a1eb9377f0eeb4f06574928052b0cdb48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89bf199dc390d6948c970636c85e94bd" id="r_a89bf199dc390d6948c970636c85e94bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89bf199dc390d6948c970636c85e94bd">readAndProcessData</a> (const std::string &amp;filename, <a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;studentai, int &amp;namudarbai, int studentuskaicius)</td></tr>
+<tr class="memdesc:a89bf199dc390d6948c970636c85e94bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads and processes student data from a file.  <br /></td></tr>
+<tr class="separator:a89bf199dc390d6948c970636c85e94bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff32941c50fab384c2e0fb76858704ad" id="r_aff32941c50fab384c2e0fb76858704ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff32941c50fab384c2e0fb76858704ad">sortStudents</a> (<a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;studentai, int sortpasirinkimas)</td></tr>
+<tr class="memdesc:aff32941c50fab384c2e0fb76858704ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts students using the STL sort function.  <br /></td></tr>
+<tr class="separator:aff32941c50fab384c2e0fb76858704ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1820554ddd2731ba96e6b9975db43c43" id="r_a1820554ddd2731ba96e6b9975db43c43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1820554ddd2731ba96e6b9975db43c43">partitionStudents1</a> (const <a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;studentai, <a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;normalus, <a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;nenormalus)</td></tr>
+<tr class="memdesc:a1820554ddd2731ba96e6b9975db43c43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partitions students into normal and not normal students using method 1.  <br /></td></tr>
+<tr class="separator:a1820554ddd2731ba96e6b9975db43c43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4cb41b859b1dd878bc2a8774ffa9eb2" id="r_af4cb41b859b1dd878bc2a8774ffa9eb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4cb41b859b1dd878bc2a8774ffa9eb2">partitionStudents2</a> (<a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;studentai, <a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;nenormalus)</td></tr>
+<tr class="memdesc:af4cb41b859b1dd878bc2a8774ffa9eb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partitions students into normal and not normal students using method 2.  <br /></td></tr>
+<tr class="separator:af4cb41b859b1dd878bc2a8774ffa9eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d118279bbfeb8ca3e8f727311e5207a" id="r_a6d118279bbfeb8ca3e8f727311e5207a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d118279bbfeb8ca3e8f727311e5207a">partitionStudents3</a> (<a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;studentai, <a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;normalus, <a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;nenormalus)</td></tr>
+<tr class="memdesc:a6d118279bbfeb8ca3e8f727311e5207a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partitions students into normal and not normal students using method 3.  <br /></td></tr>
+<tr class="separator:a6d118279bbfeb8ca3e8f727311e5207a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa18e40bcaa9967ab80b3ec53099570c2" id="r_aa18e40bcaa9967ab80b3ec53099570c2"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa18e40bcaa9967ab80b3ec53099570c2">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="class_studentas.html">Studentas</a> &amp;studentas)</td></tr>
 <tr class="memdesc:aa18e40bcaa9967ab80b3ec53099570c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output operator implementation.  <br /></td></tr>
 <tr class="separator:aa18e40bcaa9967ab80b3ec53099570c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -227,8 +228,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a65ed4633d9212ab65b7f69cca81d689a" name="a65ed4633d9212ab65b7f69cca81d689a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65ed4633d9212ab65b7f69cca81d689a">&#9670;&#160;</a></span>partitionStudents1()</h2>
+<a id="a1820554ddd2731ba96e6b9975db43c43" name="a1820554ddd2731ba96e6b9975db43c43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1820554ddd2731ba96e6b9975db43c43">&#9670;&#160;</a></span>partitionStudents1()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -236,17 +237,17 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void partitionStudents1 </td>
           <td>(</td>
-          <td class="paramtype">const vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>studentai</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>studentai</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>normalus</em></span>, </td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>normalus</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>nenormalus</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>nenormalus</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -254,17 +255,17 @@ Functions</h2></td></tr>
 <p>Partitions students into normal and not normal students using method 1. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">studentai</td><td>The vector to store the read students. </td></tr>
-    <tr><td class="paramname">normalus</td><td>The vector to store normal students. </td></tr>
-    <tr><td class="paramname">nenormalus</td><td>The vector to store not normal students. </td></tr>
+    <tr><td class="paramname">studentai</td><td>The <a class="el" href="class_vector.html" title="A dynamically resizing array similar to std::vector.">Vector</a> to store the read students. </td></tr>
+    <tr><td class="paramname">normalus</td><td>The <a class="el" href="class_vector.html" title="A dynamically resizing array similar to std::vector.">Vector</a> to store normal students. </td></tr>
+    <tr><td class="paramname">nenormalus</td><td>The <a class="el" href="class_vector.html" title="A dynamically resizing array similar to std::vector.">Vector</a> to store not normal students. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="aa2e1366e6cf7c6030ede8716c0c948d0" name="aa2e1366e6cf7c6030ede8716c0c948d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2e1366e6cf7c6030ede8716c0c948d0">&#9670;&#160;</a></span>partitionStudents2()</h2>
+<a id="af4cb41b859b1dd878bc2a8774ffa9eb2" name="af4cb41b859b1dd878bc2a8774ffa9eb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4cb41b859b1dd878bc2a8774ffa9eb2">&#9670;&#160;</a></span>partitionStudents2()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -272,12 +273,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void partitionStudents2 </td>
           <td>(</td>
-          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>studentai</em></span>, </td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>studentai</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>nenormalus</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>nenormalus</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -285,16 +286,16 @@ Functions</h2></td></tr>
 <p>Partitions students into normal and not normal students using method 2. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">studentai</td><td>The vector to store the read students. </td></tr>
-    <tr><td class="paramname">nenormalus</td><td>The vector to store not normal students. </td></tr>
+    <tr><td class="paramname">studentai</td><td>The <a class="el" href="class_vector.html" title="A dynamically resizing array similar to std::vector.">Vector</a> to store the read students. </td></tr>
+    <tr><td class="paramname">nenormalus</td><td>The <a class="el" href="class_vector.html" title="A dynamically resizing array similar to std::vector.">Vector</a> to store not normal students. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="aa815e3d853591260008d91f1a3ec39a7" name="aa815e3d853591260008d91f1a3ec39a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa815e3d853591260008d91f1a3ec39a7">&#9670;&#160;</a></span>partitionStudents3()</h2>
+<a id="a6d118279bbfeb8ca3e8f727311e5207a" name="a6d118279bbfeb8ca3e8f727311e5207a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d118279bbfeb8ca3e8f727311e5207a">&#9670;&#160;</a></span>partitionStudents3()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -302,17 +303,17 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void partitionStudents3 </td>
           <td>(</td>
-          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>studentai</em></span>, </td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>studentai</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>normalus</em></span>, </td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>normalus</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>nenormalus</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>nenormalus</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -320,9 +321,9 @@ Functions</h2></td></tr>
 <p>Partitions students into normal and not normal students using method 3. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">studentai</td><td>The vector to store the read students. </td></tr>
-    <tr><td class="paramname">normalus</td><td>The vector to store normal students. </td></tr>
-    <tr><td class="paramname">nenormalus</td><td>The vector to store not normal students. </td></tr>
+    <tr><td class="paramname">studentai</td><td>The <a class="el" href="class_vector.html" title="A dynamically resizing array similar to std::vector.">Vector</a> to store the read students. </td></tr>
+    <tr><td class="paramname">normalus</td><td>The <a class="el" href="class_vector.html" title="A dynamically resizing array similar to std::vector.">Vector</a> to store normal students. </td></tr>
+    <tr><td class="paramname">nenormalus</td><td>The <a class="el" href="class_vector.html" title="A dynamically resizing array similar to std::vector.">Vector</a> to store not normal students. </td></tr>
   </table>
   </dd>
 </dl>
@@ -360,8 +361,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a08698a036319d1f8b04f20c8c9965182" name="a08698a036319d1f8b04f20c8c9965182"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08698a036319d1f8b04f20c8c9965182">&#9670;&#160;</a></span>PrintStudents()</h2>
+<a id="a44fdea65ad227171728fa663ee69c461" name="a44fdea65ad227171728fa663ee69c461"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44fdea65ad227171728fa663ee69c461">&#9670;&#160;</a></span>PrintStudents()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -369,7 +370,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void PrintStudents </td>
           <td>(</td>
-          <td class="paramtype">const vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>studentai</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>studentai</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -378,15 +379,15 @@ Functions</h2></td></tr>
 <p>Prints a list of students to the console. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">studentai</td><td>The vector of students to print. </td></tr>
+    <tr><td class="paramname">studentai</td><td>The <a class="el" href="class_vector.html" title="A dynamically resizing array similar to std::vector.">Vector</a> of students to print. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="aba3f510c1334521100b46b2df09fce8f" name="aba3f510c1334521100b46b2df09fce8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba3f510c1334521100b46b2df09fce8f">&#9670;&#160;</a></span>readAndProcessData()</h2>
+<a id="a89bf199dc390d6948c970636c85e94bd" name="a89bf199dc390d6948c970636c85e94bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89bf199dc390d6948c970636c85e94bd">&#9670;&#160;</a></span>readAndProcessData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -399,7 +400,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>studentai</em></span>, </td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>studentai</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -418,7 +419,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">filename</td><td>The name of the file to read from. </td></tr>
-    <tr><td class="paramname">studentai</td><td>The vector to store the read students. </td></tr>
+    <tr><td class="paramname">studentai</td><td>The <a class="el" href="class_vector.html" title="A dynamically resizing array similar to std::vector.">Vector</a> to store the read students. </td></tr>
     <tr><td class="paramname">namudarbai</td><td>The number of homework grades. </td></tr>
     <tr><td class="paramname">studentuskaicius</td><td>The number of students. </td></tr>
   </table>
@@ -427,8 +428,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad5037a37681f3a63514720e07a980131" name="ad5037a37681f3a63514720e07a980131"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5037a37681f3a63514720e07a980131">&#9670;&#160;</a></span>sortStudents()</h2>
+<a id="aff32941c50fab384c2e0fb76858704ad" name="aff32941c50fab384c2e0fb76858704ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff32941c50fab384c2e0fb76858704ad">&#9670;&#160;</a></span>sortStudents()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -436,7 +437,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void sortStudents </td>
           <td>(</td>
-          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>studentai</em></span>, </td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>studentai</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -449,7 +450,7 @@ Functions</h2></td></tr>
 <p>Sorts students using the STL sort function. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">studentai</td><td>The vector to store the read students. </td></tr>
+    <tr><td class="paramname">studentai</td><td>The <a class="el" href="class_vector.html" title="A dynamically resizing array similar to std::vector.">Vector</a> to store the read students. </td></tr>
     <tr><td class="paramname">sortpasirinkimas</td><td>The sorting option to use. </td></tr>
   </table>
   </dd>
@@ -539,8 +540,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a07a0b3eb37811649aa169f0102f16463" name="a07a0b3eb37811649aa169f0102f16463"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07a0b3eb37811649aa169f0102f16463">&#9670;&#160;</a></span>WriteNormalStudents()</h2>
+<a id="a679629e3933d80354a1d4bcbeedf0066" name="a679629e3933d80354a1d4bcbeedf0066"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a679629e3933d80354a1d4bcbeedf0066">&#9670;&#160;</a></span>WriteNormalStudents()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -548,7 +549,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void WriteNormalStudents </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>normalus</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>normalus</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -557,15 +558,15 @@ Functions</h2></td></tr>
 <p>Writes normal students to a file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">normalus</td><td>The vector of normal students. </td></tr>
+    <tr><td class="paramname">normalus</td><td>The <a class="el" href="class_vector.html" title="A dynamically resizing array similar to std::vector.">Vector</a> of normal students. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ad9c17cee518d1d58236a33506105562f" name="ad9c17cee518d1d58236a33506105562f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9c17cee518d1d58236a33506105562f">&#9670;&#160;</a></span>WriteWeirdStudents()</h2>
+<a id="a1eb9377f0eeb4f06574928052b0cdb48" name="a1eb9377f0eeb4f06574928052b0cdb48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eb9377f0eeb4f06574928052b0cdb48">&#9670;&#160;</a></span>WriteWeirdStudents()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -573,7 +574,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void WriteWeirdStudents </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>nenormalus</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a>&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>nenormalus</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -582,7 +583,7 @@ Functions</h2></td></tr>
 <p>Writes weird students to a file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nenormalus</td><td>The vector of weird students. </td></tr>
+    <tr><td class="paramname">nenormalus</td><td>The <a class="el" href="class_vector.html" title="A dynamically resizing array similar to std::vector.">Vector</a> of weird students. </td></tr>
   </table>
   </dd>
 </dl>

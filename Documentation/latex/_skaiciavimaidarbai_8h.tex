@@ -8,7 +8,7 @@ void \mbox{\hyperlink{_skaiciavimaidarbai_8h_a6a4bda377cbe8a09ec263042b45033b1}{
 \begin{DoxyCompactList}\small\item\em Prints a message indicating invalid input and terminates the program. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_skaiciavimaidarbai_8h_aedcc9401edcc3733ac4165c7fc2274d0}{Nera\+Failo}} ()
 \begin{DoxyCompactList}\small\item\em Prints a message indicating that a file was not found and terminates the program. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{_skaiciavimaidarbai_8h_a5bb136577c6ff31439c7964c03efce24}{Mediana}} (std\+::vector$<$ double $>$ \&vec)
+double \mbox{\hyperlink{_skaiciavimaidarbai_8h_a517031ef8dc4b2f8a4c2037a4c0e1a26}{Mediana}} (\mbox{\hyperlink{class_vector}{Vector}}$<$ double $>$ \&vec)
 \begin{DoxyCompactList}\small\item\em Calculates the median of a vector of doubles. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{_skaiciavimaidarbai_8h_a512264f3b46f6426abf67f698b6694e2}{Generate\+Random\+Grade}} ()
 \begin{DoxyCompactList}\small\item\em Generates a random grade between 0 and 10. \end{DoxyCompactList}\item 
@@ -99,11 +99,11 @@ This function creates a file with the specified name and populates it with a spe
 {\em studentuskaicius} & The number of students to generate data for. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{_skaiciavimaidarbai_8h_a5bb136577c6ff31439c7964c03efce24}\index{Skaiciavimaidarbai.h@{Skaiciavimaidarbai.h}!Mediana@{Mediana}}
+\Hypertarget{_skaiciavimaidarbai_8h_a517031ef8dc4b2f8a4c2037a4c0e1a26}\index{Skaiciavimaidarbai.h@{Skaiciavimaidarbai.h}!Mediana@{Mediana}}
 \index{Mediana@{Mediana}!Skaiciavimaidarbai.h@{Skaiciavimaidarbai.h}}
 \doxysubsubsection{\texorpdfstring{Mediana()}{Mediana()}}
-{\footnotesize\ttfamily \label{_skaiciavimaidarbai_8h_a5bb136577c6ff31439c7964c03efce24} 
-double Mediana (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{vec}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_skaiciavimaidarbai_8h_a517031ef8dc4b2f8a4c2037a4c0e1a26} 
+double Mediana (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ double $>$ \&}]{vec}{}\end{DoxyParamCaption})}
 
 
 
@@ -117,7 +117,19 @@ This function sorts the provided vector and calculates the median value. If the 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-double The median value of the vector. 
+double The median value of the vector.
+\end{DoxyReturn}
+Calculates the median of a vector of doubles.
+
+This function sorts the provided \doxylink{class_vector}{Vector} and calculates the median value. If the \doxylink{class_vector}{Vector} size is even, it returns the average of the two middle elements. If the \doxylink{class_vector}{Vector} size is odd, it returns the middle element.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & The \doxylink{class_vector}{Vector} of doubles to calculate the median for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double The median value of the \doxylink{class_vector}{Vector}. 
 \end{DoxyReturn}
 \Hypertarget{_skaiciavimaidarbai_8h_aedcc9401edcc3733ac4165c7fc2274d0}\index{Skaiciavimaidarbai.h@{Skaiciavimaidarbai.h}!NeraFailo@{NeraFailo}}
 \index{NeraFailo@{NeraFailo}!Skaiciavimaidarbai.h@{Skaiciavimaidarbai.h}}

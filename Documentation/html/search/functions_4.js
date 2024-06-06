@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['nerafailo_0',['NeraFailo',['../_skaiciavimaidarbai_8cpp.html#aedcc9401edcc3733ac4165c7fc2274d0',1,'NeraFailo():&#160;Skaiciavimaidarbai.cpp'],['../_skaiciavimaidarbai_8h.html#aedcc9401edcc3733ac4165c7fc2274d0',1,'NeraFailo():&#160;Skaiciavimaidarbai.cpp']]],
-  ['netinkamaivestis_1',['NetinkamaIvestis',['../_skaiciavimaidarbai_8cpp.html#a6a4bda377cbe8a09ec263042b45033b1',1,'NetinkamaIvestis():&#160;Skaiciavimaidarbai.cpp'],['../_skaiciavimaidarbai_8h.html#a6a4bda377cbe8a09ec263042b45033b1',1,'NetinkamaIvestis():&#160;Skaiciavimaidarbai.cpp']]]
+  ['emplace_5fback_0',['emplace_back',['../class_vector.html#a5d19b8e8fd6ded1e2e99045c3962c7e9',1,'Vector']]],
+  ['empty_1',['empty',['../class_vector.html#ad5e31c0f82683ece1b5b020c15a8b77b',1,'Vector']]],
+  ['end_2',['end',['../class_vector.html#abaaafc8a6696d49ceb4f799d2f78e299',1,'Vector::end() noexcept'],['../class_vector.html#aeebdc6009ad387f9e2f1d37613d98f83',1,'Vector::end() const noexcept']]],
+  ['erase_3',['erase',['../class_vector.html#a9475371e34e4ce47ec3359ff25fed6ec',1,'Vector::erase(const_iterator pos)'],['../class_vector.html#a475eb3d5040ead87de3e58e19fe954a3',1,'Vector::erase(const_iterator first, const_iterator last)']]]
 ];

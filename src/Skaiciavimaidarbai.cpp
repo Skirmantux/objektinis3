@@ -25,16 +25,16 @@ void NeraFailo()
 }
 
 /**
- * @brief Calculates the median of a vector of doubles.
+ * @brief Calculates the median of a Vector of doubles.
  *
- * This function sorts the provided vector and calculates the median value.
- * If the vector size is even, it returns the average of the two middle elements.
- * If the vector size is odd, it returns the middle element.
+ * This function sorts the provided Vector and calculates the median value.
+ * If the Vector size is even, it returns the average of the two middle elements.
+ * If the Vector size is odd, it returns the middle element.
  *
- * @param vec The vector of doubles to calculate the median for.
- * @return double The median value of the vector.
+ * @param vec The Vector of doubles to calculate the median for.
+ * @return double The median value of the Vector.
  */
-double Mediana(vector<double>& vec) {
+double Mediana(Vector<double>& vec) {
     size_t size = vec.size();
     if (size == 0) {
         return 0;

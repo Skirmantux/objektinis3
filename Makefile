@@ -2,7 +2,7 @@
 CC := g++
 
 # Compiler flags
-CFLAGS := -std=c++17 -O3
+CFLAGS := -std=c++20 -O3
 
 # Source directory
 SRC_DIR := src
@@ -17,7 +17,7 @@ SRCS := $(wildcard $(SRC_DIR)/*.cpp)
 OBJS := $(patsubst $(SRC_DIR)/%.cpp, %.o, $(SRCS))
 
 # Executable name
-EXEC := v2.0.exe
+EXEC := v3.0.exe
 
 # Default target
 all: $(EXEC)

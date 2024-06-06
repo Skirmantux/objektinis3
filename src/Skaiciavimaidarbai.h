@@ -27,7 +27,7 @@ void NeraFailo();
  * @param vec The vector of doubles to calculate the median for.
  * @return double The median value of the vector.
  */
-double Mediana(std::vector<double>& vec);
+double Mediana(Vector<double>& vec);
 
 /**
  * @brief Generates a random grade between 0 and 10.

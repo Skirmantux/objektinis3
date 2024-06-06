@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['testconstructors_0',['testConstructors',['../_studentas_8cpp.html#aef3810d09cbba4e605b1ddd45deffa4b',1,'testConstructors():&#160;Studentas.cpp'],['../_studentas_8h.html#aef3810d09cbba4e605b1ddd45deffa4b',1,'testConstructors():&#160;Studentas.cpp']]]
+  ['nerafailo_0',['NeraFailo',['../_skaiciavimaidarbai_8cpp.html#aedcc9401edcc3733ac4165c7fc2274d0',1,'NeraFailo():&#160;Skaiciavimaidarbai.cpp'],['../_skaiciavimaidarbai_8h.html#aedcc9401edcc3733ac4165c7fc2274d0',1,'NeraFailo():&#160;Skaiciavimaidarbai.cpp']]],
+  ['netinkamaivestis_1',['NetinkamaIvestis',['../_skaiciavimaidarbai_8cpp.html#a6a4bda377cbe8a09ec263042b45033b1',1,'NetinkamaIvestis():&#160;Skaiciavimaidarbai.cpp'],['../_skaiciavimaidarbai_8h.html#a6a4bda377cbe8a09ec263042b45033b1',1,'NetinkamaIvestis():&#160;Skaiciavimaidarbai.cpp']]]
 ];

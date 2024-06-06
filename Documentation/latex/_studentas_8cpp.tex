@@ -5,6 +5,7 @@
 {\ttfamily \#include $<$fstream$>$}\newline
 {\ttfamily \#include $<$chrono$>$}\newline
 {\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include "{}Vektorius.\+h"{}}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -16,21 +17,21 @@ bool \mbox{\hyperlink{_studentas_8cpp_aa62fa0991285e0445ba01d3dfdb444e0}{vidurki
 \begin{DoxyCompactList}\small\item\em Compares two students by their final average grade. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{_studentas_8cpp_ad57e483519a2e3b830a8c5327e100922}{medianoslyginimas}} (const \mbox{\hyperlink{class_studentas}{Studentas}} \&a, const \mbox{\hyperlink{class_studentas}{Studentas}} \&b)
 \begin{DoxyCompactList}\small\item\em Compares two students by their final median grade. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_studentas_8cpp_a08698a036319d1f8b04f20c8c9965182}{Print\+Students}} (const vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai)
+void \mbox{\hyperlink{_studentas_8cpp_a44fdea65ad227171728fa663ee69c461}{Print\+Students}} (const \mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai)
 \begin{DoxyCompactList}\small\item\em Prints a list of students to the console. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_studentas_8cpp_a07a0b3eb37811649aa169f0102f16463}{Write\+Normal\+Students}} (std\+::vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&normalus)
+void \mbox{\hyperlink{_studentas_8cpp_a679629e3933d80354a1d4bcbeedf0066}{Write\+Normal\+Students}} (\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&normalus)
 \begin{DoxyCompactList}\small\item\em Writes normal students to a file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_studentas_8cpp_ad9c17cee518d1d58236a33506105562f}{Write\+Weird\+Students}} (std\+::vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&nenormalus)
+void \mbox{\hyperlink{_studentas_8cpp_a1eb9377f0eeb4f06574928052b0cdb48}{Write\+Weird\+Students}} (\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&nenormalus)
 \begin{DoxyCompactList}\small\item\em Writes weird students to a file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_studentas_8cpp_aba3f510c1334521100b46b2df09fce8f}{read\+And\+Process\+Data}} (const std\+::string \&filename, std\+::vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, int \&namudarbai, int studentuskaicius)
+void \mbox{\hyperlink{_studentas_8cpp_a89bf199dc390d6948c970636c85e94bd}{read\+And\+Process\+Data}} (const std\+::string \&filename, \mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, int \&namudarbai, int studentuskaicius)
 \begin{DoxyCompactList}\small\item\em Reads and processes student data from a file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_studentas_8cpp_ad5037a37681f3a63514720e07a980131}{sort\+Students}} (vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, int sortpasirinkimas)
+void \mbox{\hyperlink{_studentas_8cpp_aff32941c50fab384c2e0fb76858704ad}{sort\+Students}} (\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, int sortpasirinkimas)
 \begin{DoxyCompactList}\small\item\em Sorts students using the STL sort function. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_studentas_8cpp_a65ed4633d9212ab65b7f69cca81d689a}{partition\+Students1}} (const vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&normalus, vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&nenormalus)
+void \mbox{\hyperlink{_studentas_8cpp_a1820554ddd2731ba96e6b9975db43c43}{partition\+Students1}} (const \mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, \mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&normalus, \mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&nenormalus)
 \begin{DoxyCompactList}\small\item\em Partitions students into normal and not normal students using method 1. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_studentas_8cpp_aa2e1366e6cf7c6030ede8716c0c948d0}{partition\+Students2}} (vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&nenormalus)
+void \mbox{\hyperlink{_studentas_8cpp_af4cb41b859b1dd878bc2a8774ffa9eb2}{partition\+Students2}} (\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, \mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&nenormalus)
 \begin{DoxyCompactList}\small\item\em Partitions students into normal and not normal students using method 2. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_studentas_8cpp_aa815e3d853591260008d91f1a3ec39a7}{partition\+Students3}} (vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&normalus, vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&nenormalus)
+void \mbox{\hyperlink{_studentas_8cpp_a6d118279bbfeb8ca3e8f727311e5207a}{partition\+Students3}} (\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, \mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&normalus, \mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&nenormalus)
 \begin{DoxyCompactList}\small\item\em Partitions students into normal and not normal students using method 3. \end{DoxyCompactList}\item 
 std\+::ostream \& \mbox{\hyperlink{_studentas_8cpp_aa18e40bcaa9967ab80b3ec53099570c2}{operator$<$$<$}} (std\+::ostream \&os, \mbox{\hyperlink{class_studentas}{Studentas}} \&studentas)
 \begin{DoxyCompactList}\small\item\em Output operator implementation. \end{DoxyCompactList}\item 
@@ -81,11 +82,11 @@ std\+::istream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{std\+::istream 
 
 Input operator implementation. 
 
-Input operator implementation. \Hypertarget{_studentas_8cpp_a65ed4633d9212ab65b7f69cca81d689a}\index{Studentas.cpp@{Studentas.cpp}!partitionStudents1@{partitionStudents1}}
+Input operator implementation. \Hypertarget{_studentas_8cpp_a1820554ddd2731ba96e6b9975db43c43}\index{Studentas.cpp@{Studentas.cpp}!partitionStudents1@{partitionStudents1}}
 \index{partitionStudents1@{partitionStudents1}!Studentas.cpp@{Studentas.cpp}}
 \doxysubsubsection{\texorpdfstring{partitionStudents1()}{partitionStudents1()}}
-{\footnotesize\ttfamily \label{_studentas_8cpp_a65ed4633d9212ab65b7f69cca81d689a} 
-void partition\+Students1 (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{normalus}{, }\item[{vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{nenormalus}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_studentas_8cpp_a1820554ddd2731ba96e6b9975db43c43} 
+void partition\+Students1 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{normalus}{, }\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{nenormalus}{}\end{DoxyParamCaption})}
 
 
 
@@ -93,18 +94,18 @@ Partitions students into normal and not normal students using method 1.
 
 
 \begin{DoxyParams}{Parameters}
-{\em studentai} & The vector to store the read students. \\
+{\em studentai} & The \doxylink{class_vector}{Vector} to store the read students. \\
 \hline
-{\em normalus} & The vector to store normal students. \\
+{\em normalus} & The \doxylink{class_vector}{Vector} to store normal students. \\
 \hline
-{\em nenormalus} & The vector to store not normal students. \\
+{\em nenormalus} & The \doxylink{class_vector}{Vector} to store not normal students. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{_studentas_8cpp_aa2e1366e6cf7c6030ede8716c0c948d0}\index{Studentas.cpp@{Studentas.cpp}!partitionStudents2@{partitionStudents2}}
+\Hypertarget{_studentas_8cpp_af4cb41b859b1dd878bc2a8774ffa9eb2}\index{Studentas.cpp@{Studentas.cpp}!partitionStudents2@{partitionStudents2}}
 \index{partitionStudents2@{partitionStudents2}!Studentas.cpp@{Studentas.cpp}}
 \doxysubsubsection{\texorpdfstring{partitionStudents2()}{partitionStudents2()}}
-{\footnotesize\ttfamily \label{_studentas_8cpp_aa2e1366e6cf7c6030ede8716c0c948d0} 
-void partition\+Students2 (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{nenormalus}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_studentas_8cpp_af4cb41b859b1dd878bc2a8774ffa9eb2} 
+void partition\+Students2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{nenormalus}{}\end{DoxyParamCaption})}
 
 
 
@@ -112,16 +113,16 @@ Partitions students into normal and not normal students using method 2.
 
 
 \begin{DoxyParams}{Parameters}
-{\em studentai} & The vector to store the read students. \\
+{\em studentai} & The \doxylink{class_vector}{Vector} to store the read students. \\
 \hline
-{\em nenormalus} & The vector to store not normal students. \\
+{\em nenormalus} & The \doxylink{class_vector}{Vector} to store not normal students. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{_studentas_8cpp_aa815e3d853591260008d91f1a3ec39a7}\index{Studentas.cpp@{Studentas.cpp}!partitionStudents3@{partitionStudents3}}
+\Hypertarget{_studentas_8cpp_a6d118279bbfeb8ca3e8f727311e5207a}\index{Studentas.cpp@{Studentas.cpp}!partitionStudents3@{partitionStudents3}}
 \index{partitionStudents3@{partitionStudents3}!Studentas.cpp@{Studentas.cpp}}
 \doxysubsubsection{\texorpdfstring{partitionStudents3()}{partitionStudents3()}}
-{\footnotesize\ttfamily \label{_studentas_8cpp_aa815e3d853591260008d91f1a3ec39a7} 
-void partition\+Students3 (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{normalus}{, }\item[{vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{nenormalus}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_studentas_8cpp_a6d118279bbfeb8ca3e8f727311e5207a} 
+void partition\+Students3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{normalus}{, }\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{nenormalus}{}\end{DoxyParamCaption})}
 
 
 
@@ -129,11 +130,11 @@ Partitions students into normal and not normal students using method 3.
 
 
 \begin{DoxyParams}{Parameters}
-{\em studentai} & The vector to store the read students. \\
+{\em studentai} & The \doxylink{class_vector}{Vector} to store the read students. \\
 \hline
-{\em normalus} & The vector to store normal students. \\
+{\em normalus} & The \doxylink{class_vector}{Vector} to store normal students. \\
 \hline
-{\em nenormalus} & The vector to store not normal students. \\
+{\em nenormalus} & The \doxylink{class_vector}{Vector} to store not normal students. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{_studentas_8cpp_a3f4fd824a3545fbe5f684e7bcc06af2d}\index{Studentas.cpp@{Studentas.cpp}!pavardeslyginimas@{pavardeslyginimas}}
@@ -156,11 +157,11 @@ Compares two students by their last name.
 \begin{DoxyReturn}{Returns}
 bool True if the first student\textquotesingle{}s last name is less than the second student\textquotesingle{}s last name. 
 \end{DoxyReturn}
-\Hypertarget{_studentas_8cpp_a08698a036319d1f8b04f20c8c9965182}\index{Studentas.cpp@{Studentas.cpp}!PrintStudents@{PrintStudents}}
+\Hypertarget{_studentas_8cpp_a44fdea65ad227171728fa663ee69c461}\index{Studentas.cpp@{Studentas.cpp}!PrintStudents@{PrintStudents}}
 \index{PrintStudents@{PrintStudents}!Studentas.cpp@{Studentas.cpp}}
 \doxysubsubsection{\texorpdfstring{PrintStudents()}{PrintStudents()}}
-{\footnotesize\ttfamily \label{_studentas_8cpp_a08698a036319d1f8b04f20c8c9965182} 
-void Print\+Students (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_studentas_8cpp_a44fdea65ad227171728fa663ee69c461} 
+void Print\+Students (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{}\end{DoxyParamCaption})}
 
 
 
@@ -168,14 +169,14 @@ Prints a list of students to the console.
 
 
 \begin{DoxyParams}{Parameters}
-{\em studentai} & The vector of students to print. \\
+{\em studentai} & The \doxylink{class_vector}{Vector} of students to print. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{_studentas_8cpp_aba3f510c1334521100b46b2df09fce8f}\index{Studentas.cpp@{Studentas.cpp}!readAndProcessData@{readAndProcessData}}
+\Hypertarget{_studentas_8cpp_a89bf199dc390d6948c970636c85e94bd}\index{Studentas.cpp@{Studentas.cpp}!readAndProcessData@{readAndProcessData}}
 \index{readAndProcessData@{readAndProcessData}!Studentas.cpp@{Studentas.cpp}}
 \doxysubsubsection{\texorpdfstring{readAndProcessData()}{readAndProcessData()}}
-{\footnotesize\ttfamily \label{_studentas_8cpp_aba3f510c1334521100b46b2df09fce8f} 
-void read\+And\+Process\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{int \&}]{namudarbai}{, }\item[{int}]{studentuskaicius}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_studentas_8cpp_a89bf199dc390d6948c970636c85e94bd} 
+void read\+And\+Process\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{, }\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{int \&}]{namudarbai}{, }\item[{int}]{studentuskaicius}{}\end{DoxyParamCaption})}
 
 
 
@@ -185,18 +186,18 @@ Reads and processes student data from a file.
 \begin{DoxyParams}{Parameters}
 {\em filename} & The name of the file to read from. \\
 \hline
-{\em studentai} & The vector to store the read students. \\
+{\em studentai} & The \doxylink{class_vector}{Vector} to store the read students. \\
 \hline
 {\em namudarbai} & The number of homework grades. \\
 \hline
 {\em studentuskaicius} & The number of students. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{_studentas_8cpp_ad5037a37681f3a63514720e07a980131}\index{Studentas.cpp@{Studentas.cpp}!sortStudents@{sortStudents}}
+\Hypertarget{_studentas_8cpp_aff32941c50fab384c2e0fb76858704ad}\index{Studentas.cpp@{Studentas.cpp}!sortStudents@{sortStudents}}
 \index{sortStudents@{sortStudents}!Studentas.cpp@{Studentas.cpp}}
 \doxysubsubsection{\texorpdfstring{sortStudents()}{sortStudents()}}
-{\footnotesize\ttfamily \label{_studentas_8cpp_ad5037a37681f3a63514720e07a980131} 
-void sort\+Students (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{int}]{sortpasirinkimas}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_studentas_8cpp_aff32941c50fab384c2e0fb76858704ad} 
+void sort\+Students (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{int}]{sortpasirinkimas}{}\end{DoxyParamCaption})}
 
 
 
@@ -204,7 +205,7 @@ Sorts students using the STL sort function.
 
 
 \begin{DoxyParams}{Parameters}
-{\em studentai} & The vector to store the read students. \\
+{\em studentai} & The \doxylink{class_vector}{Vector} to store the read students. \\
 \hline
 {\em sortpasirinkimas} & The sorting option to use. \\
 \hline
@@ -259,11 +260,11 @@ Compares two students by their final average grade.
 \begin{DoxyReturn}{Returns}
 bool True if the first student\textquotesingle{}s final average grade is less than the second student\textquotesingle{}s final average grade. 
 \end{DoxyReturn}
-\Hypertarget{_studentas_8cpp_a07a0b3eb37811649aa169f0102f16463}\index{Studentas.cpp@{Studentas.cpp}!WriteNormalStudents@{WriteNormalStudents}}
+\Hypertarget{_studentas_8cpp_a679629e3933d80354a1d4bcbeedf0066}\index{Studentas.cpp@{Studentas.cpp}!WriteNormalStudents@{WriteNormalStudents}}
 \index{WriteNormalStudents@{WriteNormalStudents}!Studentas.cpp@{Studentas.cpp}}
 \doxysubsubsection{\texorpdfstring{WriteNormalStudents()}{WriteNormalStudents()}}
-{\footnotesize\ttfamily \label{_studentas_8cpp_a07a0b3eb37811649aa169f0102f16463} 
-void Write\+Normal\+Students (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{normalus}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_studentas_8cpp_a679629e3933d80354a1d4bcbeedf0066} 
+void Write\+Normal\+Students (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{normalus}{}\end{DoxyParamCaption})}
 
 
 
@@ -271,14 +272,14 @@ Writes normal students to a file.
 
 
 \begin{DoxyParams}{Parameters}
-{\em normalus} & The vector of normal students. \\
+{\em normalus} & The \doxylink{class_vector}{Vector} of normal students. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{_studentas_8cpp_ad9c17cee518d1d58236a33506105562f}\index{Studentas.cpp@{Studentas.cpp}!WriteWeirdStudents@{WriteWeirdStudents}}
+\Hypertarget{_studentas_8cpp_a1eb9377f0eeb4f06574928052b0cdb48}\index{Studentas.cpp@{Studentas.cpp}!WriteWeirdStudents@{WriteWeirdStudents}}
 \index{WriteWeirdStudents@{WriteWeirdStudents}!Studentas.cpp@{Studentas.cpp}}
 \doxysubsubsection{\texorpdfstring{WriteWeirdStudents()}{WriteWeirdStudents()}}
-{\footnotesize\ttfamily \label{_studentas_8cpp_ad9c17cee518d1d58236a33506105562f} 
-void Write\+Weird\+Students (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{nenormalus}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_studentas_8cpp_a1eb9377f0eeb4f06574928052b0cdb48} 
+void Write\+Weird\+Students (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{nenormalus}{}\end{DoxyParamCaption})}
 
 
 
@@ -286,6 +287,6 @@ Writes weird students to a file.
 
 
 \begin{DoxyParams}{Parameters}
-{\em nenormalus} & The vector of weird students. \\
+{\em nenormalus} & The \doxylink{class_vector}{Vector} of weird students. \\
 \hline
 \end{DoxyParams}

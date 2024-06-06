@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <vector>
+#include "Vektorius.h"
 
 /**
  * @brief Abstract class representing a person.
@@ -34,9 +34,9 @@ public:
     /**
     * @brief Get the grades of homework for the person.
     *
-    * @return A reference to the vector containing homework grades of the person.
+    * @return A reference to the Vector containing homework grades of the person.
     */
-    virtual std::vector<double>& getNamudarbuRez() = 0;
+    virtual Vector<double>& getNamudarbuRez() = 0;
 };
 /**
  * @brief Class representing a student.
@@ -48,7 +48,7 @@ class Studentas : public Zmogus {
 private:
     std::string vardas_;
     std::string pavarde_;
-    std::vector<double> namudarburez_;
+    Vector<double> namudarburez_;
     double egzaminorez_;
 
 public:
@@ -66,7 +66,7 @@ public:
     std::string getVardas() const { return vardas_; } /**< Get the first name of the student. */
     std::string getPavarde() const { return pavarde_; } /**< Get the last name of the student. */
     double getEgzaminoRez() const { return egzaminorez_; } /**< Get the exam grade of the student. */
-    std::vector<double>& getNamudarbuRez() { return namudarburez_; } /**< Get the grades of homework for the student. */
+    Vector<double>& getNamudarbuRez() { return namudarburez_; } /**< Get the grades of homework for the student. */
 
     // Setters
     void setVardas(const std::string& vardas) { vardas_ = vardas; } /**< Set the first name of the student. */
@@ -96,12 +96,12 @@ bool vidurkiolyginimas(const Studentas& a, const Studentas& b); /**< Compare stu
 bool medianoslyginimas(const Studentas& a, const Studentas& b); /**< Compare students by median final grade. */
 
 // Utility functions
-void PrintStudents(const std::vector<Studentas>& studentai); /**< Print a list of students. */
-void readAndProcessData(const std::string& filename, std::vector<Studentas>& studentai, int& namudarbai, int studentuskaicius); /**< Read and process student data from a file. */
-void sortStudents(std::vector<Studentas>& studentai, int sortpasirinkimas); /**< Sort students based on specified criteria. */
-void partitionStudents1(const std::vector<Studentas>& studentai, std::vector<Studentas>& normalus, std::vector<Studentas>& nenormalus); /**< Partition students into normal and weird categories (method 1). */
-void partitionStudents2(std::vector<Studentas>& studentai, std::vector<Studentas>& nenormalus); /**< Partition students into normal and weird categories (method 2). */
-void partitionStudents3(std::vector<Studentas>& studentai, std::vector<Studentas>& normalus, std::vector<Studentas>& nenormalus); /**< Partition students into normal and weird categories (method 3). */
-void WriteWeirdStudents(std::vector<Studentas>& nenormalus); /**< Write weird students to a file. */
-void WriteNormalStudents(std::vector<Studentas>& normalus); /**< Write normal students to a file. */
+void PrintStudents(const Vector<Studentas>& studentai); /**< Print a list of students. */
+void readAndProcessData(const std::string& filename, Vector<Studentas>& studentai, int& namudarbai, int studentuskaicius); /**< Read and process student data from a file. */
+void sortStudents(Vector<Studentas>& studentai, int sortpasirinkimas); /**< Sort students based on specified criteria. */
+void partitionStudents1(const Vector<Studentas>& studentai, Vector<Studentas>& normalus, Vector<Studentas>& nenormalus); /**< Partition students into normal and weird categories (method 1). */
+void partitionStudents2(Vector<Studentas>& studentai, Vector<Studentas>& nenormalus); /**< Partition students into normal and weird categories (method 2). */
+void partitionStudents3(Vector<Studentas>& studentai, Vector<Studentas>& normalus, Vector<Studentas>& nenormalus); /**< Partition students into normal and weird categories (method 3). */
+void WriteWeirdStudents(Vector<Studentas>& nenormalus); /**< Write weird students to a file. */
+void WriteNormalStudents(Vector<Studentas>& normalus); /**< Write normal students to a file. */
 void testConstructors(); /**< Test constructors of the Studentas class. */

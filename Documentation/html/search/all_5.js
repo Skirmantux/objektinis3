@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['operator_3c_3c_0',['operator&lt;&lt;',['../_studentas_8cpp.html#aa18e40bcaa9967ab80b3ec53099570c2',1,'Studentas.cpp']]],
-  ['operator_3d_1',['operator=',['../class_studentas.html#a25bcc531503d3bc490dab4a656e3b8e9',1,'Studentas::operator=(const Studentas &amp;other)'],['../class_studentas.html#a6379482d741209e9a2d902023676fb45',1,'Studentas::operator=(Studentas &amp;&amp;other) noexcept']]],
-  ['operator_3e_3e_2',['operator&gt;&gt;',['../_studentas_8cpp.html#a3bf7658776e3c30f6653378b3dc0d4a2',1,'Studentas.cpp']]]
+  ['findmaxelement_0',['findMaxElement',['../_vektorius_8cpp.html#af3b50d90383f4453bffaf937c17cc2ae',1,'findMaxElement(const Vector&lt; int &gt; &amp;vec):&#160;Vektorius.cpp'],['../_vektorius_8h.html#af3b50d90383f4453bffaf937c17cc2ae',1,'findMaxElement(const Vector&lt; int &gt; &amp;vec):&#160;Vektorius.cpp']]],
+  ['front_1',['front',['../class_vector.html#a8aefd44e7e4fd416558706d505483972',1,'Vector']]]
 ];
