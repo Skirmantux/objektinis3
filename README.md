@@ -164,6 +164,7 @@ Skaidymas
 
 > [!NOTE]  
 > Nuo v3.0 versijos yra įkeltas setup.exe failas, todėl paleidimas skiriasi!
+> Setup.exe ir setup.msi failai reikalauja administratoriaus prieeigos!
 
 ### Windows
 
