@@ -15,6 +15,7 @@
 ![image](https://github.com/Skirmantux/objektinis3/assets/149015954/cb672a64-401e-4412-8d4e-885ca40ee8d8)
 
 - Klasė pilnai dokumentuota naudojant Doxygen html ir TeX (pdf).
+- Sutvarkyta repozitorija.
 - Atlikti testavimai:
 
 ## Testavimai lyginant std::vector v1.5 versiojoje ir Vector klasę v3.0 versijoje
