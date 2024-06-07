@@ -32,6 +32,7 @@
 
 ![image](https://github.com/Skirmantux/objektinis3/assets/149015954/14846524-40fe-4971-9d67-401d6656a768)
 
+Galime pastebėti, jog perskirsymų skaičius naudojant Vector klasę yra daug didesnis, nes ji veikia kitaip, negu std::vector. Galime pastebėti, jog std::vector veikia truputį lėčiau negu mano sukurta klasė Vector beveik visuose scenarijuose. 
 
 ## Rule of Five
 Rule of Five yra C++ taisyklė, kuri nurodo, jei klasė turi bet kurį iš šių narių funkcijų, tai ji turėtų turėti juos visus arba nei vieno:
