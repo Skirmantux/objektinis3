@@ -1,15 +1,36 @@
-# v2.0
+# v3.0
 
 ## Pakeitimai:
-- Įkelta kodo dokumentacija HTML ir TeX (pdf) formomis.
-![image](https://github.com/Skirmantux/objektinis2/assets/149015954/d067ba4f-0435-4854-ab30-f5ef0aa470fc)
+- Sukurtas Setup.exe failas, kuris leidžia vartotojui be vargo instaliuoti programą.
 
-![image](https://github.com/Skirmantux/objektinis2/assets/149015954/4b20bbda-e10c-4c73-983e-cb45f4c754b7)
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/8b802ae0-627b-421e-b8bf-b4f1885840d9)
 
-- Programos klasė pratestuota naudojant Google Tests (Unit Tests).
-![image](https://github.com/Skirmantux/objektinis2/assets/149015954/4fb3c5e5-02d1-4b18-8855-edf953097cb1)
+- Įkelta nauja dokumentacija.
+- Setup.exe failui reikalinga administratoriaus prieeiga.
+- Ištaisytos klaidos dėl Locale.
+- Vietoj std::vector naudojama sava Vector klasė.
+- Pilnai ištestuota Vector klasė.
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/5e571e72-52ab-47e9-ae8f-76891035899a)
 
-![image](https://github.com/Skirmantux/objektinis2/assets/149015954/b51d93b0-90a1-4562-aa6f-86fa4ed9991b)
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/cb672a64-401e-4412-8d4e-885ca40ee8d8)
+
+- Klasė pilnai dokumentuota naudojant Doxygen html ir TeX (pdf).
+- Atlikti testavimai:
+
+## Testavimai lyginant std::vector v1.5 versiojoje ir Vector klasę v3.0 versijoje
+
+### 100 000 Studentų failas:
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/94bea858-4043-44bd-b91f-62307c408dcc)
+
+### 1 000 000 Studentų failas:
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/788915d7-03c3-450c-ab2a-7fe8b114f970)
+
+### 10 000 000 Studentų failas:
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/ea555f53-5249-45c5-926f-5aa8659275af)
+
+### Perskirymų skaičius lyginant std::vector ir Vector klasę, kai capacity() == size()
+
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/14846524-40fe-4971-9d67-401d6656a768)
 
 
 ## Rule of Five
