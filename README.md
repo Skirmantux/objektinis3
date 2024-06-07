@@ -10,6 +10,7 @@
 - Ištaisytos klaidos dėl Locale.
 - Vietoj std::vector naudojama sava Vector klasė.
 - Pilnai ištestuota Vector klasė.
+- Klasė pilnai dokumentuota naudojant Doxygen html ir TeX (pdf).
 
 
 
