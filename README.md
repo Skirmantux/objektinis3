@@ -10,6 +10,10 @@
 - Ištaisytos klaidos dėl Locale.
 - Vietoj std::vector naudojama sava Vector klasė.
 - Pilnai ištestuota Vector klasė.
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/5e571e72-52ab-47e9-ae8f-76891035899a)
+
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/cb672a64-401e-4412-8d4e-885ca40ee8d8)
+
 - Klasė pilnai dokumentuota naudojant Doxygen html ir TeX (pdf).
 - Atlikti testavimai:
 
