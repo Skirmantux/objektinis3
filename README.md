@@ -11,7 +11,22 @@
 - Vietoj std::vector naudojama sava Vector klasė.
 - Pilnai ištestuota Vector klasė.
 - Klasė pilnai dokumentuota naudojant Doxygen html ir TeX (pdf).
+- Atlikti testavimai:
 
+## Testavimai lyginant std::vector v1.5 versiojoje ir Vector klasę v3.0 versijoje
+
+### 100 000 Studentų failas:
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/94bea858-4043-44bd-b91f-62307c408dcc)
+
+### 1 000 000 Studentų failas:
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/788915d7-03c3-450c-ab2a-7fe8b114f970)
+
+### 10 000 000 Studentų failas:
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/ea555f53-5249-45c5-926f-5aa8659275af)
+
+### Perskirymų skaičius lyginant std::vector ir Vector klasę, kai capacity() == size()
+
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/14846524-40fe-4971-9d67-401d6656a768)
 
 
 ## Rule of Five
