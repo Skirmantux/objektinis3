@@ -67,6 +67,8 @@ Tai optimizuoja išvedimą į įvesties srauto (std::cout arba std::ofstream) i�
 
 ## Ankstesnių versijų aprašymai:
 ### [v2.0](https://github.com/Skirmantux/objektinis2/releases/tag/v2.0.0)
+- Įkelta kodo dokumentacija HTML ir TeX (pdf) formomis. image
+- Programos klasė pratestuota naudojant Google Tests (Unit Tests).
 ### [v1.5](https://github.com/Skirmantux/objektinis2/releases/tag/v1.5)
 - Naudojama abstrakti klase Zmogus, kurioje objektų kūrimas yra negalimas.
 ### [v1.2](https://github.com/Skirmantux/objektinis2/releases/tag/v1.2.0)
