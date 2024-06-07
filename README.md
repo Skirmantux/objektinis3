@@ -1,15 +1,16 @@
-# v2.0
+# v3.0
 
 ## Pakeitimai:
-- Įkelta kodo dokumentacija HTML ir TeX (pdf) formomis.
-![image](https://github.com/Skirmantux/objektinis2/assets/149015954/d067ba4f-0435-4854-ab30-f5ef0aa470fc)
+- Sukurtas Setup.exe failas, kuris leidžia vartotojui be vargo instaliuoti programą.
 
-![image](https://github.com/Skirmantux/objektinis2/assets/149015954/4b20bbda-e10c-4c73-983e-cb45f4c754b7)
+![image](https://github.com/Skirmantux/objektinis3/assets/149015954/8b802ae0-627b-421e-b8bf-b4f1885840d9)
 
-- Programos klasė pratestuota naudojant Google Tests (Unit Tests).
-![image](https://github.com/Skirmantux/objektinis2/assets/149015954/4fb3c5e5-02d1-4b18-8855-edf953097cb1)
+- Įkelta nauja dokumentacija.
+- Setup.exe failui reikalinga administratoriaus prieeiga.
+- Ištaisytos klaidos dėl Locale.
+- Vietoj std::vector naudojama sava Vector klasė.
+- Pilnai ištestuota Vector klasė.
 
-![image](https://github.com/Skirmantux/objektinis2/assets/149015954/b51d93b0-90a1-4562-aa6f-86fa4ed9991b)
 
 
 ## Rule of Five
