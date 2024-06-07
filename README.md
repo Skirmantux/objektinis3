@@ -66,6 +66,7 @@ Tai optimizuoja išvedimą į įvesties srauto (std::cout arba std::ofstream) i�
 - SSD: 2TB NVMe KINGSTON SKC3000
 
 ## Ankstesnių versijų aprašymai:
+### [v2.0](https://github.com/Skirmantux/objektinis2/releases/tag/v2.0.0
 ### [v1.5](https://github.com/Skirmantux/objektinis2/releases/tag/v1.5)
 - Naudojama abstrakti klase Zmogus, kurioje objektų kūrimas yra negalimas.
 ### [v1.2](https://github.com/Skirmantux/objektinis2/releases/tag/v1.2.0)
