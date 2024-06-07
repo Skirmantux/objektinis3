@@ -172,3 +172,4 @@ Skaidymas
 2. Išskleiskite kodą į jūsų norimą vietą ir paleiskite setup.exe failą.
 3. Toliau spauskite toliau, kol programa bus instaliuota. 
 4. Programą rasti galite ant darbalaukio arba per paleidimo meniu.
+5. Įsitikinkite, jog turite administratoriaus teises prieš paleidžiant programą, nes ji jų reikalauja!
