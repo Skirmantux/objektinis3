@@ -1,7 +1,7 @@
 # v3.0
 
 ## Pakeitimai:
-- Sukurtas Setup.exe failas, kuris leidžia vartotojui be vargo instaliuoti programą.
+- Sukurti Setup.exe ir setup.msi failai, kuris leidžia vartotojui be vargo instaliuoti programą.
 
 ![image](https://github.com/Skirmantux/objektinis3/assets/149015954/8b802ae0-627b-421e-b8bf-b4f1885840d9)
 
