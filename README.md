@@ -158,22 +158,11 @@ Skaidymas
 # Kaip paleisti kodą?
 
 > [!NOTE]  
-> Šią instrukciją Windows OS reikia sekti tik tada, kai neturite iš repozitorijos atsiųstų .exe failų!
-
-## Makefile
-
-> [!WARNING]  
-> Makefile nėra palaikomas Windows sistemose, todėl yra atskiri žingsniai kaip jį įsidiegti.
+> Nuo v3.0 versijos yra įkeltas setup.exe failas, todėl paleidimas skiriasi!
 
 ### Windows
 
-1. Nueikite į šią svetainę: [GNU Make for Windows](https://sourceforge.net/projects/gnuwin32/files/make/3.81/)
-2. Atsisiųskite naujausią versiją.
-3. Susikonfigūruokite. Jei sunku suprasti, kaip ką daryti, gali padėti YouTube vaizdo įrašas: [Makefile Installation Tutorial](https://www.youtube.com/watch?v=taCJhnBXG_w)
-4. Atsisiunčiame projekto .zip failą, jį išskleidžiame.
-5. Atidarius projekto aplankalą, jame paspaudžiame dešinįjį pelės mygtuką ir paspaudžiame "Atidaryti terminalą" (CMD)
-6. Parašome "make"
-7. Atsiras .exe failai, kuriuos paleidus galite naudotis programa.
-
-> [!WARNING]  
-> 10000000 Studentų failas nėra įdedamas į GitHub repozitoriją. Prašome jį susigeneruoti naudojantis programa!
+1. Atsisiųskite kodą per github.com/Skirmantux/objektinis3 - > code - > download as ZIP.
+2. Išskleiskite kodą į jūsų norimą vietą ir paleiskite setup.exe failą.
+3. Toliau spauskite toliau, kol programa bus instaliuota. 
+4. Programą rasti galite ant darbalaukio arba per paleidimo meniu.
