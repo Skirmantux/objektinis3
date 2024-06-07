@@ -1,0 +1,18 @@
+﻿  ConsoleApplication1.cpp
+C:\Users\skirm\Documents\GitHub\objektinis2\objektinis3\project bin\ConsoleApplication1\ConsoleApplication1.cpp(17,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\skirm\Documents\GitHub\objektinis2\objektinis3\project bin\ConsoleApplication1\ConsoleApplication1.cpp(437,29): warning C4101: 'pavarde': unreferenced local variable
+C:\Users\skirm\Documents\GitHub\objektinis2\objektinis3\project bin\ConsoleApplication1\ConsoleApplication1.cpp(437,21): warning C4101: 'vardas': unreferenced local variable
+  MokiniuProcessing.cpp
+  Skaiciavimaidarbai.cpp
+C:\Users\skirm\Documents\GitHub\objektinis2\objektinis3\project bin\ConsoleApplication1\Skaiciavimaidarbai.cpp(79,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Studentas.cpp
+  Generating Code...
+  LINK : C:\Users\skirm\Documents\GitHub\objektinis2\objektinis3\project bin\x64\Debug\ConsoleApplication1.exe not found or not built by the last incremental link; performing full link
+ConsoleApplication1.obj : error LNK2019: unresolved external symbol "void __cdecl VectorExample(void)" (?VectorExample@@YAXXZ) referenced in function main
+ConsoleApplication1.obj : error LNK2019: unresolved external symbol "int __cdecl sumVector(class Vector<int,class std::allocator<int> > const &)" (?sumVector@@YAHAEBV?$Vector@HV?$allocator@H@std@@@@@Z) referenced in function main
+ConsoleApplication1.obj : error LNK2019: unresolved external symbol "bool __cdecl isSorted(class Vector<int,class std::allocator<int> > const &)" (?isSorted@@YA_NAEBV?$Vector@HV?$allocator@H@std@@@@@Z) referenced in function main
+ConsoleApplication1.obj : error LNK2019: unresolved external symbol "void __cdecl removeDuplicates(class Vector<int,class std::allocator<int> > &)" (?removeDuplicates@@YAXAEAV?$Vector@HV?$allocator@H@std@@@@@Z) referenced in function main
+ConsoleApplication1.obj : error LNK2019: unresolved external symbol "class Vector<int,class std::allocator<int> > __cdecl mergeSortedVectors(class Vector<int,class std::allocator<int> > const &,class Vector<int,class std::allocator<int> > const &)" (?mergeSortedVectors@@YA?AV?$Vector@HV?$allocator@H@std@@@@AEBV1@0@Z) referenced in function main
+ConsoleApplication1.obj : error LNK2019: unresolved external symbol "struct std::pair<int,int> __cdecl findMaxElement(class Vector<int,class std::allocator<int> > const &)" (?findMaxElement@@YA?AU?$pair@HH@std@@AEBV?$Vector@HV?$allocator@H@std@@@@@Z) referenced in function main
+ConsoleApplication1.obj : error LNK2019: unresolved external symbol "void __cdecl VectorUzpildymas(void)" (?VectorUzpildymas@@YAXXZ) referenced in function main
+C:\Users\skirm\Documents\GitHub\objektinis2\objektinis3\project bin\x64\Debug\ConsoleApplication1.exe : fatal error LNK1120: 7 unresolved externals
